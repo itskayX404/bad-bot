@@ -14,6 +14,7 @@ const { addCommands, checkCommands, deleteCommands } = require('./all/autoresp')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./all/functions.js')
 const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 const copyright = `\`\`\`© by ${ownerName} 2k22\`\`\``
+autorespon = false
 
 mess = {
          wait: 'Permintaan anda sedang diproses',
@@ -144,6 +145,12 @@ module.exports = async (nisa, mek) => {
         const buttonMessages = { locationMessage: mhan.message.locationMessage,contentText: text1,footerText: desc1,buttons: but,headerType: "LOCATION"}
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
+		if (!isGroup && !isCmd && !command && !mek.key.fromMe && autorespon) {
+        if (m.key.remoteJid == 'status@broadcast') return
+        anu = await fetchJson(`https://api.simsimi.net/v2/?text=${cmd}&lc=ID`)
+        hasil = anu.success
+        denz.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
+                      
 		if (isCmd && !isGroup)
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
         if (isCmd && isGroup)
@@ -191,6 +198,9 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 
 ❏ ${prefix}update [  ]
 └ _mengupdate sistem bot_
+
+❏ ${prefix}autorespon [ _on/off_ ]
+└ _mengaktifkan/nonaktifkan fitur simsimi_
 
 ☰ \`\`\`Information\`\`\`
 ✆ developer : _@${denis.split('@')[0]} & @${ari.split('@')[0]}_
@@ -423,6 +433,15 @@ nisa.sendMessage(from, hasil, text, {quoted:mek, contextInfo: { forwardingScore:
         case 'update':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
 exec(`git remote set-url origin https://github.com/dcode-denpa/bad-bot.git && git pull`, (error, stdout, stderr) => { reply(stdout)})
+        break
+        
+        case 'autorespon':
+if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, copyright, [{ buttonId: `autorespon on`, buttonText: { displayText: `On`, }, type: 1,},{ buttonId: `autorespon off`, buttonText: { displayText: `Off`, }, type: 1,},], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+if (bb === 'on'){ autorespon = true
+reply(mess.success)
+} else if (bb === 'off'){ autorespon = false
+reply(mess.success)} else { reply(mess.error.cmd)}
         break
         
         default:
