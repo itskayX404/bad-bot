@@ -148,7 +148,6 @@ module.exports = async (nisa, mek) => {
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
         if (isCmd && isGroup)
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(groupName))
-        mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
         
         switch (command) {
 	
