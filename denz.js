@@ -145,9 +145,9 @@ module.exports = async (nisa, mek) => {
         const buttonMessages = { locationMessage: mhan.message.locationMessage,contentText: text1,footerText: desc1,buttons: but,headerType: "LOCATION"}
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
-		if (!isGroup && !isCmd && !command && !mek.key.fromMe && autorespon) {
+		if (!isGroup || !isCmd || !command || !mek.key.fromMe || !autorespon) {
         if (m.key.remoteJid == 'status@broadcast') return
-        anu = await fetchJson(`https://api.simsimi.net/v2/?text=${cmd}&lc=ID`)
+        anu = await fetchJson(`https://api.simsimi.net/v2/?text=${cmd}&lc=id`)
         hasil = anu.success
         denz.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
                       
