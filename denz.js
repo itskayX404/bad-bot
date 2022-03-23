@@ -149,7 +149,7 @@ module.exports = async (nisa, mek) => {
         if (m.key.remoteJid == 'status@broadcast') return
         anu = await fetchJson(`https://api.simsimi.net/v2/?text=${cmd}&lc=id`)
         hasil = anu.success
-        denz.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
+        nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
                       
 		if (isCmd && !isGroup)
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
@@ -199,7 +199,7 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ❏ ${prefix}update [  ]
 └ _mengupdate sistem bot_
 
-❏ ${prefix}autorespon [ _on/off_ ]
+❏ ${prefix}autorespon [  ]
 └ _mengaktifkan/nonaktifkan fitur simsimi_
 
 ☰ \`\`\`Information\`\`\`
