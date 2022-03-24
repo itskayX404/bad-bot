@@ -392,12 +392,12 @@ nisa.sendMessage(from, ppu, image, {quoted:mek, caption:teks, thumbnail:buffer, 
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/search/group-whatsapp?apikey=${apiKey}&query=${bb}`, {method: 'get'})
 anu = anu.result
-hasil = ""
+teks = ""
 for (var b of anu) {
-hasil += `Title : ${b.title}\n`
-hasil += `Url : ${b.url}\n\n`}
+teks += `Title : ${b.title}\n`
+teks += `Url : ${b.url}\n\n`}
 reply(mess.wait)
-nisa.sendMessage(from, hasil, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
+nisa.sendMessage(from, teks, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
         
         case 'addcmd': 
@@ -433,13 +433,13 @@ nisa.sendMessage(from, teks, text, {quoted:mek, contextInfo: { forwardingScore: 
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/media/brainly?apikey=${apiKey}&query=${bb}`, {method: 'get'})
 anu = anu.result
-hasil = ""
+teks = ""
 for (var b of anu) {
-hasil += `Source : ${b.source}\n`
-hasil += `Pertanyaan : ${b.pertanyaan}\n`
-hasil += `${b.jawaban}\n`}
+teks += `Source : ${b.source}\n`
+teks += `Pertanyaan : ${b.pertanyaan}\n`
+teks += `${b.jawaban}\n`}
 reply(mess.wait)
-nisa.sendMessage(from, hasil, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
+nisa.sendMessage(from, teks, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
         
         case 'update':
@@ -466,15 +466,14 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo
         case 'happymod':
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/apk/happymod?apikey=${apiKey}&apps=${bb}`, {method: 'get'})
-buffer = await getBuffer(anu.result.thumbnail)
 anu = anu.result
-hasil = ""
+teks = ""
 for (var b of anu) {
-hasil += `Title : ${b.title}\n`
-hasil += `Url : ${b.url}\n`
-hasil += `Rate : ${b.rate}\n`}
+teks += `Title : ${b.title}\n`
+teks += `Url : ${b.url}\n`
+teks += `Rate : ${b.rate}\n`}
 reply(mess.wait)
-nisa.sendMessage(from, buffer, image, {quoted:mek, caption:hasil, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
+nisa.sendMessage(from, teks, test, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
         
         default:
