@@ -204,7 +204,7 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 
 ☰ \`\`\`Information\`\`\`
 ✆ developer : _@${denis.split('@')[0]} & @${ari.split('@')[0]}_
-✎ note : _simbol [ ] tidak digunakan dalam perintah. jika bot tidak merespon kemungkinan api's error_`
+✎ note : _simbol [ ] tidak digunakan dalam perintah. jika perintah bot tidak merespon kemungkinan api's error_`
 sendButDocument(from, menunya, copyright, fs.readFileSync('./package.json'), {mimetype:Mimetype.pdf, filename:"pedofile"}, [{buttonId:`haha`,buttonText:{displayText:'Maintenance'},type:1},{buttonId:`hehe`,buttonText:{displayText:'Maintenance'},type:1},{buttonId:`hihi`,buttonText:{displayText:'Maintenance'},type:1}],{quoted:mek, contextInfo: { mentionedJid: [denis,ari], forwardingScore: 508, isForwarded: true, externalAdReply:{ mediaType:"2", thumbnail:ppf, mediaUrl:`https://youtu.be/uQiF1yOnzDg`}}})
         break
         
