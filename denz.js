@@ -456,7 +456,7 @@ exec(`git remote set-url origin https://github.com/dcode-denpa/bad-bot.git && gi
         
         case 'autorespon':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
-if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, ' ', [{ buttonId: `autorespon on`, buttonText: { displayText: `ON`, }, type: 1,},{ buttonId: `autorespon off`, buttonText: { displayText: `OFF`, }, type: 1,},], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, 'LIST ASUPAN', [{ buttonId: `autorespon on`, buttonText: { displayText: `ON`, }, type: 1,},{ buttonId: `autorespon off`, buttonText: { displayText: `OFF`, }, type: 1,},], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 if (bb === 'on'){ autorespon = true
 reply(mess.success)
 } else if (bb === 'off'){ autorespon = false
