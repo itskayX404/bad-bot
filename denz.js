@@ -450,6 +450,13 @@ reply(mess.success)
 reply(mess.success)} else { reply(mess.error.cmd)}
         break
         
+        case 'tahta':
+if (!bb) return reply(mess.error.cmd)
+reply(mess.wait)
+buffer = await getBuffer(`https://violetics.pw/api/jimp/tahta?apikey=185e-c6d9-7d49&text=https://violetics.pw/assets/images/logo.png`)
+nisa.sendMessage(from, buffer, image, {quoted:mek, caption:teks, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
+        break
+        
         default:
 
 if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
