@@ -116,8 +116,8 @@ module.exports = async (nisa, mek) => {
         const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
         const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
         
-        const sendListMessage = (id, text1, desc1, text2, sec  = [], options = {}) => {
-        const listMessages = { buttonText: text2, footerText: desc1, description: text1, sections: sec, listType: 1 }
+        const sendListMessage = (id, text1, desc1, sec  = [], options = {}) => {
+        const listMessages = { buttonText: text1, description: desc1, sections: sec, listType: 1 }
         nisa.sendMessage(id, listMessages, MessageType.listMessage, options)}
 
         const sendButMessage = (id, text1, desc1, but = [], options = {}) => {
