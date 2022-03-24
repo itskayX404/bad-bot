@@ -464,7 +464,7 @@ reply(mess.success)} else { reply(mess.error.cmd)}
         break
         
         case 'asupan':
-if (args.length < 1) return  sendListMessage(from, 'List Asupan', 'silahkan pilih opsi berikut', [{rows: [{ "title":"asupan cecan"},{"title":"asupan chinese"},{"title":"asupan indonesia"},{"title":"asupan japan"},{"title":"asupan korea"},{"title":"asupan malaysia"},{"title":"asupan thailand"},{"title":"asupan vietnam"}]}],{quoted:mek}})
+if (args.length < 1) return  sendListMessage(from, 'List Asupan', 'silahkan pilih opsi berikut', [{rows: [{ "title":"asupan cecan"},{"title":"asupan chinese"},{"title":"asupan indonesia"},{"title":"asupan japan"},{"title":"asupan korea"},{"title":"asupan malaysia"},{"title":"asupan thailand"},{"title":"asupan vietnam"}]}],{quoted:mek})
 if (bb === 'cecan'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/cecan?apikey=${apiKey}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
