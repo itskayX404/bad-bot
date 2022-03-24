@@ -204,7 +204,7 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ☰ \`\`\`Information\`\`\`
 ✆ developer : _@${denis.split('@')[0]} & @${ari.split('@')[0]}_
 ✎ note : _simbol [ ] tidak digunakan dalam perintah. jika perintah bot tidak merespon kemungkinan api's error_`
-sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText:'☰ Script'},type:1},{buttonId:`owner`,buttonText:{displayText:'☰ Owner'},type:1},{buttonId:`status`,buttonText:{displayText:'☰ Status'},type:1}],{quoted:mek, contextInfo: { mentionedJid: [denis,ari], forwardingScore: 508, isForwarded: true }})
+sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText:'SCRIPT'},type:1},{buttonId:`owner`,buttonText:{displayText:'OWNER'},type:1},{buttonId:`status`,buttonText:{displayText:'STATUS'},type:1}],{quoted:mek, contextInfo: { mentionedJid: [denis,ari], forwardingScore: 508, isForwarded: true }})
         break
         
         case "script":
