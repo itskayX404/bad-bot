@@ -105,7 +105,6 @@ module.exports = async (nisa, mek) => {
 		
         try { pporang = await nisa.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)} catch { pporang = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'}
 		const ppu = await getBuffer(pporang)
-		const ppf = await getBuffer(`https://violetics.pw/api/photooxy/graffititext?apikey=${apiKey}&text=${botName}`)
 		
         const isImage = (type === 'imageMessage')
         const isVideo = (type === 'videoMessage')
@@ -205,7 +204,7 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ☰ \`\`\`Information\`\`\`
 ✆ developer : _@${denis.split('@')[0]} & @${ari.split('@')[0]}_
 ✎ note : _simbol [ ] tidak digunakan dalam perintah. jika perintah bot tidak merespon kemungkinan api's error_`
-sendButDocument(from, menunya, copyright, fs.readFileSync('./package.json'), {mimetype:Mimetype.pdf, filename:"pedofile"}, [{buttonId:`haha`,buttonText:{displayText:'Maintenance'},type:1},{buttonId:`hehe`,buttonText:{displayText:'Maintenance'},type:1},{buttonId:`hihi`,buttonText:{displayText:'Maintenance'},type:1}],{quoted:mek, contextInfo: { mentionedJid: [denis,ari], forwardingScore: 508, isForwarded: true, externalAdReply:{ mediaType:"2", thumbnail:ppf, mediaUrl:`https://youtu.be/sVx1mJDeUjY`}}})
+sendButMessage(from, menunya, copyright, [{buttonId:`haha`,buttonText:{displayText:'Maintenance'},type:1},{buttonId:`hehe`,buttonText:{displayText:'Maintenance'},type:1},{buttonId:`hihi`,buttonText:{displayText:'Maintenance'},type:1}],{quoted:mek, contextInfo: { mentionedJid: [denis,ari], forwardingScore: 508, isForwarded: true }})
         break
         
         case "script":
