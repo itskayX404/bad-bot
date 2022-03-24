@@ -45,7 +45,6 @@ if (position !== null) { return scommand[position].chats }}
     
 module.exports = async (nisa, mek) => {
         try {
-        const txt = nisa.message.conversation
         const m = await simple.smsg(nisa, mek)
         const antibot = m.isBaileys
         const content = JSON.stringify(m.message)
@@ -152,7 +151,7 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
          
         if (!isOwner && !mek.key.fromMe) {
-	    if (txt.includes("://chat.whatsapp.com/")) {
+	    if (cmd.includes("://chat.whatsapp.com/")) {
 	    nisa.query({json:["action", "invite", `${txt.replace('https://chat.whatsapp.com/','')}`]})}}
 	
 		if (isCmd && !isGroup)
