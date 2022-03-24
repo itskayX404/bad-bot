@@ -471,7 +471,7 @@ teks = ""
 for (var b of anu) {
 teks += `Title : ${b.title}\n`
 teks += `Url : ${b.url}\n`
-teks += `Rate : ${b.rate}\n`}
+teks += `Rate : ${b.rate}\n\n`}
 reply(mess.wait)
 nisa.sendMessage(from, teks, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
