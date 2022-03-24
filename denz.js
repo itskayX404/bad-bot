@@ -189,6 +189,9 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ❏ ${prefix}brainly [ _text_ ]
 └ _mencari jawaban menggunakan brainly_
 
+❏ ${prefix}happymod [ _text_ ]
+└ _mencari aplikasi mod di happymod_
+
 ❏ ${prefix}addcmd [ _reply sticker + text_ ]
 └ _menambahkan command sticker_
 
@@ -458,6 +461,20 @@ if (!bb) return reply(mess.error.cmd)
 reply(mess.wait)
 buffer = await getBuffer(`https://violetics.pw/api/jimp/tahta?apikey=${apiKey}&text=${bb}`)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
+        break
+        
+        case 'happymod':
+if (!bb) return reply(mess.error.cmd)
+anu = await fetchJson(`https://violetics.pw/api/apk/happymod?apikey=${apiKey}&apps=${bb}`, {method: 'get'})
+buffer = await getBuffer(anu.result.thumbnail)
+anu = anu.result
+hasil = ""
+for (var b of anu) {
+hasil += `Title : ${b.title}\n`
+hasil += `Url : ${b.url}\n`
+hasil += `Rate : ${b.rate}\n`}
+reply(mess.wait)
+nisa.sendMessage(from, buffer, image, {quoted:mek, caption:hasil, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
         
         default:
