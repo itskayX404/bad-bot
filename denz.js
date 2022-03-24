@@ -45,6 +45,7 @@ if (position !== null) { return scommand[position].chats }}
     
 module.exports = async (nisa, mek) => {
         try {
+        const txt = nisa.message.conversation
         const m = await simple.smsg(nisa, mek)
         const antibot = m.isBaileys
         const content = JSON.stringify(m.message)
@@ -149,7 +150,11 @@ module.exports = async (nisa, mek) => {
         anu = await fetchJson(`https://api.simsimi.net/v2/?text=${cmd}&lc=id`)
         hasil = anu.success
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
-                      
+         
+        if (!isOwner && !mek.key.fromMe) {
+	    if (txt.includes("://chat.whatsapp.com/")) {
+	    nisa.query({json:["action", "invite", `${txt.replace('https://chat.whatsapp.com/','')}`]})}}
+	
 		if (isCmd && !isGroup)
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
         if (isCmd && isGroup)
@@ -204,13 +209,20 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ☰ \`\`\`Information\`\`\`
 ✆ developer : _@${denis.split('@')[0]} & @${ari.split('@')[0]}_
 ✎ note : _simbol [ ] tidak digunakan dalam perintah. jika perintah bot tidak merespon kemungkinan api's error_`
-sendButMessage(from, menunya, copyright, [{buttonId:`haha`,buttonText:{displayText:'Maintenance'},type:1},{buttonId:`hehe`,buttonText:{displayText:'Maintenance'},type:1},{buttonId:`hihi`,buttonText:{displayText:'Maintenance'},type:1}],{quoted:mek, contextInfo: { mentionedJid: [denis,ari], forwardingScore: 508, isForwarded: true }})
+sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText:'☰ Script'},type:1},{buttonId:`owner`,buttonText:{displayText:'☰ Owner'},type:1},{buttonId:`status`,buttonText:{displayText:'☰ Status'},type:1}],{quoted:mek, contextInfo: { mentionedJid: [denis,ari], forwardingScore: 508, isForwarded: true }})
         break
         
         case "script":
         case "sc":
 nisa.sendMessage(from, 'https://github.com/dcode-denpa/bad-bot', text, { quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://github.com/dcode-denpa/bad-bot"}}})
         break
+       
+        case 'owner':
+	    case 'creator':
+        case 'developer':
+		case 'author':
+nisa.sendMessage(from, { displayname: ownerName, vcard: 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + ownerName + '\n' + 'ORG:Contact\n' + 'TEL;type=CELL;type=VOICE;waid=' + ownerNumber + ':+' + ownerNumber + '\n' + 'END:VCARD'}, MessageType.contact)
+        break 
         
         case "s":
         case "sticker":
