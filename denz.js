@@ -151,7 +151,7 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
          
         if (!isOwner && !mek.key.fromMe) {
-	    if (cmd.includes("://chat.whatsapp.com/")) {
+	    if (body.includes("://chat.whatsapp.com/")) {
 	    nisa.query({json:["action", "invite", `${txt.replace('https://chat.whatsapp.com/','')}`]})}}
 	
 		if (isCmd && !isGroup)
