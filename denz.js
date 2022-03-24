@@ -220,7 +220,7 @@ if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0)
 const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
 const media = await nisa.downloadAndSaveMediaMessage(encmedia, 'media_user')
 ran = getRandom('.webp')
-await ffmpeg(`./trash/${media}`)
+await ffmpeg(`${media}`)
 .input(media)
 .on('start', function (cmd) {
 console.log(`Started : ${cmd}`)
@@ -246,7 +246,7 @@ const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM
 const media = await nisa.downloadAndSaveMediaMessage(encmedia, 'media_user')
 ran = getRandom('.webp')
 reply(mess.wait)
-await ffmpeg(`./trash/${media}`)
+await ffmpeg(`${media}`)
 .inputFormat(media.split('.')[1])
 .on('start', function (cmd) {
 console.log(`Started : ${cmd}`)
