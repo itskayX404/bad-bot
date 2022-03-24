@@ -456,7 +456,7 @@ exec(`git remote set-url origin https://github.com/dcode-denpa/bad-bot.git && gi
         
         case 'autorespon':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
-if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autorespon on`, buttonText: { displayText: `ON`, }, type: 1,},{ buttonId: `autorespon off`, buttonText: { displayText: `OFF`, }, type: 1,},], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, ' ', [{ buttonId: `autorespon on`, buttonText: { displayText: `ON`, }, type: 1,},{ buttonId: `autorespon off`, buttonText: { displayText: `OFF`, }, type: 1,},], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 if (bb === 'on'){ autorespon = true
 reply(mess.success)
 } else if (bb === 'off'){ autorespon = false
@@ -464,7 +464,7 @@ reply(mess.success)} else { reply(mess.error.cmd)}
         break
         
         case 'asupan':
-if (args.length < 1) return  sendListMessage(from, '', 'silahkan pilih opsi berikut', [{rows: [{ "title":"asupan cecan"},{"title":"asupan chinese"},{"title":"asupan indonesia"},{"title":"asupan japan"},{"title":"asupan korea"},{"title":"asupan malaysia"},{"title":"asupan thailand"},{"title":"asupan vietnam"}]}],{quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+if (args.length < 1) return  sendListMessage(from, ' ', 'silahkan pilih opsi berikut', [{rows: [{ "title":"asupan cecan"},{"title":"asupan chinese"},{"title":"asupan indonesia"},{"title":"asupan japan"},{"title":"asupan korea"},{"title":"asupan malaysia"},{"title":"asupan thailand"},{"title":"asupan vietnam"}]}],{quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 if (bb === 'cecan'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/cecan?apikey=${apiKey}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
