@@ -335,7 +335,7 @@ reply(`Kirim gambar dengan caption ${prefix}sticker atau tag gambar yang sudah d
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/stalk/github?apikey=${apiKey}&username=${bb}`, {method: 'get'})
 buffer = await getBuffer(anu.result.avatar_url)
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
@@ -344,7 +344,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/stalk/instagram?apikey=${apiKey}&username=${bb}`, {method: 'get'})
 buffer = await getBuffer(anu.result.profile_pic_url_hd)
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
@@ -352,7 +352,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
         case 'searchgc':
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/search/group-whatsapp?apikey=${apiKey}&query=${bb}`, {method: 'get'})
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
@@ -384,7 +384,7 @@ nisa.sendMessage(from, `${JSON.stringify(scommand, null, 2)}`, text, {quoted:mek
         case 'brainly':
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/media/brainly?apikey=${apiKey}&query=${bb}`, {method: 'get'})
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
@@ -406,27 +406,35 @@ reply(mess.success)} else { reply(mess.error.cmd)}
         case 'asupan':
 if (args.length < 1) return  sendListMessage(from, 'List Asupan', 'silahkan pilih opsi berikut', [{rows: [{ "title":"asupan cecan"},{"title":"asupan chinese"},{"title":"asupan indonesia"},{"title":"asupan japan"},{"title":"asupan korea"},{"title":"asupan malaysia"},{"title":"asupan thailand"},{"title":"asupan vietnam"}]}],{quoted:mek})
 if (bb === 'cecan'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/cecan?apikey=${apiKey}`)
+if (buffer.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
 } else if (bb === 'chinese'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/chinese?apikey=${apiKey}`)
+if (buffer.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
 } else if (bb === 'indonesia'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/indonesia?apikey=${apiKey}`)
+if (buffer.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
 } else if (bb === 'japan'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/japan?apikey=${apiKey}`)
+if (buffer.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
 } else if (bb === 'korea'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/korea?apikey=${apiKey}`)
+if (buffer.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
 } else if (bb === 'malaysia'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/malaysia?apikey=${apiKey}`)
+if (buffer.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
 } else if (bb === 'thailand'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/thailand?apikey=${apiKey}`)
+if (buffer.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
 } else if (bb === 'vietnam'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/vietnam?apikey=${apiKey}`)
+if (buffer.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
 } else { reply(mess.error.api) }
@@ -435,7 +443,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo
         case 'tahta':
 if (!bb) return reply(mess.error.cmd)
 buffer = await getBuffer(`https://violetics.pw/api/jimp/tahta?apikey=${apiKey}&text=${bb}`)
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
@@ -443,7 +451,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo
         case 'happymod':
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/apk/happymod?apikey=${apiKey}&apps=${bb}`, {method: 'get'})
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
@@ -451,28 +459,28 @@ nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:m
         case 'cekapi':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
 anu = await fetchJson(`https://violetics.pw/api/utility/check-apikey?apikey=${apiKey}`, {method: 'get'})
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(`${JSON.stringify(anu.result, null, 2)}`)
         break
         
         case 'covid':
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/information/corona-virus?apikey=${apiKey}&country=${bb}`, {method: 'get'})
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
         
         case 'mplid':
 anu = await fetchJson(`https://violetics.pw/api/information/mplid?apikey=${apiKey}`, {method: 'get'})
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
         
         case 'faktaunik':
 anu = await fetchJson(`https://violetics.pw/api/information/faktaunik?apikey=${apiKey}`, {method: 'get'})
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
@@ -480,7 +488,7 @@ nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:m
         case 'infogempa':
 anu = await fetchJson(`https://violetics.pw/api/information/gempa-terbaru?apikey=${apiKey}`, {method: 'get'})
 buffer = await getBuffer(anu.result.shakemap)
-if (anu.result == undefined || anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
