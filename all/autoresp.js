@@ -14,8 +14,7 @@ const addCommands = (msg, response, userId, _data) => {
     const obj = {
         pesan: msg,
         balasan: response,
-        creator: userId,
-        data: _data
+        creator: userId
     }
     _data.push(obj)
     fs.writeFileSync('./database/commands.json', JSON.stringify(_data))
