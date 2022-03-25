@@ -7,7 +7,7 @@ const simple = require('./all/simple.js')
 const WAConnection = simple.WAConnection(_WAConnection)
 const moment = require("moment-timezone")
 const setting = JSON.parse(fs.readFileSync("./settings.json"))
-const { sessionName, botName, apiKey, ownerNumber} = setting
+const { ownerName, botName, ownerNumber } = setting
 const time = moment.tz('Asia/Jakarta').format('HH:mm')			
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./all/functions.js')
 const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms))}
@@ -19,7 +19,7 @@ require("./denz.js")
 const starts = async (session) => {
 nisa.logger.level = 'warn'
 nisa.version = [2, 2142, 12]
-nisa.browserDescription = [`${setting.ownerName}`,'Desktop','3.0']
+nisa.browserDescription = [`${ownerName}`,'Desktop','3.0']
 
 nisa.on("qr", (qr) => { console.log(color("qr { Scan }"))})
 fs.existsSync(session) && nisa.loadAuthInfo(session)
@@ -43,7 +43,7 @@ if (!mek.message) return
 if (mek.key && !mek.key.remoteJid == 'status@broadcast') return
 ownerNomor = ["6285866295942@s.whatsapp.net",`${setting.ownerNumber}@s.whatsapp.net`]
 require("./denz.js")(nisa, mek)})}
-starts(sessionName)
+starts('./session.json')
 
 exec(`mkdir $HOME/.termux/ ;echo "extra-keys = [['ESC','/','-','HOME','UP','END','BKSP'],['KEYBOARD','CTRL','ALT','LEFT','DOWN','RIGHT','ENTER']]" >> $HOME/.termux/termux.properties;termux-reload-settings`, (error, stdout, stderr) => { console.log(stdout)})
 function watchFile(module, cb = (module) => 
