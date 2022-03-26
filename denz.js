@@ -15,6 +15,7 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 const copyright = `\`\`\`© by ${ownerName} 2k22\`\`\``
 autorespon = false
+autoread = true
 
 mess = {
          wait: 'Permintaan anda sedang diproses',
@@ -148,6 +149,7 @@ module.exports = async (nisa, mek) => {
         const buttonMessages = { locationMessage: mhan.message.locationMessage,contentText: text1,footerText: desc1,buttons: but,headerType: "LOCATION"}
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
+		if (autoread) {nisa.chatRead(from)}
 		if (!isGroup && !mek.key.fromMe && autorespon) {
         if (m.key.remoteJid == 'status@broadcast') return
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
@@ -207,6 +209,9 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 
 ❏ ${prefix}autorespon [  ]
 └ _mengaktifkan/nonaktifkan fitur simsimi_
+
+❏ ${prefix}autoread [  ]
+└ _mengaktifkan/nonaktifkan fitur auto baca_
 
 ❏ ${prefix}asupan [  ]
 └ _mengirim gambar asupan_
@@ -400,6 +405,15 @@ if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, 
 if (bb === 'on'){ autorespon = true
 reply(mess.success)
 } else if (bb === 'off'){ autorespon = false
+reply(mess.success)} else { reply(mess.error.cmd)}
+        break
+        
+        case 'autoread':
+if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autorespon on`, buttonText: { displayText: `ON`, }, type: 1,},{ buttonId: `autorespon off`, buttonText: { displayText: `OFF`, }, type: 1,},], {quoted:mek})
+if (bb === 'on'){ autoread = true
+reply(mess.success)
+} else if (bb === 'off'){ autoread = false
 reply(mess.success)} else { reply(mess.error.cmd)}
         break
         
