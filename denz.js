@@ -348,7 +348,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
         case 'igstalk':
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/stalk/instagram?apikey=${apiKey}&username=${bb}`, {method: 'get'})
-buffer = await getBuffer(anu.result.profile_pic_url_hd)
+buffer = await getBuffer(anu.result.profile_pic_url)
 if (anu.status == 400) return reply(`${anu.message}`)
 reply(mess.wait)
 nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
