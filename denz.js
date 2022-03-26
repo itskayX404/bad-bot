@@ -251,8 +251,8 @@ nisa.sendMessage(from, { displayname: ownerName, vcard: 'BEGIN:VCARD\n' + 'VERSI
         
         case 'status':
 anu = await fetchJson(`http://ip-api.com/json/?fields=country,regionName,timezone,isp`, {method: 'get'})
-teks = `${JSON.stringify(setting, null, 2)}\n
-${JSON.stringify(nisa.user.phone, null, 2)}\n
+teks = `${JSON.stringify(setting, null, 2)}
+${JSON.stringify(nisa.user.phone, null, 2)}
 ${JSON.stringify(anu, null, 2)}`
 nisa.sendMessage(from, teks, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"}}})
         break
