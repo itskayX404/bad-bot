@@ -156,9 +156,8 @@ module.exports = async (nisa, mek) => {
         hasil = anu.success
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
         
-        if (!isOwner) {
+        if (!isOwner && !mek.key.fromMe) return
         nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})
-	    }
 	
 		if (isCmd && !isGroup)
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
