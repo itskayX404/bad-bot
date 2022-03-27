@@ -173,7 +173,7 @@ denis = "6285866295942@s.whatsapp.net"
 ari = "6285863731628@s.whatsapp.net"
 menunya = `☰ \`\`\`${botName}\`\`\`
 ♺ date : _${calender} - ${time}_
-⚥ ${isOwner ? 'owner' : 'user'} : _${pushname}, ${ubio} - ${anu.country_name}, ${anu.carrier} {num.line_type}_
+⚥ ${isOwner ? 'owner' : 'user'} : _${pushname}, ${ubio} - ${anu.country_name}, ${anu.carrier} ${anu.line_type}_
 
 ☰ \`\`\`List Menu\`\`\`
 ❏ ${prefix}sticker [ _reply media_ ]
