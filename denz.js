@@ -267,7 +267,7 @@ reply(mess.success)
         break
         
         case 'status':
-anu = await fetchJson(`http://ip-api.com/json/?fields=country,regionName,timezone,isp`, {method: 'get'})
+anu = await fetchJson(`http://ip-api.com/json/?fields=countryCode,country,region,regionName,timezone,isp`, {method: 'get'})
 teks = `${JSON.stringify(setting, null, 2)}
 ${JSON.stringify(nisa.user.phone, null, 2)}
 ${JSON.stringify(anu, null, 2)}`
