@@ -242,7 +242,7 @@ nisa.sendMessage(from, 'https://github.com/dcode-denpa/bad-bot', text, { quoted:
        
         case 'report':
 reply("developer bot akan segera merespon laporan anda, terimakasih telah melaporkan")
-nisa.sendMessage("6285866295942@s.whatsapp.net", `command: ${body.slice(7)}\ntime: ${time}\nfrom: ${pushname}`, text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`hallo developer, ada user melaporkan command ${body.slice(7)} error.`,body:"tolong segera perbaiki",previewType:"PHOTO",thumbnail:ppu,sourceUrl:`https://wa.me/${senderNumber}`}}})
+nisa.sendMessage("6285866295942@s.whatsapp.net", `command: ${body.slice(7)}\ntime: ${time}\nfrom: ${pushname}`, text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:"command reported",previewType:"PHOTO",thumbnail:ppu,sourceUrl:`https://wa.me/${senderNumber}`}}})
         break
         
         case 'owner':
