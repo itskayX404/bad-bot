@@ -155,8 +155,7 @@ module.exports = async (nisa, mek) => {
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
-        if (!isOwner && !mek.key.fromMe) {
-	    nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})}
+        nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})
 	
 		if (isCmd && !isGroup)
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
