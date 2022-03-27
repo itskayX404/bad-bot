@@ -243,7 +243,10 @@ nisa.sendMessage(from, 'https://github.com/dcode-denpa/bad-bot', text, { quoted:
         case 'report':
 if (args.length < 1) return reply(mess.error.cmd)
 reply("developer bot akan segera merespon laporan anda, terimakasih telah melaporkan")
-sendButMessage("6285866295942@s.whatsapp.net", `command: ${body.slice(7)}\ntime: ${time}\nfrom: ${pushname}`, '', [{buttonId:`report fix`,buttonText:{displayText:"FIX"},type:1},{buttonId:`report fake`,buttonText:{displayText:"FAKE"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:"command reported",previewType:"PHOTO",thumbnail:ppu,sourceUrl:`https://api.whatsapp.com/send?phone=${senderNumber}`}}})
+sendButMessage("6285866295942@s.whatsapp.net", `command: ${body.slice(7)}\ntime: ${time}\nfrom: ${pushname}`, '', [{buttonId:`lapor fix`,buttonText:{displayText:"FIX"},type:1},{buttonId:`lapor fake`,buttonText:{displayText:"FAKE"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:"command reported",previewType:"PHOTO",thumbnail:ppu,sourceUrl:`https://api.whatsapp.com/send?phone=${senderNumber}`}}})
+        break
+        
+        case 'lapor':
 if (bb === 'fix'){ nisa.sendMessage(senderNumber, `laporan command ${body.slice(7)} yang anda laporkan telah diperbaiki oleh developer bot, terimakasih`,text, {contextInfo: { forwardingScore: 508, isForwarded: true }})
 } else if (bb === 'fake'){ nisa.sendMessage(senderNumber, `laporan command ${body.slice(7)} yang anda laporkan telah ditolak oleh developer bot, tidak masuk akal`,text, {contextInfo: { forwardingScore: 508, isForwarded: true }})
 } else { reply(mess.error.api) }
