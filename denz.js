@@ -247,8 +247,8 @@ sendButMessage("6285866295942@s.whatsapp.net", `command: ${body.slice(7)}\ntime:
         break
         
         case 'lapor':
-if (bb === 'fix'){ nisa.sendMessage(senderNumber, `laporan command ${body.slice(7)} yang anda laporkan telah diperbaiki oleh developer bot, terimakasih`,text, {contextInfo: { forwardingScore: 508, isForwarded: true }})
-} else if (bb === 'fake'){ nisa.sendMessage(senderNumber, `laporan command ${body.slice(7)} yang anda laporkan telah ditolak oleh developer bot, tidak masuk akal`,text, {contextInfo: { forwardingScore: 508, isForwarded: true }})
+if (bb === 'fix'){ nisa.sendMessage(sender, `laporan command ${body.slice(7)} yang anda laporkan telah diperbaiki oleh developer bot, terimakasih`,text, {contextInfo: { forwardingScore: 508, isForwarded: true }})
+} else if (bb === 'fake'){ nisa.sendMessage(sender, `laporan command ${body.slice(7)} yang anda laporkan telah ditolak oleh developer bot, tidak masuk akal`,text, {contextInfo: { forwardingScore: 508, isForwarded: true }})
 } else { reply(mess.error.api) }
         break
         
