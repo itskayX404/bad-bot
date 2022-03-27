@@ -258,6 +258,14 @@ nisa.sendMessage("6285866295942@s.whatsapp.net", `command: ${bb}\ntime: ${time}\
 nisa.sendMessage(from, { displayname: ownerName, vcard: 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + ownerName + '\n' + 'TEL;type=CELL;type=VOICE;waid=' + ownerNumber + ':+' + ownerNumber + '\n' + 'END:VCARD'}, MessageType.contact, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{previewType:"PHOTO",thumbnail:ppu,sourceUrl:`https://api.whatsapp.com/send?phone=${ownerNumber}`}}})
         break 
         
+        case 'bc':
+if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+if (!bb) return reply(mess.error.cmd)
+anu = await nisa.chats.all()
+for (let _ of anu) { nisa.sendMessage(_.jid, `${bb}`, text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${botName} broadcast`,previewType:"PHOTO",thumbnail:ppu}}})}
+reply(mess.success)
+        break
+        
         case 'status':
 anu = await fetchJson(`http://ip-api.com/json/?fields=country,regionName,timezone,isp`, {method: 'get'})
 teks = `${JSON.stringify(setting, null, 2)}
