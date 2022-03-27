@@ -212,6 +212,9 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ❏ ${prefix}update [  ]
 └ _mengupdate sistem bot_
 
+❏ ${prefix}delete [ _reply media_ ]
+└ _menghapus chat bot_
+
 ❏ ${prefix}autorespon [  ]
 └ _mengaktifkan/nonaktifkan fitur simsimi_
 
