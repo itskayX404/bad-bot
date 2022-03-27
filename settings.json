@@ -2,5 +2,8 @@
   "ownerName": "denis putra",
   "botName": "Bad Bot",
   "ownerNumber": "6285727091924",
-  "apiKey": "185e-c6d9-7d49"
+  "apiKey": "185e-c6d9-7d49",
+  "autorespon": "true",
+  "autoread": "true",
+  "autojoin": "true"
 }
