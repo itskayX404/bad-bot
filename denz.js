@@ -17,7 +17,8 @@ const copyright = `\`\`\`© by ${ownerName} 2k22\`\`\``
 autorespon = false
 autoread = true
 autojoin = false
-  
+mode = true
+
 mess = {
          wait: 'Permintaan anda sedang diproses',
          success: 'Permintaan anda berhasil diproses',
@@ -160,7 +161,8 @@ module.exports = async (nisa, mek) => {
         if (!mek.key.fromMe && autojoin) {
         if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
         nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})}}
-	
+	    if (!publik) { if (!isOwner && !mek.key.fromMe) return}
+		
 		if (isCmd && !isGroup)
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
         if (isCmd && isGroup)
@@ -223,6 +225,9 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 
 ❏ ${prefix}autojoin [  ]
 └ _mengaktifkan/nonaktifkan fitur auto gabung grup_
+
+❏ ${prefix}mode [  ]
+└ _mengganti mode public/self_
 
 ❏ ${prefix}bc [ _text_ ]
 └ _mengirim broadcast ke semua chat_
@@ -425,16 +430,25 @@ exec(`git remote set-url origin https://github.com/dcode-denpa/bad-bot.git && gi
         
         case 'autorespon':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
-if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autorespon on`, buttonText: { displayText: `ON` }, type: 1},{ buttonId: `autorespon off`, buttonText: { displayText: `OFF` }, type: 1}], {quoted:mek})
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autorespon on`, buttonText: { displayText: "ON" }, type: 1},{ buttonId: `autorespon off`, buttonText: { displayText: "OFF" }, type: 1}], {quoted:mek})
 if (bb === 'on'){ autorespon = true
 reply(mess.success)
 } else if (bb === 'off'){ autorespon = false
 reply(mess.success)} else { reply(mess.error.cmd)}
         break
         
+        case 'mode':
+if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `mode public`, buttonText: { displayText: "PUBLIC" }, type: 1},{ buttonId: `mode self`, buttonText: { displayText: "SELF" }, type: 1}], {quoted:mek})
+if (bb === 'public'){ mode = true
+reply(mess.success)
+} else if (bb === 'self'){ mode = false
+reply(mess.success)} else { reply(mess.error.cmd)}
+        break
+        
         case 'autoread':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
-if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autoread on`, buttonText: { displayText: `ON` }, type: 1},{ buttonId: `autoread off`, buttonText: { displayText: `OFF` }, type: 1}], {quoted:mek})
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autoread on`, buttonText: { displayText: "ON" }, type: 1},{ buttonId: `autoread off`, buttonText: { displayText: "OFF" }, type: 1}], {quoted:mek})
 if (bb === 'on'){ autoread = true
 reply(mess.success)
 } else if (bb === 'off'){ autoread = false
@@ -443,7 +457,7 @@ reply(mess.success)} else { reply(mess.error.cmd)}
         
         case 'autojoin':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
-if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autojoin on`, buttonText: { displayText: `ON` }, type: 1},{ buttonId: `autojoin off`, buttonText: { displayText: `OFF` }, type: 1}], {quoted:mek})
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autojoin on`, buttonText: { displayText: "ON" }, type: 1},{ buttonId: `autojoin off`, buttonText: { displayText: "OFF" }, type: 1}], {quoted:mek})
 if (bb === 'on'){ autojoin = true
 reply(mess.success)
 } else if (bb === 'off'){ autojoin = false
