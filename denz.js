@@ -220,7 +220,7 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ❏ ${prefix}autojoin [  ]
 └ _mengaktifkan/nonaktifkan fitur auto gabung grup_
 
-❏ ${prefix}bc [  ]
+❏ ${prefix}bc [ _text_ ]
 └ _mengirim broadcast ke semua chat_
 
 ❏ ${prefix}asupan [  ]
