@@ -16,6 +16,7 @@ const { text, extendedText, contact, location, liveLocation, image, video, stick
 const copyright = `\`\`\`© by ${ownerName} 2k22\`\`\``
 autorespon = false
 autoread = true
+autojoin = false
 
 mess = {
          wait: 'Permintaan anda sedang diproses',
@@ -156,9 +157,8 @@ module.exports = async (nisa, mek) => {
         hasil = anu.success
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
         
-        if (!isOwner && isGroup) {
-        nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})
-	    }
+        if (autojoin) {
+        nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})}
 	
 		if (isCmd && !isGroup)
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
@@ -215,6 +215,9 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 
 ❏ ${prefix}autoread [  ]
 └ _mengaktifkan/nonaktifkan fitur auto baca_
+
+❏ ${prefix}autojoin [  ]
+└ _mengaktifkan/nonaktifkan fitur auto gabung grup_
 
 ❏ ${prefix}asupan [  ]
 └ _mengirim gambar asupan_
@@ -411,10 +414,19 @@ reply(mess.success)} else { reply(mess.error.cmd)}
         
         case 'autoread':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
-if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autorespon on`, buttonText: { displayText: `ON`, }, type: 1,},{ buttonId: `autorespon off`, buttonText: { displayText: `OFF`, }, type: 1,},], {quoted:mek})
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autoread on`, buttonText: { displayText: `ON` }, type: 1},{ buttonId: `autoread off`, buttonText: { displayText: `OFF` }, type: 1}], {quoted:mek})
 if (bb === 'on'){ autoread = true
 reply(mess.success)
 } else if (bb === 'off'){ autoread = false
+reply(mess.success)} else { reply(mess.error.cmd)}
+        break
+        
+        case 'autojoin':
+if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autojoin on`, buttonText: { displayText: `ON` }, type: 1},{ buttonId: `autojoin off`, buttonText: { displayText: `OFF` }, type: 1}], {quoted:mek})
+if (bb === 'on'){ autojoin = true
+reply(mess.success)
+} else if (bb === 'off'){ autojoin = false
 reply(mess.success)} else { reply(mess.error.cmd)}
         break
         
