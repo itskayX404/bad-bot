@@ -158,6 +158,7 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
         
         if (autojoin) {
+        if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
         nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})}}
 	
 		if (isCmd && !isGroup)
