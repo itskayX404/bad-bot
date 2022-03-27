@@ -161,8 +161,8 @@ module.exports = async (nisa, mek) => {
         if (!mek.key.fromMe && autojoin) {
         if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
         nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})}}
-	    if (!publik) { if (!isOwner && !mek.key.fromMe) return}
-		
+        
+	    if (!mode) { if (!isOwner && !mek.key.fromMe) return }
 		if (isCmd && !isGroup)
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
         if (isCmd && isGroup)
