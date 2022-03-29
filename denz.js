@@ -151,13 +151,6 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
 		if (autoread) {nisa.chatRead(from)}
-		const nomer = ["6285727091924@s.whatsapp.net"]
-		const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
-		if (nomer.includes(simireply)) {
-		if (mek.key.fromMe) return
-		anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
-        hasil = anu.success
-        nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
 		if (!isGroup && !mek.key.fromMe && autorespon) {
         if (mek.key.remoteJid == 'status@broadcast') return
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
@@ -495,6 +488,13 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
         
         default:
 
+const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
+if (nisa.user.jid.includes(simireply)) {
+if (mek.key.fromMe) return
+anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
+hasil = anu.success
+nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
+        
 if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
 try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
 return reply(require('util').format(evaluate))} catch(e){
