@@ -166,12 +166,12 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
         
         if (!mek.key.fromMe && autojoin) {
-        if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
-        nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})}}
+        if (bb.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
+        nisa.query({json:["action", "invite", `${bb.replace('https://chat.whatsapp.com/','')}`]})}}
         
-        if (budy.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
-		const sep = budy.split("\n")
-        let exc = budy.replace(sep[0]+"\n", "")
+        if (bb.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
+		const sep = bb.split("\n")
+        let exc = bb.replace(sep[0]+"\n", "")
         exec(exc, (err, stdout) => { if (err) return reply(`${err}`)
 		if (stdout) { reply(`${stdout}`)}})}
 		
@@ -333,7 +333,7 @@ sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonI
 nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
-        case 'searchgc':
+        case 'searchgc': case 'carigc':
 if (!bb) return reply(mess.error.cmd)
 anu = await fetchJson(`https://violetics.pw/api/search/group-whatsapp?apikey=${apiKey}&query=${bb}`, {method: 'get'})
 if (anu.status == 400) return reply(`${anu.message}`)
@@ -496,7 +496,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
         
         default:
 
-if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
+if (/^=?>/.test(bb) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(bb) ? bb.replace(/^=>/,'return') : bb.replace(/^>/,'')
 try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
 return reply(require('util').format(evaluate))} catch(e){
 return reply(require('util').format(e))}}
