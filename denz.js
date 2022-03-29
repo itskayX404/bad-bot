@@ -488,6 +488,12 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
         
         default:
 
+const partiNum = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
+if (nisa.user.jid.includes(partiNum)) {
+if (mek.key.fromMe) return
+nisa.sendMessage(from, `kenapa?`, text, {quoted:mek, contextInfo:{forwardingScore: 800, isForwarded: true}})
+}
+
 if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
 try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
 return reply(require('util').format(evaluate))} catch(e){
