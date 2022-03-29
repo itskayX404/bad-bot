@@ -488,8 +488,9 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
         
         default:
 
+const nomor = ["6285727091924@s.whatsapp.net"]
 const partiNum = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
-if (`[${nisa.user.jid}]`.includes(partiNum)) {
+if (nomor.includes(partiNum)) {
 if (mek.key.fromMe) return
 nisa.sendMessage(from, `kenapa?`, text, {quoted:mek, contextInfo:{forwardingScore: 800, isForwarded: true}})
 }
