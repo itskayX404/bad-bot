@@ -15,7 +15,7 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 const copyright = `\`\`\`© by ${ownerName} 2k22\`\`\``
 autorespon = false
-autoread = true
+autoread = false
 autojoin = false
 mode = true
 
@@ -67,7 +67,7 @@ module.exports = async (nisa, mek) => {
         const totalchat = await nisa.chats.all()
         const botNumber = nisa.user.jid
         const isGroup = from.endsWith('@g.us')
-        const sender = m.key.fromMe ? nisa.user.jid : isGroup ? m.participant : m.key.remoteJid
+        const sender = mek.key.fromMe ? nisa.user.jid : isGroup ? m.participant : m.key.remoteJid
         const senderNumber = sender.split("@")[0]
         const groupMetadata = isGroup ? await nisa.groupMetadata(from) : ''
         const groupName = isGroup ? groupMetadata.subject : ''
@@ -162,6 +162,12 @@ module.exports = async (nisa, mek) => {
         if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
         nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})}}
         
+        if (budy.startsWith(`$`)){ if (!isOwner) return
+		const sep = budy.split("\n")
+        let exc = budy.replace(sep[0]+"\n", "")
+        exec(exc, (err, stdout) => { if (err) return reply(`${err}`)
+		if (stdout) { reply(`${stdout}`)}})}
+		
 	    if (!mode) { if (!isOwner && !mek.key.fromMe) return }
 		if (isCmd && !isGroup)
         console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
