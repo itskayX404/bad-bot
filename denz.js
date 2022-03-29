@@ -5,7 +5,6 @@ const ffmpeg = require('fluent-ffmpeg')
 const simple = require('./all/simple.js')
 const { fetchJson, fetchText } = require('./all/fetcher')
 const moment = require("moment-timezone")
-const translate = require('@vitalets/google-translate-api')
 const { exec } = require('child_process')
 const { color, bgcolor, clcolor } = require('./all/color.js')
 const { ownerName, botName, ownerNumber, apiKey } = setting
@@ -152,7 +151,6 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
 		if (autoread) {nisa.chatRead(from)}
-		anu = await fetchJson(`https://numlookupapi.com/api/validate/${senderNumber}`, {method: 'get'})
 		siminumber = [`${nisa.user.jid}`]
         simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
         if (siminumber.includes(simireply)) {
@@ -161,13 +159,11 @@ module.exports = async (nisa, mek) => {
         if (!autorespon) return
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
-        translate(hasil, {client: 'gtx', to:`${anu.country_code}`}).then((res) =>{
-        nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
+        nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
 		if (!isGroup && !mek.key.fromMe && autorespon) {
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
-        translate(hasil, {client: 'gtx', to:`${anu.country_code}`}).then((res) =>{
-        nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
+        nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
         
         if (!mek.key.fromMe && autojoin) {
         if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
@@ -188,6 +184,7 @@ module.exports = async (nisa, mek) => {
         switch (command) {
 	
         case 'menu': case 'help':
+anu = await fetchJson(`https://numlookupapi.com/api/validate/${senderNumber}`, {method: 'get'})
 ubio = await nisa.getStatus(`${sender.split('@')[0]}@c.us`)
 ubio = ubio.status == 401 ? 'Hey there! I am using WhatsApp.' : ubio.status
 menunya = `☰ \`\`\`${botName}\`\`\`
