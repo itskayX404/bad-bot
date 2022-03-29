@@ -151,13 +151,18 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
 		if (autoread) {nisa.chatRead(from)}
+		const nomer = ["6285727091924@s.whatsapp.net"]
 		const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
-		if (nisa.user.jid.includes(simireply)) {
+		if (nomer.includes(simireply)) {
 		if (mek.key.fromMe) return
 		anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
-		
+		if (!isGroup && !mek.key.fromMe && autorespon) {
+        if (mek.key.remoteJid == 'status@broadcast') return
+        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
+        hasil = anu.success
+        nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
         
         if (!mek.key.fromMe && autojoin) {
         if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
