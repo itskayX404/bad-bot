@@ -160,12 +160,12 @@ module.exports = async (nisa, mek) => {
         if (!autorespon) return
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
-        translate(hasil, {client:'gtx', to:auto}).then((res) =>{
+        translate(hasil, {client:'gtx', to:'auto'}).then((res) =>{
         nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
         if (!isGroup && !mek.key.fromMe && autorespon) {
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
-        translate(hasil, {client: 'gtx', to:auto}).then((res) =>{
+        translate(hasil, {client:'gtx', to:'auto'}).then((res) =>{
         nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
         
         if (!mek.key.fromMe && autojoin) {
