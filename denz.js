@@ -3,7 +3,7 @@ const fs = require("fs")
 const setting = JSON.parse(fs.readFileSync("./settings.json"))
 const ffmpeg = require('fluent-ffmpeg')
 const simple = require('./all/simple.js')
-const translate = require('google-translate-api')
+const translate = require('@vitalets/google-translate-api')
 const { fetchJson, fetchText } = require('./all/fetcher')
 const moment = require("moment-timezone")
 const { exec } = require('child_process')
@@ -160,12 +160,12 @@ module.exports = async (nisa, mek) => {
         if (!autorespon) return
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
-        translate(hasil, {from:'id', to:'auto'}).then((res) =>{
+        translate(hasil, {client:'gtx', to:'auto'}).then((res) =>{
         nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
         if (!isGroup && !mek.key.fromMe && autorespon) {
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
-        translate(hasil, {from:'id', to:'auto'}).then((res) =>{
+        translate(hasil, {client:'gtx', to:'auto'}).then((res) =>{
         nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
         
         if (!mek.key.fromMe && autojoin) {
