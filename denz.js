@@ -157,11 +157,7 @@ module.exports = async (nisa, mek) => {
 		anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
-		if (!isGroup && !mek.key.fromMe && autorespon) {
-        if (mek.key.remoteJid == 'status@broadcast') return
-        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
-        hasil = anu.success
-        nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
+		
         
         if (!mek.key.fromMe && autojoin) {
         if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
