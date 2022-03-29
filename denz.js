@@ -153,7 +153,7 @@ module.exports = async (nisa, mek) => {
 		if (autoread) {nisa.chatRead(from)}
 		const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
 		if (nisa.user.jid.includes(simireply)) {
-		if (mek.key.fromMe && !autorespon) return
+		if (mek.key.fromMe) return
 		anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
