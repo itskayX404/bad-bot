@@ -488,11 +488,13 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
         
         default:
 
-const nomor = ["6285727091924@s.whatsapp.net"]
-const partiNum = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
-if (nomor.includes(partiNum)) {
+const siminumber = [`${nisa.user.jid}`]
+const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
+if (siminumber.includes(simireply)) {
 if (mek.key.fromMe) return
-nisa.sendMessage(from, `kenapa?`, text, {quoted:mek, contextInfo:{forwardingScore: 800, isForwarded: true}})
+anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
+hasil = anu.success
+nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
 }
 
 if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
