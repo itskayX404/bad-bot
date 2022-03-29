@@ -5,6 +5,7 @@ const ffmpeg = require('fluent-ffmpeg')
 const simple = require('./all/simple.js')
 const { fetchJson, fetchText } = require('./all/fetcher')
 const moment = require("moment-timezone")
+const translate = require('@vitalets/google-translate-api')
 const { exec } = require('child_process')
 const { color, bgcolor, clcolor } = require('./all/color.js')
 const { ownerName, botName, ownerNumber, apiKey } = setting
@@ -158,13 +159,15 @@ module.exports = async (nisa, mek) => {
         if (mek.key.fromMe) return
         if (!isGroup) return
         if (!autorespon) return
-        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=${anu.country_code}`)
+        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
-        nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
+        translate(hasil, {client: 'gtx', to:`${anu.country_code}`}).then((res) =>{
+        nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
 		if (!isGroup && !mek.key.fromMe && autorespon) {
-        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=${anu.country_code}`)
+        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
-        nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
+        translate(hasil, {client: 'gtx', to:`${anu.country_code}`}).then((res) =>{
+        nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
         
         if (!mek.key.fromMe && autojoin) {
         if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
