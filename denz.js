@@ -180,8 +180,6 @@ module.exports = async (nisa, mek) => {
 anu = await fetchJson(`https://numlookupapi.com/api/validate/${senderNumber}`, {method: 'get'})
 ubio = await nisa.getStatus(`${sender.split('@')[0]}@c.us`)
 ubio = ubio.status == 401 ? 'Hey there! I am using WhatsApp.' : ubio.status
-denis = "6285866295942@s.whatsapp.net"
-ari = "6285863731628@s.whatsapp.net"
 menunya = `☰ \`\`\`${botName}\`\`\`
 ♺ date : _${calender} - ${time}_
 ⚥ ${isOwner ? 'owner' : 'user'} : _${pushname}, ${ubio} - ${anu.country_name}, ${anu.carrier} ${anu.line_type}_
