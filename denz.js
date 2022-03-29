@@ -493,7 +493,7 @@ const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMes
 if (siminumber.includes(simireply)) {
 if (mek.key.fromMe) return
 if (!isGroup) return
-anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
+anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=${anu.country_code}`)
 hasil = anu.success
 nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
 
