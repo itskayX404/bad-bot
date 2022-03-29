@@ -492,6 +492,7 @@ const siminumber = [`${nisa.user.jid}`]
 const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
 if (siminumber.includes(simireply)) {
 if (mek.key.fromMe) return
+if (!isGroup) return
 anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
 hasil = anu.success
 nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
