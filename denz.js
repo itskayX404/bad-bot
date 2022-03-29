@@ -491,7 +491,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
 const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
 if (nisa.user.jid.includes(simireply)) {
 if (mek.key.fromMe) return
-anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
+anu = await fetchJson(`https://simsimi.info/api/?text=${simireply}&lc=id`)
 hasil = anu.success
 nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
         
