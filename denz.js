@@ -151,8 +151,7 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
 		if (autoread) {nisa.chatRead(from)}
-		if (!isGroup && !mek.key.fromMe && autorespon) {
-	    siminumber = [`${nisa.user.jid}`]
+		siminumber = [`${nisa.user.jid}`]
         simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
         if (siminumber.includes(simireply)) {
         if (mek.key.fromMe) return
@@ -161,6 +160,7 @@ module.exports = async (nisa, mek) => {
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=${anu.country_code}`)
         hasil = anu.success
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
+		if (!isGroup && !mek.key.fromMe && autorespon) {
         if (mek.key.remoteJid == 'status@broadcast') return
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=${anu.country_code}`)
         hasil = anu.success
