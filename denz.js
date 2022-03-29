@@ -13,7 +13,6 @@ const scommand = JSON.parse(fs.readFileSync('./trash/scommand.json'))
 const { addCommands, checkCommands, deleteCommands } = require('./all/autoresp')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./all/functions.js')
 const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-const copyright = `\`\`\`© by ${ownerName} 2k22\`\`\``
 autorespon = false
 autoread = true
 autojoin = false
