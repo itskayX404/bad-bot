@@ -13,9 +13,9 @@ const scommand = JSON.parse(fs.readFileSync('./trash/scommand.json'))
 const { addCommands, checkCommands, deleteCommands } = require('./all/autoresp')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./all/functions.js')
 const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-autorespon = false
+autorespon = true
 autoread = true
-autojoin = false
+autojoin = true
 mode = true
 
 mess = {
@@ -152,8 +152,17 @@ module.exports = async (nisa, mek) => {
 		
 		if (autoread) {nisa.chatRead(from)}
 		if (!isGroup && !mek.key.fromMe && autorespon) {
+	    siminumber = [`${nisa.user.jid}`]
+        simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
+        if (siminumber.includes(simireply)) {
+        if (mek.key.fromMe) return
+        if (!isGroup) return
+        if (!autorespon) return
+        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=${anu.country_code}`)
+        hasil = anu.success
+        nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
         if (mek.key.remoteJid == 'status@broadcast') return
-        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
+        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=${anu.country_code}`)
         hasil = anu.success
         nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
         
@@ -487,16 +496,6 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
         break
         
         default:
-
-const siminumber = [`${nisa.user.jid}`]
-const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
-if (siminumber.includes(simireply)) {
-if (mek.key.fromMe) return
-if (!isGroup) return
-if (autorespon) return
-anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=${anu.country_code}`)
-hasil = anu.success
-nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
 
 if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
 try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
