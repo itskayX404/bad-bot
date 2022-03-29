@@ -488,13 +488,6 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
         
         default:
 
-const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
-if (nisa.user.jid.includes(simireply)) {
-if (mek.key.fromMe) return
-anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
-hasil2 = anu.success
-nisa.sendMessage(from, `${hasil2}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
-        
 if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
 try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
 return reply(require('util').format(evaluate))} catch(e){
