@@ -94,7 +94,8 @@ module.exports = async (nisa, mek) => {
         var hDisplay = h > 0 ? h + (h == 1 ? " jam, " : " jam, ") : "";
         var mDisplay = m > 0 ? m + (m == 1 ? " menit, " : " menit, ") : "";
         var sDisplay = s > 0 ? s + (s == 1 ? " detik" : " detik") : "";
-        return dDisplay + hDisplay + mDisplay + sDisplay;}
+        return dDisplay + hDisplay + mDisplay + sDisplay;
+        }
         
         function monospace(string) { return '```' + string + '```' }
         function jsonformat(string) { return JSON.stringify(string, null, 2)}
@@ -167,11 +168,11 @@ module.exports = async (nisa, mek) => {
         
         if (!mek.key.fromMe && autojoin) {
         if (bb.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
-        nisa.query({json:["action", "invite", `${bb.replace('https://chat.whatsapp.com/','')}`]})}}
+        nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})}}
         
-        if (bb.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
-		const sep = bb.split("\n")
-        let exc = bb.replace(sep[0]+"\n", "")
+        if (budy.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
+		const sep = budy.split("\n")
+        let exc = budy.replace(sep[0]+"\n", "")
         exec(exc, (err, stdout) => { if (err) return reply(`${err}`)
 		if (stdout) { reply(`${stdout}`)}})}
 		
@@ -495,7 +496,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
         
         default:
 
-if (/^=?>/.test(bb) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(bb) ? bb.replace(/^=>/,'return') : bb.replace(/^>/,'')
+if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
 try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
 return reply(require('util').format(evaluate))} catch(e){
 return reply(require('util').format(e))}}
