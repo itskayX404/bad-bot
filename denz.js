@@ -495,7 +495,6 @@ if (mek.key.fromMe) return
 anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
 hasil = anu.success
 nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
-}
 
 if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
 try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
