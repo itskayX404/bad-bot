@@ -151,6 +151,12 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
 		if (autoread) {nisa.chatRead(from)}
+		const simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
+		if (nisa.user.jid.includes(simireply)) {
+		if (mek.key.fromMe && !autorespon) return
+		anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
+        hasil = anu.success
+        nisa.sendMessage(from, `${hasil}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})}
 		if (!isGroup && !mek.key.fromMe && autorespon) {
         if (mek.key.remoteJid == 'status@broadcast') return
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
