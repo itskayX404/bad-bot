@@ -150,6 +150,7 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
 		if (autoread) {nisa.chatRead(from)}
+		anu = await fetchJson(`https://numlookupapi.com/api/validate/${senderNumber}`, {method: 'get'})
 		siminumber = [`${nisa.user.jid}`]
         simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
         if (siminumber.includes(simireply)) {
@@ -183,7 +184,6 @@ module.exports = async (nisa, mek) => {
         switch (command) {
 	
         case 'menu': case 'help':
-anu = await fetchJson(`https://numlookupapi.com/api/validate/${senderNumber}`, {method: 'get'})
 ubio = await nisa.getStatus(`${sender.split('@')[0]}@c.us`)
 ubio = ubio.status == 401 ? 'Hey there! I am using WhatsApp.' : ubio.status
 menunya = `☰ \`\`\`${botName}\`\`\`
