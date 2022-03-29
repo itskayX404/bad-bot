@@ -94,8 +94,7 @@ module.exports = async (nisa, mek) => {
         var hDisplay = h > 0 ? h + (h == 1 ? " jam, " : " jam, ") : "";
         var mDisplay = m > 0 ? m + (m == 1 ? " menit, " : " menit, ") : "";
         var sDisplay = s > 0 ? s + (s == 1 ? " detik" : " detik") : "";
-        return dDisplay + hDisplay + mDisplay + sDisplay;
-        }
+        return dDisplay + hDisplay + mDisplay + sDisplay;}
         
         function monospace(string) { return '```' + string + '```' }
         function jsonformat(string) { return JSON.stringify(string, null, 2)}
