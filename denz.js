@@ -155,6 +155,7 @@ module.exports = async (nisa, mek) => {
 		siminumber = [`${nisa.user.jid}`]
         simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
         if (siminumber.includes(simireply)) {
+        if (mek.key.remoteJid == 'status@broadcast') return
         if (mek.key.fromMe) return
         if (!isGroup) return
         if (!autorespon) return
