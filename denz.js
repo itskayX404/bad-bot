@@ -315,8 +315,7 @@ reply(mess.error.api)}).on('end', () => {
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${command}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 nisa.sendMessage(from, fs.readFileSync(`./trash/${ran}`), sticker, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
 fs.unlinkSync(file)
-fs.unlinkSync(`./trash/${ran}`)}).addOutputOptions([`-vcodec`, `libwebp`, `-vf`, `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`]).toFormat('webp').save(`./trash/${ran}`)} else {
-reply(`Kirim gambar dengan caption ${prefix}sticker atau tag gambar yang sudah dikirim`)}
+fs.unlinkSync(`./trash/${ran}`)}).addOutputOptions([`-vcodec`, `libwebp`, `-vf`, `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`]).toFormat('webp').save(`./trash/${ran}`)} else {reply(`Kirim gambar dengan caption ${prefix}sticker atau tag gambar yang sudah dikirim`)}
         break
         
         case 'ghstalk':
