@@ -18,6 +18,8 @@ autorespon = true
 autoread = true
 autojoin = true
 mode = true
+multiprefix = false
+allprefix = true
 
 mess = {
          wait: 'Permintaan anda sedang diproses',
@@ -55,7 +57,10 @@ module.exports = async (nisa, mek) => {
         const type = Object.keys(mek.message)[0]
         const time = moment.tz('Asia/Jakarta').format('ha z')
         const cmd = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : (type == 'stickerMessage') && (getCmd(mek.message.stickerMessage.fileSha256.toString('hex')) !== null && getCmd(mek.message.stickerMessage.fileSha256.toString('base64')) !== undefined) ? getCmd(mek.message.stickerMessage.fileSha256.toString('base64')) : "".slice(1).trim().split(/ +/).shift().toLowerCase()
-        const prefix = /^[°zZ#$@*+,.?=''():√%!¢£¥€π¤ΠΦ_&><`™©®Δ^βα~¦|/\\©^]/.test(cmd) ? cmd.match(/^[°zZ#$@*+,.?=''():√%¢£¥€π¤ΠΦ_&><!`™©®Δ^βα~¦|/\\©^]/gi) : ''
+        if (multiprefix){ var prefix = /^[°zZ#$@*+,.?=''():√%!¢£¥€π¤ΠΦ_&><`™©®Δ^βα~¦|/\\©^]/.test(cmd) ? cmd.match(/^[°zZ#$@*+,.?=''():√%¢£¥€π¤ΠΦ_&><!`™©®Δ^βα~¦|/\\©^]/gi) : '.'
+        } else {
+        if (allprefix){ var prefix = /^[°zZ#$@*+,.?=''():√%!¢£¥€π¤ΠΦ_&><`™©®Δ^βα~¦|/\\©^]/.test(cmd) ? cmd.match(/^[°zZ#$@*+,.?=''():√%¢£¥€π¤ΠΦ_&><!`™©®Δ^βα~¦|/\\©^]/gi) : ''
+        }}
         const body = (type === 'listResponseMessage' && mek.message.listResponseMessage.title) ? mek.message.listResponseMessage.title : (type === 'buttonsResponseMessage' && mek.message.buttonsResponseMessage.selectedButtonId) ? mek.message.buttonsResponseMessage.selectedButtonId : (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : (type == 'stickerMessage') && (getCmd(mek.message.stickerMessage.fileSha256.toString('base64')) !== null && getCmd(mek.message.stickerMessage.fileSha256.toString('base64')) !== undefined) ? getCmd(mek.message.stickerMessage.fileSha256.toString('base64')) : ""
 		const budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
@@ -157,13 +162,14 @@ module.exports = async (nisa, mek) => {
         simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
         if (siminumber.includes(simireply)) {
         if (mek.key.fromMe) return
+        if (command) return
         if (!isGroup) return
         if (!autorespon) return
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
         translate(hasil, {from:'en', to:'auto'}).then((res) =>{
         nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
-        if (!isGroup && !mek.key.fromMe && autorespon) {
+        if (!isGroup && !mek.key.fromMe && !command && autorespon) {
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
         translate(hasil, {from:'en', to:'auto'}).then((res) =>{
@@ -383,8 +389,12 @@ exec(`git remote set-url origin https://github.com/dcode-denpa/bad-bot.git && gi
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
 if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autorespon on`, buttonText: { displayText: "ON" }, type: 1},{ buttonId: `autorespon off`, buttonText: { displayText: "OFF" }, type: 1}], {quoted:mek})
 if (bb === 'on'){ autorespon = true
+allprefix = false
+multiprefix = true
 reply(mess.success)
 } else if (bb === 'off'){ autorespon = false
+allprefix = true
+multiprefix = false
 reply(mess.success)} else { reply(mess.error.cmd)}
         break
         
