@@ -197,7 +197,7 @@ module.exports = async (nisa, mek) => {
 ubio = await nisa.getStatus(`${sender.split('@')[0]}@c.us`)
 ubio = ubio.status == 401 ? 'Hey there! I am using WhatsApp.' : ubio.status
 menunya = `☰ \`\`\`${botName}\`\`\`
-⚥ ${isOwner ? 'owner' : 'user'} : _${pushname} : ${ubio}_
+⚥ ${isOwner ? 'owner' : 'user'} : _${pushname} - ${ubio}_
 ♺ date : _${calender} - ${time}_
 
 ☰ \`\`\`List Menu\`\`\`
