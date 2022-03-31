@@ -321,9 +321,8 @@ teks1 = txt[0]
 teks2 = txt[1]
 ran1 = getRandom('.bin')
 ran2 = getRandom('.webp')
-anu = await fetchJson(`https://violetics.pw/api/media/emojimix?apikey=${apiKey}&emoji1=${teks1}&emoji2=${teks2}`)
-if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
-exec(`wget "${buffer}" -O ${ran1} && ffmpeg -i ${ran1} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ran2}`, (err) => { reply(mess.error.api)
+anu = `https://violetics.pw/api/media/emojimix?apikey=${apiKey}&emoji1=${teks1}&emoji2=${teks2}`
+exec(`wget "${anu}" -O ${ran1} && ffmpeg -i ${ran1} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ran2}`, (err) => { if (err) return reply("Gagal, silahkan coba lagi menggunakan emoji yang berbeda")
 fs.unlinkSync(ran1)
 buffer = fs.readFileSync(ran2)
 nisa.sendMessage(from, buffer, sticker, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}}).then(() => {fs.unlinkSync(ran2)})})
