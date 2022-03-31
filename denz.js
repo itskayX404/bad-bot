@@ -321,7 +321,8 @@ teks1 = txt[0]
 teks2 = txt[1]
 ran1 = getRandom('.bin')
 ran2 = getRandom('.webp')
-buffer = `https://violetics.pw/api/media/emojimix?apikey=185e-c6d9-7d49&emoji1=${teks1}&emoji2=${teks2}`
+anu = await fetchJson(`https://violetics.pw/api/media/emojimix?apikey=${apiKey}&emoji1=${teks1}&emoji2=${teks2}`)
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 exec(`wget "${buffer}" -O ${ran1} && ffmpeg -i ${ran1} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ran2}`, (err) => { reply(mess.error.api)
 fs.unlinkSync(ran1)
 buffer = fs.readFileSync(ran2)
@@ -345,8 +346,8 @@ fs.unlinkSync(`./trash/${ran}`)}).addOutputOptions([`-vcodec`, `libwebp`, `-vf`,
 if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/stalk/github?apikey=${apiKey}&username=${bb}`, {method: 'get'})
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 buffer = await getBuffer(anu.result.avatar_url)
-if (anu.status == 400) return reply(`${anu.message}`)
 nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
@@ -354,8 +355,8 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
 if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/stalk/instagram?apikey=${apiKey}&username=${bb}`, {method: 'get'})
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 buffer = await getBuffer(anu.result.profile_pic_url)
-if (anu.status == 400) return reply(`${anu.message}`)
 nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
@@ -363,7 +364,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu
 if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/search/group-whatsapp?apikey=${apiKey}&query=${bb}`, {method: 'get'})
-if (anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
@@ -393,7 +394,7 @@ nisa.sendMessage(from, `${JSON.stringify(scommand, null, 2)}`, text, {quoted:mek
 if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/media/brainly?apikey=${apiKey}&query=${bb}`, {method: 'get'})
-if (anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
@@ -475,7 +476,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo
 if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 buffer = await getBuffer(`https://violetics.pw/api/jimp/tahta?apikey=${apiKey}&text=${bb}`)
-if (anu.status == 400) return reply(`${anu.message}`)
+if (buffer.status == 400 || buffer.isError == true) return reply(`${buffer.message}`)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
@@ -483,14 +484,14 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo
 if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/apk/happymod?apikey=${apiKey}&apps=${bb}`, {method: 'get'})
-if (anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'cekapi':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
 anu = await fetchJson(`https://violetics.pw/api/utility/check-apikey?apikey=${apiKey}`, {method: 'get'})
-if (anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 reply(`${JSON.stringify(anu.result, null, 2)}`)
         break
         
@@ -498,21 +499,21 @@ reply(`${JSON.stringify(anu.result, null, 2)}`)
 if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/information/corona-virus?apikey=${apiKey}&country=${bb}`, {method: 'get'})
-if (anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'mplid':
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/information/mplid?apikey=${apiKey}`, {method: 'get'})
-if (anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'faktaunik':
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/information/faktaunik?apikey=${apiKey}`, {method: 'get'})
-if (anu.status == 400) return reply(`${anu.message}`)
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
@@ -520,7 +521,7 @@ nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:m
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/information/gempa-terbaru?apikey=${apiKey}`, {method: 'get'})
 buffer = await getBuffer(anu.result.shakemap)
-if (anu.status == 400) return reply(`${anu.message}`)
+if (buffer.status == 400 || buffer.isError == true) return reply(`${buffer.message}`)
 nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
