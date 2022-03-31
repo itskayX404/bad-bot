@@ -18,8 +18,8 @@ autorespon = true
 autoread = true
 autojoin = true
 mode = true
-multiprefix = false
-allprefix = true
+multiprefix = true
+allprefix = false
 
 mess = {
          wait: 'Permintaan anda sedang diproses',
