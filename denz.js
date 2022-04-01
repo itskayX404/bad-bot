@@ -306,8 +306,9 @@ reply(mess.success)
         break
         
         case 'dclearchat':
-if (isGroup) return
+if (isGroup) return reply(mess.OnlyPM)
 nisa.modifyChat(from, "delete")
+reply(`selamat tinggal, jika ingin menggunakan bot ini kembali silahkan klik wa.me/${nisa.user.jid}`)
         break
         
         case 'status':
