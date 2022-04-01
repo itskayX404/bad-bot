@@ -301,8 +301,12 @@ nisa.sendMessage(from, { displayname: ownerName, vcard: 'BEGIN:VCARD\n' + 'VERSI
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
 if (!bb) return reply(mess.error.cmd)
 anu = await nisa.chats.all()
-for (let _ of anu) { nisa.sendMessage(_.jid, `${bb}`, text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${botName} broadcast`,previewType:"PHOTO",thumbnail:ppu}}})}
+for (let _ of anu) { sendButMessage(_.jid, `${bb}`, "Jika anda merasa terganggu dengan boardcast ini, silahkan klik clear", [{buttonId:`dclearchat`,buttonText:{displayText:"CLEAR"},type:1}], {contextInfo: { forwardingScore: 508, isForwarded: true }})}
 reply(mess.success)
+        break
+        
+        case 'dclearchat':
+nisa.modifyChat(from, "delete")
         break
         
         case 'status':
