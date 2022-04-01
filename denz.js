@@ -87,7 +87,7 @@ module.exports = async (nisa, mek) => {
         const isUrl = (url) => { return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))}
         function parseMention(text = '') { return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')}
         const reply = (teks) => { nisa.sendMessage(from, teks, text, { quoted: mek, contextInfo: { forwardingScore: 508, isForwarded: true }})}
-        const sendMess = (id, teks) => { nisa.sendMessage(id, teks, text)}
+        const sendMess = (id, teks) => { nisa.sendMessage(id, teks, text, { contextInfo: { forwardingScore: 508, isForwarded: true }})}
         const mentions = (teks, memberr, id) => { (id == null || id == undefined || id == false) ? nisa.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr }}): nisa.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": memberr }})}
         const runtime = function(seconds) {
         seconds = Number(seconds);
@@ -305,7 +305,7 @@ reply(mess.success)
         
         case 'dclearchat':
 if (isGroup) return reply(mess.OnlyPM)
-reply(`selamat tinggal, jika ingin menggunakan bot ini kembali silahkan klik wa.me/${nisa.user.jid}`)
+sendMess(from, `selamat tinggal, jika ingin menggunakan bot ini kembali silahkan klik wa.me/${nisa.user.jid}`)
 nisa.modifyChat(from, "delete")
         break
         
