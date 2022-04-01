@@ -306,7 +306,7 @@ reply(mess.success)
         break
         
         case 'dclearchat':
-if (!isGroup) return
+if (isGroup) return
 nisa.modifyChat(from, "delete")
         break
         
