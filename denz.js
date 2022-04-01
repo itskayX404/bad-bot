@@ -100,6 +100,7 @@ module.exports = async (nisa, mek) => {
         var mDisplay = m > 0 ? m + (m == 1 ? " menit, " : " menit, ") : "";
         var sDisplay = s > 0 ? s + (s == 1 ? " detik" : " detik") : "";
         return dDisplay + hDisplay + mDisplay + sDisplay;}
+        async function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms));}
         
         function monospace(string) { return '```' + string + '```' }
         function jsonformat(string) { return JSON.stringify(string, null, 2)}
@@ -306,6 +307,7 @@ reply(mess.success)
         case 'dclearchat':
 if (isGroup) return reply(mess.OnlyPM)
 sendMess(from, `selamat tinggal, jika ingin menggunakan bot ini kembali silahkan klik wa.me/${nisa.user.jid}`)
+await sleep(3000)
 nisa.modifyChat(from, "delete")
         break
         
