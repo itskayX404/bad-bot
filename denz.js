@@ -300,8 +300,14 @@ nisa.sendMessage(from, { displayname: ownerName, vcard: 'BEGIN:VCARD\n' + 'VERSI
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
 if (!bb) return reply(mess.error.cmd)
 anu = await nisa.chats.all()
-for (let _ of anu) { sendButMessage(_.jid, `${bb}`, "jika anda merasa terganggu dengan boardcast ini, silahkan klik clear", [{buttonId:`dclearchat`,buttonText:{displayText:"CLEAR"},type:1}], {contextInfo: { forwardingScore: 508, isForwarded: true }})}
+if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+buffer = await nisa.downloadMediaMessage(encmedia)
+for (let _ of anu) { sendButImage(_.jid, `${bb}`, "jika anda merasa terganggu dengan boardcast ini, silahkan klik clear", buffer, [{buttonId:`dclearchat`,buttonText:{displayText:"CLEAR"},type:1}], {contextInfo: { forwardingScore: 508, isForwarded: true }})}
 reply(mess.success)
+} else { 
+for (let _ of anu) { sendButMessage(_.jid, `${bb}`, "jika anda merasa terganggu dengan boardcast ini, silahkan klik clear", [{buttonId:`dclearchat`,buttonText:{displayText:"CLEAR"},type:1}], {contextInfo: { forwardingScore: 508, isForwarded: true }})}
+reply(mess.success)}
         break
         
         case 'dclearchat':
