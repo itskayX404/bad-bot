@@ -16,7 +16,6 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 autorespon = true
 autoread = true
-autojoin = true
 mode = true
 multiprefix = true
 allprefix = false
@@ -155,6 +154,17 @@ module.exports = async (nisa, mek) => {
         const buttonMessages = { locationMessage: mhan.message.locationMessage,contentText: text1,footerText: desc1,buttons: but,headerType: "LOCATION"}
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
+		selectedButton = (type == 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedButtonId : ''
+        responseButton = (type == 'listResponseMessage') ? mek.message.listResponseMessage.title : ''
+        
+        if (budy.includes("://chat.whatsapp.com/")) { 
+        if (mek.key.fromMe) return
+        inviteLink = budy.replace('https://chat.whatsapp.com/','')
+        sendButMessage(from, "apakah anda ingin menambahkan bot ini ke grup anda?, klik iya jika ingin menambahkan", '', [{ buttonId: `join ${inviteLink}`, buttonText: { displayText: "IYA" }, type: 1}], {quoted:mek})
+        } else if (selectedButton === 'accjoin'){
+        await nisa.acceptInvite(inviteLink)
+        reply(mess.success)}
+        
 		if (autoread) {nisa.chatRead(from)}
 		if (mek.key.remoteJid == 'status@broadcast') return
 		siminumber = [`${nisa.user.jid}`]
@@ -173,11 +183,6 @@ module.exports = async (nisa, mek) => {
         hasil = anu.success
         translate(hasil, {from:'en', to:'auto'}).then((res) =>{
         nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
-        
-        if (!mek.key.fromMe && autojoin) {
-        if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
-        codeInvite = budy.replace('https://chat.whatsapp.com/', '')
-        await nisa.acceptInvite(codeInvite)}}
         
         if (budy.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
 		const sep = budy.split("\n")
@@ -255,9 +260,6 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ❏ ${prefix}autoread [  ]
 └ _mengaktifkan/nonaktifkan fitur auto baca_
 
-❏ ${prefix}autojoin [  ]
-└ _mengaktifkan/nonaktifkan fitur auto gabung grup_
-
 ❏ ${prefix}mode [  ]
 └ _mengganti mode public/self_
 
@@ -288,6 +290,11 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText:'SCRIPT'},type:1},{buttonId:`owner`,buttonText:{displayText:'OWNER'},type:1},{buttonId:`status`,buttonText:{displayText:'STATUS'},type:1}],{quoted:mek, contextInfo: { mentionedJid: [denis,ari], forwardingScore: 508, isForwarded: true }})
         break
         
+        case 'join':
+reply('permintaan anda sedang diproses oleh owner bot, jika owner bot menyetujui permintaan anda maka bot otomatis join ke grup anda')
+sendButMessage(`${ownerNumber}@s.whatsapp.net`, `join request: https://chat.whatsapp.com/${inviteLink}\ntime: ${calender} - ${time}\nfrom: ${pushname} - [ wa.me/${senderNumber} ]`, '', [{ buttonId: `accjoin`, buttonText: { displayText: "ACC JOIN" }, type: 1}], {quoted:mek})
+        break
+        
         case 'script': case 'sc':
 nisa.sendMessage(from, 'https://github.com/dcode-denpa/bad-bot', text, { quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{previewType:"PHOTO",thumbnail:ppu,sourceUrl:"https://github.com/dcode-denpa/bad-bot"}}})
         break
@@ -299,7 +306,7 @@ nisa.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanz
         case 'report':
 if (!bb) return reply(mess.error.cmd)
 reply("developer bot akan segera merespon laporan anda, terimakasih telah melaporkan")
-nisa.sendMessage(denis, `command: ${bb}\ntime: ${time}\nfrom: ${pushname}`, text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:"command reported",previewType:"PHOTO",thumbnail:ppu,sourceUrl:`https://api.whatsapp.com/send?phone=${senderNumber}`}}})
+nisa.sendMessage(denis, `command: ${bb}\ntime: ${calender} - ${time}\nfrom: ${pushname}`, text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:"command reported",previewType:"PHOTO",thumbnail:ppu,sourceUrl:`https://api.whatsapp.com/send?phone=${senderNumber}`}}})
         break
         
         case 'owner':
@@ -478,15 +485,6 @@ if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, 
 if (bb === 'on'){ autoread = true
 reply(mess.success)
 } else if (bb === 'off'){ autoread = false
-reply(mess.success)} else { reply(mess.error.cmd)}
-        break
-        
-        case 'autojoin':
-if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
-if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autojoin on`, buttonText: { displayText: "ON" }, type: 1},{ buttonId: `autojoin off`, buttonText: { displayText: "OFF" }, type: 1}], {quoted:mek})
-if (bb === 'on'){ autojoin = true
-reply(mess.success)
-} else if (bb === 'off'){ autojoin = false
 reply(mess.success)} else { reply(mess.error.cmd)}
         break
         
