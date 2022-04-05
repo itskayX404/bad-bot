@@ -176,8 +176,8 @@ module.exports = async (nisa, mek) => {
         
         if (!mek.key.fromMe && autojoin) {
         if (cmd.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
-        var codeInvite = cmd.split('https://chat.whatsapp.com/')[1]
-        await nisa.acceptInvite(codeInvite)}}
+        codeinvite = cmd.replace('https://chat.whatsapp.com/', '')
+        await nisa.acceptInvite(codeinvite)}}
         
         if (budy.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
 		const sep = budy.split("\n")
