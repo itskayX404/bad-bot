@@ -156,7 +156,6 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
 		if (autoread) {nisa.chatRead(from)}
-		if (mek.key.remoteJid == 'status@broadcast') return
 		siminumber = [`${nisa.user.jid}`]
         simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
         if (siminumber.includes(simireply)) {
