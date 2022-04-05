@@ -175,8 +175,8 @@ module.exports = async (nisa, mek) => {
         nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
         
         if (!mek.key.fromMe && autojoin) {
-        if (cmd.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
-        codeInvite = cmd.replace('https://chat.whatsapp.com/', '')
+        if (budy.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
+        codeInvite = budy.replace('https://chat.whatsapp.com/', '')
         await nisa.acceptInvite(codeInvite)}}
         
         if (budy.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
