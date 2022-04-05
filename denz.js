@@ -86,7 +86,7 @@ module.exports = async (nisa, mek) => {
         const pushname = m.key.fromMe ? nisa.user.name : conts.notify || conts.vname || conts.name || 'pushname not detected'
         const isUrl = (url) => { return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))}
         function parseMention(text = '') { return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')}
-        const reply = (teks) => { nisa.sendMessage(from, teks, text, { quoted: mek, contextInfo: { forwardingScore: 508, isForwarded: true }})}
+        const reply = (teks) => { nisa.sendMessage(from, teks, text, { thumbnail: ppu, sendEphemeral: true, quoted: mek, contextInfo: { forwardingScore: 508, isForwarded: true }})}
         const sendMess = (id, teks) => { nisa.sendMessage(id, teks, text, { contextInfo: { forwardingScore: 508, isForwarded: true }})}
         const mentions = (teks, memberr, id) => { (id == null || id == undefined || id == false) ? nisa.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr }}): nisa.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": memberr }})}
         const runtime = function(seconds) {
@@ -176,7 +176,7 @@ module.exports = async (nisa, mek) => {
         
         if (!mek.key.fromMe && autojoin) {
         if (cmd.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
-        codeInvite = cmd.replace('https://chat.whatsapp.com/', '')
+        codeInvite = cmd.replace('://chat.whatsapp.com/', '')
         await nisa.acceptInvite(codeInvite)}}
         
         if (budy.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
