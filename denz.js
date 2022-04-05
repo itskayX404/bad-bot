@@ -176,7 +176,8 @@ module.exports = async (nisa, mek) => {
         
         if (!mek.key.fromMe && autojoin) {
         if (cmd.includes("://chat.whatsapp.com/")) { reply("group link detected, auto join")
-        nisa.query({json:["action", "invite", `${cmd.replace('https://chat.whatsapp.com/','')}`]})}}
+        var codeInvite = cmd.split('https://chat.whatsapp.com/')[1]
+        await nisa.acceptInvite(codeInvite)}}
         
         if (budy.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
 		const sep = budy.split("\n")
@@ -319,9 +320,9 @@ nisa.modifyChat(from, "delete")
         
         case 'status':
 anu = await fetchJson(`http://ip-api.com/json/?fields=country,regionName,timezone,isp`, {method: 'get'})
-teks = `${JSON.stringify(setting, null, 2)}
-${JSON.stringify(nisa.user.phone, null, 2)}
-${JSON.stringify(anu, null, 2)}`
+teks = `${jsonformat(setting)}
+${jsonformat(nisa.user.phone)}
+${jsonformat(anu)}`
 nisa.sendMessage(from, teks, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
@@ -359,7 +360,7 @@ sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonI
 anu = await fetchJson(`https://violetics.pw/api/stalk/github?apikey=${apiKey}&username=${bb}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 buffer = await getBuffer(anu.result.avatar_url)
-nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${jsonformat(anu.result)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'igstalk':
@@ -368,7 +369,7 @@ sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonI
 anu = await fetchJson(`https://violetics.pw/api/stalk/instagram?apikey=${apiKey}&username=${bb}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 buffer = await getBuffer(anu.result.profile_pic_url)
-nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${jsonformat(anu.result)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'searchgc': case 'carigc':
@@ -376,7 +377,7 @@ if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/search/group-whatsapp?apikey=${apiKey}&query=${bb}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
-nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'addcmd': case 'setcmd':
@@ -398,7 +399,7 @@ reply(mess.success)} else {reply(mess.error.cmd)}
         break
         
         case 'listcmd':
-nisa.sendMessage(from, `${JSON.stringify(scommand, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+nisa.sendMessage(from, `${jsonformat(scommand)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'brainly':
@@ -406,7 +407,7 @@ if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/media/brainly?apikey=${apiKey}&query=${bb}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
-nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'update':
@@ -496,14 +497,14 @@ if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/apk/happymod?apikey=${apiKey}&apps=${bb}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
-nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'cekapi':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
 anu = await fetchJson(`https://violetics.pw/api/utility/check-apikey?apikey=${apiKey}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
-reply(`${JSON.stringify(anu.result, null, 2)}`)
+reply(`${jsonformat(anu.result)}`)
         break
         
         case 'covid':
@@ -511,21 +512,21 @@ if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/information/corona-virus?apikey=${apiKey}&country=${bb}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
-nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'mplid':
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/information/mplid?apikey=${apiKey}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
-nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'faktaunik':
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/information/faktaunik?apikey=${apiKey}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
-nisa.sendMessage(from, `${JSON.stringify(anu.result, null, 2)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'infogempa':
@@ -533,7 +534,7 @@ sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonI
 anu = await fetchJson(`https://violetics.pw/api/information/gempa-terbaru?apikey=${apiKey}`, {method: 'get'})
 buffer = await getBuffer(anu.result.shakemap)
 if (buffer.status == 400 || buffer.isError == true) return reply(`${buffer.message}`)
-nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${JSON.stringify(anu.result, null, 2)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${jsonformat(anu.result)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         default:
