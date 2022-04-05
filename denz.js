@@ -237,6 +237,15 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ❏ ${prefix}update [  ]
 └ _mengupdate sistem bot_
 
+❏ ${prefix}restart [  ]
+└ _merestart sistem bot_
+
+❏ ${prefix}infobot [  ]
+└ _mengirim informasi bot_
+
+❏ ${prefix}shutdown [  ]
+└ _mematikan sistem bot_
+
 ❏ ${prefix}delete [ _reply media_ ]
 └ _menghapus chat bot_
 
@@ -318,12 +327,19 @@ await sleep(3000)
 nisa.modifyChat(from, "delete")
         break
         
-        case 'status':
+        case 'info': case 'infobot':
 anu = await fetchJson(`http://ip-api.com/json/?fields=country,regionName,timezone,isp`, {method: 'get'})
-teks = `${jsonformat(setting)}
-${jsonformat(nisa.user.phone)}
-${jsonformat(anu)}`
+teks = `${JSON.stringify(setting, null, 2)}
+${JSON.stringify(nisa.user.phone, null, 2)}
+${JSON.stringify(anu, null, 2)}`
 nisa.sendMessage(from, teks, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+        break
+        
+        case 'status':
+exec(`pm2 describe index`, (err, stdout, stderr) => {
+if (stdout) return reply(`${stdout}`)
+if (stderr) return reply(`${stderr}`)
+if (err) return reply(`${err}`)})
         break
         
         case 'emojimix': case 'mixemoji':
@@ -412,7 +428,26 @@ nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextIn
         
         case 'update':
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
-exec(`git remote set-url origin https://github.com/dcode-denpa/bad-bot.git && git pull`, (error, stdout, stderr) => { reply(stdout)})
+exec(`git remote set-url origin https://github.com/dcode-denpa/bad-bot.git && git pull`, (err, stdout, stderr) => { 
+if (stdout) return reply(`${stdout}`)
+if (stderr) return reply(`${stderr}`)
+if (err) return reply(`${err}`)})
+        break
+        
+        case 'restart':
+if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+exec(`pm2 restart index`, (err, stdout, stderr) => {
+if (stdout) return reply(`${stdout}`)
+if (stderr) return reply(`${stderr}`)
+if (err) return reply(`${err}`)})
+        break
+        
+        case 'shutdown': case 'stop':
+if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+exec(`pm2 stop index`, (err, stdout, stderr) => {
+if (stdout) return reply(`${stdout}`)
+if (stderr) return reply(`${stderr}`)
+if (err) return reply(`${err}`)})
         break
         
         case 'autorespon':
