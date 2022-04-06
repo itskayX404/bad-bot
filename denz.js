@@ -320,7 +320,7 @@ numpang.close()
         
         case 'stopjadibot':
 if (!isOwner && !mek.key.fromMe) return reply('perintah ini hanya dapat digunakan oleh saya')
-try { reply(mess.success)
+try { reply(mess.wait)
 fs.unlinkSync(`./trash/${sender}.json`)
 numpang.close()} catch {reply(mess.error.api)}
         break
