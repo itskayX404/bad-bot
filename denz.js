@@ -159,15 +159,7 @@ module.exports = async (nisa, mek) => {
 		selectedButton = (type == 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedButtonId : ''
         responseButton = (type == 'listResponseMessage') ? mek.message.listResponseMessage.title : ''
         
-        if (budy.includes("://chat.whatsapp.com/")) { 
-        if (mek.key.fromMe) return
-        inviteLink = budy.replace('https://chat.whatsapp.com/','')
-        sendButMessage(from, "apakah anda ingin menambahkan bot ini ke grup anda?", "klik iya jika ingin menambahkan", [{ buttonId: `djoin ${inviteLink}`, buttonText: { displayText: "IYA" }, type: 1}], {quoted:mek})
-        } else if (selectedButton === 'accjoin'){
-        await nisa.acceptInvite(inviteLink)
-        reply(mess.success)}
-        
-		if (autoread) {nisa.chatRead(from)}
+        if (autoread) {nisa.chatRead(from)}
 		if (mek.key.remoteJid == 'status@broadcast') return
 		siminumber = [`${nisa.user.jid}`]
         simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
@@ -330,11 +322,6 @@ if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
 try { reply(mess.success)
 fs.unlinkSync(`./trash/${sender}.json`)
 numpang.close()} catch {reply(mess.error.api)}
-        break
-        
-        case 'djoin':
-reply('permintaan anda sedang diproses oleh owner bot, jika owner bot menyetujui permintaan anda maka bot otomatis join ke grup anda')
-sendButMessage(`${ownerNumber}@s.whatsapp.net`, `join request: https://chat.whatsapp.com/${inviteLink}\ntime: ${calender} - ${time}\nfrom: ${pushname} - [ wa.me/${senderNumber} ]`, '', [{ buttonId: `accjoin`, buttonText: { displayText: "ACC JOIN" }, type: 1}], {quoted:mek})
         break
         
         case 'script': case 'sc':
