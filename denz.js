@@ -66,7 +66,6 @@ module.exports = async (nisa, mek) => {
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
         const bb = args.join(' ')
-        const bbmsg = cmd.slice(0).trim().split(/ +/).shift().toLowerCase()
 		const isCmd = body.startsWith(prefix)
 		const arg = budy.slice(command.length + 2, budy.length)
         const q = body.slice(command.length + 1, body.length)
@@ -159,14 +158,6 @@ module.exports = async (nisa, mek) => {
 		
 		selectedButton = (type == 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedButtonId : ''
         responseButton = (type == 'listResponseMessage') ? mek.message.listResponseMessage.title : ''
-        
-        if (bbmsg.includes("://chat.whatsapp.com/")) { 
-        if (mek.key.fromMe) return
-        inviteLink = bbmsg.replace('https://chat.whatsapp.com/','')
-        sendButMessage(from, "apakah anda ingin menambahkan bot ini ke grup anda?", "klik iya jika ingin menambahkan", [{ buttonId: `djoin ${inviteLink}`, buttonText: { displayText: "IYA" }, type: 1}], {quoted:mek})
-        } else if (selectedButton === 'accjoin'){
-        await nisa.acceptInvite(inviteLink)
-        reply(mess.success)}
         
         if (autoread) {nisa.chatRead(from)}
 		if (mek.key.remoteJid == 'status@broadcast') return
@@ -297,11 +288,6 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ✆ developer : _@${denis.split('@')[0]} & @${ari.split('@')[0]}_
 ✎ note : _simbol [ ] tidak digunakan dalam perintah. jika perintah bot tidak merespon kemungkinan api's error_`
 sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText:'SCRIPT'},type:1},{buttonId:`owner`,buttonText:{displayText:'OWNER'},type:1},{buttonId:`status`,buttonText:{displayText:'STATUS'},type:1}],{quoted:mek, contextInfo: { mentionedJid: [denis,ari], forwardingScore: 508, isForwarded: true }})
-        break
-        
-        case 'djoin':
-reply('permintaan anda sedang diproses oleh owner bot, jika owner bot menyetujui permintaan anda maka bot otomatis join ke grup anda')
-sendButMessage(`${ownerNumber}@s.whatsapp.net`, `join request: https://chat.whatsapp.com/${inviteLink}\ntime: ${calender} - ${time}\nfrom: ${pushname} - [ wa.me/${senderNumber} ]`, '', [{ buttonId: `accjoin`, buttonText: { displayText: "ACC JOIN" }, type: 1}], {quoted:mek})
         break
         
         case 'jadibot':
