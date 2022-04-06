@@ -291,7 +291,7 @@ sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText
         break
         
         case 'jadibot':
-if (!isOwner) return reply(`jika ingin menggunakan fitur ini silahkan chat owner wa.me/${ownerNumber}`)
+if (!isOwner && !mek.key.fromMe) return reply(`jika ingin menggunakan fitur ini silahkan chat owner wa.me/${ownerNumber}`)
 numpang.version = [2, 2142, 12]
 numpang.browserDescription = [`${pushname}`,'Desktop','3.0']
 if (args[0] && args[0].length > 200) { let json = Buffer.from(args[0], 'base64').toString('utf-8') 
@@ -319,7 +319,7 @@ numpang.close()
         break
         
         case 'stopjadibot':
-if (!mek.key.fromMe) return reply('perintah ini hanya dapat digunakan oleh saya')
+if (!isOwner && !mek.key.fromMe) return reply('perintah ini hanya dapat digunakan oleh saya')
 try { reply(mess.success)
 fs.unlinkSync(`./trash/${sender}.json`)
 numpang.close()} catch {reply(mess.error.api)}
