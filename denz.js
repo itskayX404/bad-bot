@@ -181,8 +181,10 @@ module.exports = async (nisa, mek) => {
         if (budy.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
 		const sep = budy.split("\n")
         let exc = budy.replace(sep[0]+"\n", "")
-        exec(exc, (err, stdout) => { if (err) return reply(`${err}`)
-		if (stdout) { reply(`${stdout}`)}})}
+        exec(exc, (err, stdout, stderr) => {
+        if (stdout) return reply(`${stdout}`)
+        if (stderr) return reply(`${stderr}`)
+        if (err) return reply(`${err}`)})}
 		
 	    if (!mode) { if (!isOwner && !mek.key.fromMe) return }
 		if (isCmd && !isGroup)
