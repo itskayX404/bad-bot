@@ -161,7 +161,7 @@ module.exports = async (nisa, mek) => {
         if (budy.includes("://chat.whatsapp.com/")) { 
         if (mek.key.fromMe) return
         inviteLink = budy.replace('https://chat.whatsapp.com/','')
-        sendButMessage(from, "apakah anda ingin menambahkan bot ini ke grup anda?, klik iya jika ingin menambahkan", '', [{ buttonId: `djoin ${inviteLink}`, buttonText: { displayText: "IYA" }, type: 1}], {quoted:mek})
+        sendButMessage(from, "apakah anda ingin menambahkan bot ini ke grup anda?", "klik iya jika ingin menambahkan", [{ buttonId: `djoin ${inviteLink}`, buttonText: { displayText: "IYA" }, type: 1}], {quoted:mek})
         } else if (selectedButton === 'accjoin'){
         await nisa.acceptInvite(inviteLink)
         reply(mess.success)}
