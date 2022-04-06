@@ -14,6 +14,7 @@ const scommand = JSON.parse(fs.readFileSync('./trash/scommand.json'))
 const { addCommands, checkCommands, deleteCommands } = require('./all/autoresp')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./all/functions.js')
 const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
+const numpang = new WAConnection()
 autorespon = true
 autoread = true
 mode = true
@@ -160,7 +161,7 @@ module.exports = async (nisa, mek) => {
         if (budy.includes("://chat.whatsapp.com/")) { 
         if (mek.key.fromMe) return
         inviteLink = budy.replace('https://chat.whatsapp.com/','')
-        sendButMessage(from, "apakah anda ingin menambahkan bot ini ke grup anda?, klik iya jika ingin menambahkan", '', [{ buttonId: `join ${inviteLink}`, buttonText: { displayText: "IYA" }, type: 1}], {quoted:mek})
+        sendButMessage(from, "apakah anda ingin menambahkan bot ini ke grup anda?, klik iya jika ingin menambahkan", '', [{ buttonId: `djoin ${inviteLink}`, buttonText: { displayText: "IYA" }, type: 1}], {quoted:mek})
         } else if (selectedButton === 'accjoin'){
         await nisa.acceptInvite(inviteLink)
         reply(mess.success)}
@@ -263,6 +264,12 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ❏ ${prefix}mode [  ]
 └ _mengganti mode public/self_
 
+❏ ${prefix}jadibot [  ]
+└ _menumpang jadi bot_
+
+❏ ${prefix}stopjadibot [  ]
+└ _mematikan jadi bot_
+
 ❏ ${prefix}bc [ _text_ ]
 └ _mengirim broadcast ke semua chat_
 
@@ -290,7 +297,41 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText:'SCRIPT'},type:1},{buttonId:`owner`,buttonText:{displayText:'OWNER'},type:1},{buttonId:`status`,buttonText:{displayText:'STATUS'},type:1}],{quoted:mek, contextInfo: { mentionedJid: [denis,ari], forwardingScore: 508, isForwarded: true }})
         break
         
-        case 'join':
+        case 'jadibot':
+numpang.version = [2, 2142, 12]
+numpang.browserDescription = [`${pushname}`,'Desktop','3.0']
+if (args[0] && args[0].length > 200) { let json = Buffer.from(args[0], 'base64').toString('utf-8') 
+let obj = JSON.parse(json)
+await numpang.loadAuthInfo(obj)}
+try { numpang.on('qr' ,async qr => {
+qrbot = await qrcode.toDataURL(qr, { scale: 8 })
+buffer = await Buffer.from(qrbot.split('data:image/png;base64,')[1], 'base64')
+await fs.writeFileSync(`./jadibot@${sender}.jpg`, buffer)
+mhan = await nisa.prepareMessage(from, fs.readFileSync(`./jadibot@${sender}.jpg`), image)
+let scan = await nisa.sendMessage(from, {imageMessage: mhan.message.imageMessage,contentText: 'Scan QR ini untuk jadi bot sementara!\n1. Klik titik tiga di pojok kanan atas\n2. Ketuk WhatsApp Web\n3. Scan QR ini \n\nQR Expired dalam 20 detik',footerText: 'klik batal jika ingin membatalkan',buttons: [{buttonId:`dstopjadibot`,buttonText:{displayText:"BATAL"},type:1}], headerType: "IMAGE"}, MessageType.buttonsMessage, {quoted:mek})
+setTimeout(() => { nisa.deleteMessage(from, scan.key)}, 20000);})  
+numpang.on ('open', async () => { console.log('credentials update')
+const authInfo = numpang.base64EncodedAuthInfo()
+fs.writeFileSync(`./trash/${sender}.json`, JSON.stringify(authInfo  ,null, '\t'))
+await numpang.sendMessage('0@s.whatsapp.net', `Kamu bisa login tanpa qr dengan pesan dibawah ini`, MessageType.extendedText)
+numpang.sendMessage('0@s.whatsapp.net', `${prefix}${command} ${Buffer.from(JSON.stringify(authInfo)).toString('base64')}`, MessageType.extendedText)})
+numpang.on('chat-update', async (chat) => { require('./denz.js')(numpang, chat)})    
+await numpang.connect().then(async ({user}) => { reply('Berhasil tersambung dengan WhatsApp - mu.\n*NOTE: Ini cuma numpang*\n' + JSON.stringify(user, null, 2))})
+} catch { reply('jadibot telah dibatalkan')}
+        break
+        
+        case 'dstopjadibot':
+numpang.close()
+        break
+        
+        case 'stopjadibot':
+if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+try { reply(mess.success)
+fs.unlinkSync(`./trash/${sender}.json`)
+numpang.close()} catch {reply(mess.error.api)}
+        break
+        
+        case 'djoin':
 reply('permintaan anda sedang diproses oleh owner bot, jika owner bot menyetujui permintaan anda maka bot otomatis join ke grup anda')
 sendButMessage(`${ownerNumber}@s.whatsapp.net`, `join request: https://chat.whatsapp.com/${inviteLink}\ntime: ${calender} - ${time}\nfrom: ${pushname} - [ wa.me/${senderNumber} ]`, '', [{ buttonId: `accjoin`, buttonText: { displayText: "ACC JOIN" }, type: 1}], {quoted:mek})
         break
