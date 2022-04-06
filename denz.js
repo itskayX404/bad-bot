@@ -31,6 +31,7 @@ error: {
          cmd: 'Gunakan perintah dengan benar'
 },
          OnlyOwner: 'Perintah ini hanya dapat digunakan oleh *Owner Bot*',
+         OnlyMe: 'Perintah ini hanya dapat digunakan oleh *Saya*',
          OnlyGrup: 'Perintah ini hanya bisa digunakan di *Grup Chat*',
          OnlyPM: 'Perintah ini hanya bisa digunakan di *Chat Pribadi*',
          GrupAdmin: 'Perintah ini hanya bisa digunakan oleh *Admin Grup*',
@@ -291,6 +292,8 @@ sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText
         break
         
         case 'jadibot':
+if (!isOwner) return reply(mess.OnlyOwner)
+reply(`jika ingin menggunakan fitur ini silahkan chat owner wa.me/${ownerNumber}`)
 numpang.version = [2, 2142, 12]
 numpang.browserDescription = [`${pushname}`,'Desktop','3.0']
 if (args[0] && args[0].length > 200) { let json = Buffer.from(args[0], 'base64').toString('utf-8') 
@@ -318,7 +321,7 @@ numpang.close()
         break
         
         case 'stopjadibot':
-if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+if (!mek.key.fromMe) return reply(mess.OnlyMe)
 try { reply(mess.success)
 fs.unlinkSync(`./trash/${sender}.json`)
 numpang.close()} catch {reply(mess.error.api)}
