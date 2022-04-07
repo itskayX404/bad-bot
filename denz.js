@@ -161,9 +161,7 @@ module.exports = async (nisa, mek) => {
         
         if (autoread) {nisa.chatRead(from)}
 		if (mek.key.remoteJid == 'status@broadcast') return
-		siminumber = [`${nisa.user.jid}`]
-        simireply = (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : ''
-        if (siminumber.includes(simireply)) {
+	    if ([`${nisa.user.jid}`].includes((type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : '')) {
         if (mek.key.fromMe) return
         if (command) return
         if (!isGroup) return
