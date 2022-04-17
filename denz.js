@@ -8,7 +8,6 @@ const translate = require('@vitalets/google-translate-api')
 const { fetchJson, fetchText } = require('./all/fetcher')
 const moment = require("moment-timezone")
 const { exec } = require('child_process')
-const { color, bgcolor, clcolor } = require('./all/color.js')
 const { ownerName, botName, ownerNumber, apiKey } = setting
 const commandsDB = JSON.parse(fs.readFileSync('./trash/commands.json'))
 const scommand = JSON.parse(fs.readFileSync('./trash/scommand.json'))
@@ -185,10 +184,6 @@ module.exports = async (nisa, mek) => {
         if (err) return reply(`${err}`)})}
 		
 	    if (!mode) { if (!isOwner && !mek.key.fromMe) return }
-		if (isCmd && !isGroup)
-        console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname))
-        if (isCmd && isGroup)
-        console.log(color('[ MAIN ]'), `${time}`, color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(groupName))
         
         switch (command) {
 	
