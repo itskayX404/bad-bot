@@ -165,12 +165,12 @@ module.exports = async (nisa, mek) => {
         if (command) return
         if (!isGroup) return
         if (!autorespon) return
-        anu = await fetchJson(`https://api.simsimi.net/v2/?text=${cmd}&lc=id`)
+        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
         translate(hasil, {from:'en', to:'auto'}).then((res) =>{
         nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
         if (!isGroup && !mek.key.fromMe && !command && autorespon) {
-        anu = await fetchJson(`https://api.simsimi.net/v2/?text=${cmd}&lc=id`)
+        anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
         translate(hasil, {from:'en', to:'auto'}).then((res) =>{
         nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
@@ -184,6 +184,8 @@ module.exports = async (nisa, mek) => {
         if (err) return reply(`${err}`)})}
 		
 	    if (!mode) { if (!isOwner && !mek.key.fromMe) return }
+	
+        console.log(mek)
         
         switch (command) {
 	
