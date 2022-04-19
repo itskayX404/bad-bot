@@ -183,10 +183,12 @@ module.exports = async (nisa, mek) => {
         if (stderr) return reply(`${stderr}`)
         if (err) return reply(`${err}`)})}
 		
+		if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
+        try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
+        return reply(require('util').format(evaluate))} catch(e){
+        return reply(require('util').format(e))}}
+
 	    if (!mode) { if (!isOwner && !mek.key.fromMe) return }
-	
-        console.log(mek)
-        
         switch (command) {
 	
         case 'menu': case 'help':
@@ -599,11 +601,7 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${jsonformat(anu.res
         
         default:
 
-if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
-try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
-return reply(require('util').format(evaluate))} catch(e){
-return reply(require('util').format(e))}}
-
+console.log(mek)
 }} catch (e) { e = String(e)
 if (!e.includes("jid is not defined")) {
 if (!e.includes("this.isZero")) { console.log(e)}}}}
