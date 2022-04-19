@@ -18,6 +18,7 @@ const numpang = new WAConnection()
 autorespon = true
 autoread = true
 mode = true
+clog = true
 multiprefix = true
 allprefix = false
 
@@ -280,6 +281,9 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ❏ ${prefix}faktaunik [  ]
 └ _mengirim informasi fakta unik_
 
+❏ ${prefix}listgc [  ]
+└ _mengirim informasi list grup_
+
 ❏ ${prefix}infogempa [  ]
 └ _mengirim informasi gempa terbaru_
 
@@ -404,6 +408,11 @@ reply(mess.error.api)}).on('end', () => {
 nisa.sendMessage(from, fs.readFileSync(`./trash/${ran}`), sticker, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
 fs.unlinkSync(file)
 fs.unlinkSync(`./trash/${ran}`)}).addOutputOptions([`-vcodec`, `libwebp`, `-vf`, `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`]).toFormat('webp').save(`./trash/${ran}`)} else {reply(`Kirim gambar dengan caption ${prefix}sticker atau tag gambar yang sudah dikirim`)}
+        break
+        
+        case 'listgc':
+const txs = nisa.chats.all().filter(d => d.jid.endsWith('g.us')).map(d =>`* ${nisa.getName(d.jid)}\n"${d.jid}"\n[ ${d.read_only ? 'left' : 'joined'} ]`).join`\n\n`
+reply(txs)
         break
         
         case 'ghstalk':
@@ -601,7 +610,9 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${jsonformat(anu.res
         
         default:
 
-console.log(mek)
+if (clog) {console.log(mek)}
 }} catch (e) { e = String(e)
-if (!e.includes("jid is not defined")) {
-if (!e.includes("this.isZero")) { console.log(e)}}}}
+if (!e.includes("jid is not defined")) { if (!e.includes("this.isZero")) { if (clog) {console.log(e)}
+simpel = require('./all/simple.js')
+m = await simpel.smsg(nisa, mek)
+m.reply(e)}}}}
