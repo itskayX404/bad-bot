@@ -69,7 +69,6 @@ module.exports = async (nisa, mek) => {
 		const isCmd = body.startsWith(prefix)
 		const arg = budy.slice(command.length + 2, budy.length)
         const q = body.slice(command.length + 1, body.length)
-        const totalchat = await nisa.chats.all()
         const botNumber = nisa.user.jid
         const isGroup = from.endsWith('@g.us')
         const sender = mek.key.fromMe ? nisa.user.jid : isGroup ? m.participant : m.key.remoteJid
@@ -86,6 +85,7 @@ module.exports = async (nisa, mek) => {
         const conts = m.key.fromMe ? nisa.user.jid : nisa.contacts[sender] || { notify: jid.replace(/@.+/, '')}
         const pushname = m.key.fromMe ? nisa.user.name : conts.notify || conts.vname || conts.name || 'pushname not detected'
         const isUrl = (url) => { return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))}
+        String.prototype._replaceAllString = function(s, r) {return this.split(s).join(r); }; function _filterText(str,txt,dt){if (str) {var str = str.toLowerCase(); txt = txt ? txt : "***"; dt = dt ? dt : listkata; for (var i = 0; i < dt.length; i++) {var kk = dt[i].toLowerCase(); var ii = str.search(kk); if ( ii != -1) {str = str._replaceAllString(kk,txt); } } return str; }else{ return undefined; } }
         function parseMention(text = '') { return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')}
         const reply = (teks) => { nisa.sendMessage(from, teks, text, { thumbnail: ppu, sendEphemeral: true, quoted: mek, contextInfo: { forwardingScore: 508, isForwarded: true }})}
         const sendMess = (id, teks) => { nisa.sendMessage(id, teks, text, { contextInfo: { forwardingScore: 508, isForwarded: true }})}
@@ -184,6 +184,9 @@ module.exports = async (nisa, mek) => {
         if (stderr) return reply(`${stderr}`)
         if (err) return reply(`${err}`)})}
 		
+		if (listkata.includes(cmd)){
+		reply('عَنْ أَبِي الدَّرْدَاءِ، أَنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: إِنَّ اللَّهَ لَيُبْغِضُ الفَاحِشَ البَذِيءَ\n\nDari Abu Ad-Darda’ radhiallahu ‘anhu bahwasanya Rasulullah ﷺ bersabda, “Sungguh Allah benci dengan orang yang lisannya kotor dan kasar.”')}
+		
 		if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
         try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
         return reply(require('util').format(evaluate))} catch(e){
@@ -208,6 +211,9 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 
 ❏ ${prefix}tahta [ _text_ ]
 └ _membuat text menjadi gambar tahta_
+
+❏ ${prefix}dadu [  ]
+└ _mengirim sticker random dadu_
 
 ❏ ${prefix}ghstalk [ _username_ ]
 └ _mengambil informasi user github_
@@ -279,13 +285,31 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 └ _mengambil informasi mpl indonesia_
 
 ❏ ${prefix}faktaunik [  ]
-└ _mengirim informasi fakta unik_
+└ _mengirim text random fakta unik_
+
+❏ ${prefix}pantun [  ]
+└ _mengirim text random pantun_
+
+❏ ${prefix}katabijak [  ]
+└ _mengirim text random kata bijak_
+
+❏ ${prefix}doaharian [  ]
+└ _mengirim text random bacaan doa harian_
+
+❏ ${prefix}kitabharian [  ]
+└ _mengirim text random bacaan alkitab harian_
 
 ❏ ${prefix}listgc [  ]
 └ _mengirim informasi list grup_
 
 ❏ ${prefix}infogempa [  ]
 └ _mengirim informasi gempa terbaru_
+
+❏ ${prefix}alquran [ _surah_ ]
+└ _mencari surah al quran_
+
+❏ ${prefix}alkitab [ _text_ ]
+└ _mencari al kitab_
 
 ☰ \`\`\`Information\`\`\`
 ✆ developer : _@${denis.split('@')[0]} & @${ari.split('@')[0]}_
@@ -295,6 +319,7 @@ sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText
         
         case 'jadibot':
 if (!isOwner && !mek.key.fromMe) return reply(`jika ingin menggunakan fitur ini silahkan chat owner wa.me/${ownerNumber}`)
+numpang.logger.level = 'silent'
 numpang.version = [2, 2142, 12]
 numpang.browserDescription = [`${pushname}`,'Desktop','3.0']
 if (args[0] && args[0].length > 200) { let json = Buffer.from(args[0], 'base64').toString('utf-8') 
@@ -312,7 +337,12 @@ const authInfo = numpang.base64EncodedAuthInfo()
 fs.writeFileSync(`./trash/${sender}.json`, JSON.stringify(authInfo  ,null, '\t'))
 await numpang.sendMessage('0@s.whatsapp.net', `Kamu bisa login tanpa qr dengan pesan dibawah ini`, MessageType.extendedText)
 numpang.sendMessage('0@s.whatsapp.net', `${prefix}${command} ${Buffer.from(JSON.stringify(authInfo)).toString('base64')}`, MessageType.extendedText)})
-numpang.on('chat-update', async (chat) => { require('./denz.js')(numpang, chat)})    
+numpang.on('chat-update', async (chat) => { 
+if (!chat.hasNewMessage) return
+chat = chat.messages.all()[0]
+if (!chat.message) return
+if (chat.key && !chat.key.remoteJid == 'status@broadcast') return
+require('./denz.js')(numpang, chat)})    
 await numpang.connect().then(async ({user}) => { reply('Berhasil tersambung dengan WhatsApp - mu.\n*NOTE: Ini cuma numpang*\n' + JSON.stringify(user, null, 2))})
 } catch { reply('jadibot telah dibatalkan')}
         break
@@ -329,7 +359,7 @@ numpang.close()} catch {reply(mess.error.api)}
         break
         
         case 'script': case 'sc':
-nisa.sendMessage(from, script, text, { quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{previewType:"PHOTO",thumbnail:ppu,sourceUrl:script}}})
+nisa.sendMessage(from, `${script}`, text, { quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{previewType:"PHOTO",thumbnail:ppu,sourceUrl:script}}})
         break
        
         case 'd': case 'del': case 'delete':
@@ -368,11 +398,10 @@ nisa.modifyChat(from, "delete")
         break
         
         case 'info': case 'infobot':
-anu = await fetchJson(`http://ip-api.com/json/?fields=country,regionName,timezone,isp`, {method: 'get'})
 teks = `${JSON.stringify(setting, null, 2)}
 ${JSON.stringify(nisa.user.phone, null, 2)}
-${JSON.stringify(anu, null, 2)}`
-nisa.sendMessage(from, teks, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+${JSON.stringify(ip, null, 2)}`
+nisa.sendMessage(from, _filterText(teks, '#hidden#' ), text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'status':
@@ -472,7 +501,7 @@ nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextIn
         break
         
         case 'update':
-if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+if (!isOwner) return reply(mess.OnlyOwner)
 exec(`git remote set-url origin https://github.com/dcode-denpa/bad-bot.git && git pull`, (err, stdout, stderr) => { 
 if (stdout) return reply(`${stdout}`)
 if (stderr) return reply(`${stderr}`)
@@ -480,7 +509,7 @@ if (err) return reply(`${err}`)})
         break
         
         case 'restart':
-if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+if (!isOwner) return reply(mess.OnlyOwner)
 exec(`pm2 restart index`, (err, stdout, stderr) => {
 if (stdout) return reply(`${stdout}`)
 if (stderr) return reply(`${stderr}`)
@@ -488,7 +517,7 @@ if (err) return reply(`${err}`)})
         break
         
         case 'shutdown': case 'stop':
-if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+if (!isOwner) return reply(mess.OnlyOwner)
 exec(`pm2 stop index`, (err, stdout, stderr) => {
 if (stdout) return reply(`${stdout}`)
 if (stderr) return reply(`${stderr}`)
@@ -559,8 +588,13 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo
 if (!bb) return reply(mess.error.cmd)
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 buffer = await getBuffer(`https://violetics.pw/api/jimp/tahta?apikey=${apiKey}&text=${bb}`)
-if (buffer.status == 400 || buffer.isError == true) return reply(`${buffer.message}`)
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+        break
+        
+        case 'dadu':
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+buffer = await getBuffer(`https://violetics.pw/api/random/dadu?apikey=${apiKey}`)
+nisa.sendMessage(from, buffer, sticker, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         case 'happymod':
@@ -575,7 +609,8 @@ nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextIn
 if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
 anu = await fetchJson(`https://violetics.pw/api/utility/check-apikey?apikey=${apiKey}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
-reply(`${jsonformat(anu.result)}`)
+result = _filterText(`${jsonformat(anu.result)}`, '#hidden#' );
+reply(result)
         break
         
         case 'covid':
@@ -593,26 +628,66 @@ if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
+        case 'alquran':
+if (!bb) return reply(mess.error.cmd)
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+anu = await fetchJson(`https://violetics.pw/api/religion/alquran?apikey=${apiKey}&surah=${bb}`, {method: 'get'})
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
+nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+        break
+        
+        case 'alkitab':
+if (!bb) return reply(mess.error.cmd)
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+anu = await fetchJson(`https://violetics.pw/api/religion/alkitab-search?apikey=${apiKey}&text=${bb}`, {method: 'get'})
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
+nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+        break
+        
         case 'faktaunik':
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/information/faktaunik?apikey=${apiKey}`, {method: 'get'})
 if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
-nisa.sendMessage(from, `${jsonformat(anu.result)}`, text, {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
+sendButMessage(from, `${jsonformat(anu.result)}`, "klik retry jika ingin mencoba kembali", [{buttonId:`faktaunik`,buttonText:{displayText:"RETRY"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+        break
+        
+        case 'doaharian':
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+anu = await fetchJson(`https://violetics.pw/api/religion/doa-harian?apikey=${apiKey}`, {method: 'get'})
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
+sendButMessage(from, `${jsonformat(anu.result)}`, "klik retry jika ingin mencoba kembali", [{buttonId:`doaharian`,buttonText:{displayText:"RETRY"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+        break
+        
+        case 'kitabharian':
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+anu = await fetchJson(`https://violetics.pw/api/religion/alkitab-bacaharian?apikey=${apiKey}`, {method: 'get'})
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
+sendButMessage(from, `${jsonformat(anu.result)}`, "klik retry jika ingin mencoba kembali", [{buttonId:`doaharian`,buttonText:{displayText:"RETRY"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+        break
+        
+        case 'pantun':
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+anu = await fetchJson(`https://violetics.pw/api/random/pantun?apikey=${apiKey}`, {method: 'get'})
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
+sendButMessage(from, `${jsonformat(anu.result)}`, "klik retry jika ingin mencoba kembali", [{buttonId:`pantun`,buttonText:{displayText:"RETRY"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+        break
+        
+        case 'katabijak':
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+anu = await fetchJson(`https://violetics.pw/api/random/katabijak?apikey=${apiKey}`, {method: 'get'})
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
+sendButMessage(from, `${jsonformat(anu.result)}`, "klik retry jika ingin mencoba kembali", [{buttonId:`katabijak`,buttonText:{displayText:"RETRY"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
         break
         
         case 'infogempa':
 sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 anu = await fetchJson(`https://violetics.pw/api/information/gempa-terbaru?apikey=${apiKey}`, {method: 'get'})
 buffer = await getBuffer(anu.result.shakemap)
-if (buffer.status == 400 || buffer.isError == true) return reply(`${buffer.message}`)
+if (anu.status == 400 || anu.isError == true) return reply(`${anu.message}`)
 nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${jsonformat(anu.result)}`, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
         break
         
         default:
 
-if (clog) {console.log(mek)}
-}} catch (e) { e = String(e)
-if (!e.includes("jid is not defined")) { if (!e.includes("this.isZero")) { if (clog) {console.log(e)}
-simpel = require('./all/simple.js')
-m = await simpel.smsg(nisa, mek)
-m.reply(e)}}}}
+if (clog) {console.log(mek)}}} catch (e) { e = String(e)
+if (!e.includes("jid is not defined")) { if (!e.includes("this.isZero")) { if (clog) {console.log(e)}}}}}
