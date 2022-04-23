@@ -689,5 +689,5 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${jsonformat(anu.res
         
         default:
 
-if (clog) {console.log(`\x1b[37m${mek}\x1b[0m`)}}} catch (e) { e = String(e)
+if (clog) {console.log(`\x1b[37m ${mek} \x1b[0m`)}}} catch (e) { e = String(e)
 if (!e.includes("jid is not defined")) { if (!e.includes("this.isZero")) { if (clog) {console.log(`\x1b[31m${e}\x1b[0m`)}}}}}
