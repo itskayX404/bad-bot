@@ -17,7 +17,7 @@ const addCommands = (msg, response, userId, _data) => {
         creator: userId
     }
     _data.push(obj)
-    fs.writeFileSync('./database/commands.json', JSON.stringify(_data))
+    fs.writeFileSync('./commands.json', JSON.stringify(_data))
 
     return true
 }
@@ -32,7 +32,7 @@ const deleteCommands = (command, _data) => {
     Object.keys(_data).forEach((i) => {
         if (_data[i].pesan === command) {
             _data.splice(i, 1)
-            fs.writeFileSync('./database/commands.json', JSON.stringify(_data))
+            fs.writeFileSync('./commands.json', JSON.stringify(_data))
         }
     })
     return true

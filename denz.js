@@ -9,8 +9,8 @@ const { fetchJson, fetchText } = require('./all/fetcher')
 const moment = require("moment-timezone")
 const { exec } = require('child_process')
 const { ownerName, botName, ownerNumber, apiKey } = setting
-const commandsDB = JSON.parse(fs.readFileSync('./trash/commands.json'))
-const scommand = JSON.parse(fs.readFileSync('./trash/scommand.json'))
+const commandsDB = JSON.parse(fs.readFileSync('./all/commands.json'))
+const scommand = JSON.parse(fs.readFileSync('./all/scommand.json'))
 const { addCommands, checkCommands, deleteCommands } = require('./all/autoresp')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./all/functions.js')
 const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
@@ -39,7 +39,7 @@ error: {
 
 const addCmd = (id, command) => { const obj = { id: id, chats: command }
 scommand.push(obj)
-fs.writeFileSync('./trash/scommand.json', JSON.stringify(scommand))}
+fs.writeFileSync('./all/scommand.json', JSON.stringify(scommand))}
 const getCommandPosition = (id) => { let position = null
 Object.keys(scommand).forEach((i) => {
 if (scommand[i].id === id) { position = i }})
@@ -210,7 +210,7 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 └ _mix emoji menjadi sticker_
 
 ❏ ${prefix}tahta [ _text_ ]
-└ _membuat text menjadi gambar tahta_
+└ _membuat text menjadi gambar harta tahta_
 
 ❏ ${prefix}dadu [  ]
 └ _mengirim sticker random dadu_
@@ -484,7 +484,7 @@ if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
 if (isQuotedSticker) {
 var kodenya = mek.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.fileSha256.toString('base64')
 scommand.splice(getCommandPosition(kodenya), 1)
-fs.writeFileSync('./trash/scommand.json', JSON.stringify(scommand))
+fs.writeFileSync('./all/scommand.json', JSON.stringify(scommand))
 reply(mess.success)} else {reply(mess.error.cmd)}
         break
         
@@ -520,7 +520,7 @@ if (err) return reply(`${err}`)})
 if (!isOwner) return reply(mess.OnlyOwner)
 exec(`pm2 stop index`, (err, stdout, stderr) => {
 if (stdout) return reply(`${stdout}`)
-if (stderr) return reply(`${stderr}`)
+if (stderr) return nisa.sendMessage(from, JSON.stringify(eval(process.exit())))
 if (err) return reply(`${err}`)})
         break
         
@@ -689,5 +689,5 @@ nisa.sendMessage(from, buffer, image, {quoted:mek, caption:`${jsonformat(anu.res
         
         default:
 
-if (clog) {console.log(mek)}}} catch (e) { e = String(e)
-if (!e.includes("jid is not defined")) { if (!e.includes("this.isZero")) { if (clog) {console.log(e)}}}}}
+if (clog) {console.log(`\x1b[37m${mek}\x1b[0m`)}}} catch (e) { e = String(e)
+if (!e.includes("jid is not defined")) { if (!e.includes("this.isZero")) { if (clog) {console.log(`\x1b[31m${e}\x1b[0m`)}}}}}
