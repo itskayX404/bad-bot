@@ -184,8 +184,8 @@ module.exports = async (nisa, mek) => {
         if (stderr) return reply(`${stderr}`)
         if (err) return reply(`${err}`)})}
 		
-		if (listkata.includes(cmd)){
-		reply('عَنْ أَبِي الدَّرْدَاءِ، أَنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: إِنَّ اللَّهَ لَيُبْغِضُ الفَاحِشَ البَذِيءَ\n\nDari Abu Ad-Darda’ radhiallahu ‘anhu bahwasanya Rasulullah ﷺ bersabda, “Sungguh Allah benci dengan orang yang lisannya kotor dan kasar.”')}
+		if (listkata.includes(cmd)){reply('عَنْ أَبِي الدَّرْدَاءِ، أَنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: إِنَّ اللَّهَ لَيُبْغِضُ الفَاحِشَ البَذِيءَ\n\nDari Abu Ad-Darda’ radhiallahu ‘anhu bahwasanya Rasulullah ﷺ bersabda, “Sungguh Allah benci dengan orang yang lisannya kotor dan kasar.”')}
+		if (['Ceoo','ceoo','Ceo','ceo','Ceeo','ceeo'].includes(cmd)){m.reply(`Halo kak ${pushname} ada yang bisa ${cmd} bantu? >-<`)}
 		
 		if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
         try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
@@ -318,7 +318,7 @@ sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText
         break
         
         case 'jadibot':
-if (!isOwner && !mek.key.fromMe) return reply(`jika ingin menggunakan fitur ini silahkan chat owner wa.me/${ownerNumber}`)
+if (!isOwner && !mek.key.fromMe) return reply(`jika ingin menggunakan fitur ini silahkan izin terlebih dahulu ke owner bot wa.me/${ownerNumber}`)
 numpang.logger.level = 'silent'
 numpang.version = [2, 2142, 12]
 numpang.browserDescription = [`${pushname}`,'Desktop','3.0']
@@ -328,8 +328,8 @@ await numpang.loadAuthInfo(obj)}
 try { numpang.on('qr' ,async qr => {
 qrbot = await qrcode.toDataURL(qr, { scale: 8 })
 buffer = await Buffer.from(qrbot.split('data:image/png;base64,')[1], 'base64')
-await fs.writeFileSync(`./jadibot@${sender}.jpg`, buffer)
-mhan = await nisa.prepareMessage(from, fs.readFileSync(`./jadibot@${sender}.jpg`), image)
+await fs.writeFileSync(`./trash/jadibot@${sender}.jpg`, buffer)
+mhan = await nisa.prepareMessage(from, fs.readFileSync(`./trash/jadibot@${sender}.jpg`), image)
 let scan = await nisa.sendMessage(from, {imageMessage: mhan.message.imageMessage,contentText: 'Scan QR ini untuk jadi bot sementara!\n1. Klik titik tiga di pojok kanan atas\n2. Ketuk WhatsApp Web\n3. Scan QR ini \n\nQR Expired dalam 20 detik',footerText: 'klik batal jika ingin membatalkan',buttons: [{buttonId:`dstopjadibot`,buttonText:{displayText:"BATAL"},type:1}], headerType: "IMAGE"}, MessageType.buttonsMessage, {quoted:mek})
 setTimeout(() => { nisa.deleteMessage(from, scan.key)}, 20000);})  
 numpang.on ('open', async () => { console.log('credentials update')
@@ -512,7 +512,7 @@ if (err) return reply(`${err}`)})
 if (!isOwner) return reply(mess.OnlyOwner)
 exec(`pm2 restart index`, (err, stdout, stderr) => {
 if (stdout) return reply(`${stdout}`)
-if (stderr) return reply(`${stderr}`)
+if (stderr) return exec(`rs`, (err, stdout, stderr) => {if (stdout) return reply(`${stdout}`);if (stderr) return reply(`${stderr}`);if (err) return reply(`${err}`)})
 if (err) return reply(`${err}`)})
         break
         
