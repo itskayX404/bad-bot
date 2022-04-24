@@ -9,8 +9,8 @@
     "js": "node --harmony"
   },
   "watch": [
-    "denz.js",
-    "index.js"
+    "index.js",
+    "settings.json"
   ],
   "env": {
     "NODE_ENV": "development"

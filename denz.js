@@ -58,9 +58,7 @@ module.exports = async (nisa, mek) => {
         const type = Object.keys(mek.message)[0]
         const time = moment.tz('Asia/Jakarta').format('ha z')
         const cmd = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : (type == 'stickerMessage') && (getCmd(mek.message.stickerMessage.fileSha256.toString('hex')) !== null && getCmd(mek.message.stickerMessage.fileSha256.toString('base64')) !== undefined) ? getCmd(mek.message.stickerMessage.fileSha256.toString('base64')) : "".slice(1).trim().split(/ +/).shift().toLowerCase()
-        if (multiprefix){ var prefix = /^[°zZ#$@*+,.?=''():√%!¢£¥€π¤ΠΦ_&><`™©®Δ^βα~¦|/\\©^]/.test(cmd) ? cmd.match(/^[°zZ#$@*+,.?=''():√%¢£¥€π¤ΠΦ_&><!`™©®Δ^βα~¦|/\\©^]/gi) : '.'
-        } else {
-        if (allprefix){ var prefix = /^[°zZ#$@*+,.?=''():√%!¢£¥€π¤ΠΦ_&><`™©®Δ^βα~¦|/\\©^]/.test(cmd) ? cmd.match(/^[°zZ#$@*+,.?=''():√%¢£¥€π¤ΠΦ_&><!`™©®Δ^βα~¦|/\\©^]/gi) : ''}}
+        if (multiprefix){ var prefix = /^[°zZ#$@*+,.?=''():√%!¢£¥€π¤ΠΦ_&><`™©®Δ^βα~¦|/\\©^]/.test(cmd) ? cmd.match(/^[°zZ#$@*+,.?=''():√%¢£¥€π¤ΠΦ_&><!`™©®Δ^βα~¦|/\\©^]/gi) : '.' } else { if (allprefix){ var prefix = /^[°zZ#$@*+,.?=''():√%!¢£¥€π¤ΠΦ_&><`™©®Δ^βα~¦|/\\©^]/.test(cmd) ? cmd.match(/^[°zZ#$@*+,.?=''():√%¢£¥€π¤ΠΦ_&><!`™©®Δ^βα~¦|/\\©^]/gi) : ''}}
         const body = (type === 'listResponseMessage' && mek.message.listResponseMessage.title) ? mek.message.listResponseMessage.title : (type === 'buttonsResponseMessage' && mek.message.buttonsResponseMessage.selectedButtonId) ? mek.message.buttonsResponseMessage.selectedButtonId : (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : (type == 'stickerMessage') && (getCmd(mek.message.stickerMessage.fileSha256.toString('base64')) !== null && getCmd(mek.message.stickerMessage.fileSha256.toString('base64')) !== undefined) ? getCmd(mek.message.stickerMessage.fileSha256.toString('base64')) : ""
 		const budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
@@ -102,6 +100,7 @@ module.exports = async (nisa, mek) => {
         var sDisplay = s > 0 ? s + (s == 1 ? " detik" : " detik") : "";
         return dDisplay + hDisplay + mDisplay + sDisplay;}
         async function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms));}
+        if (autoread) {nisa.chatRead(from)}
         
         function monospace(string) { return '```' + string + '```' }
         function jsonformat(string) { return JSON.stringify(string, null, 2)}
@@ -123,6 +122,8 @@ module.exports = async (nisa, mek) => {
         const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
         const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
         const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
+        const isButton = (type == 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedButtonId : ''
+        const isList = (type == 'listResponseMessage') ? mek.message.listResponseMessage.title : ''
         
         const sendListMessage = (id, text1, desc1, sec  = [], options = {}) => {
         const listMessages = { buttonText: text1, description: desc1, sections: sec, listType: 1 }
@@ -156,43 +157,66 @@ module.exports = async (nisa, mek) => {
         const buttonMessages = { locationMessage: mhan.message.locationMessage,contentText: text1,footerText: desc1,buttons: but,headerType: "LOCATION"}
         nisa.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)}
 		
-		selectedButton = (type == 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedButtonId : ''
-        responseButton = (type == 'listResponseMessage') ? mek.message.listResponseMessage.title : ''
-        
-        if (autoread) {nisa.chatRead(from)}
-		if (mek.key.remoteJid == 'status@broadcast') return
-	    if ([`${nisa.user.jid}`].includes((type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : '')) {
+		if ([`${nisa.user.jid}`].includes((type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : '')) {
         if (mek.key.fromMe) return
         if (command) return
         if (!isGroup) return
         if (!autorespon) return
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
-        translate(hasil, {from:'en', to:'auto'}).then((res) =>{
-        nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
+        translate(hasil, {from:'en', to:'auto'}).then((res) =>{ nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
+        
         if (!isGroup && !mek.key.fromMe && !command && autorespon) {
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
-        translate(hasil, {from:'en', to:'auto'}).then((res) =>{
-        nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
+        translate(hasil, {from:'en', to:'auto'}).then((res) =>{ nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
         
-        if (budy.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
+        if (!mek.key.fromMe && isOwner) {
+	    if (budy.includes("://chat.whatsapp.com/")) {
+	    nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})}}
+        
+        if (listkata.includes(cmd)){reply('عَنْ أَبِي الدَّرْدَاءِ، أَنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: إِنَّ اللَّهَ لَيُبْغِضُ الفَاحِشَ البَذِيءَ\n\nDari Abu Ad-Darda’ radhiallahu ‘anhu bahwasanya Rasulullah ﷺ bersabda, “Sungguh Allah benci dengan orang yang lisannya kotor dan kasar.”')}
+		if (['Ceoo','ceoo','Ceo','ceo','Ceeo','ceeo'].includes(cmd)){m.reply(`Halo kak ${pushname} ada yang bisa ${cmd} bantu? >-<`)}
+		
+		if(isButton == 'dclearchat'){ if (isGroup) return reply(mess.OnlyPM)
+        sendMess(from, `selamat tinggal, jika ingin menggunakan bot ini kembali silahkan klik wa.me/${nisa.user.jid}`)
+        await sleep(3000)
+        nisa.modifyChat(from, "delete")}
+        
+        if(isButton == 'dstopjadibot'){
+        numpang.close()}
+        
+        if (budy.startsWith(`!-`)){
+        if (!mek.key.fromMe && !isOwner) return
+        if (!isGroup) return reply(mess.OnlyGrup)
+		if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+        if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Reply targetnya!')
+        kick = mek.message.extendedTextMessage.contextInfo.participant
+		nisa.groupRemove(from, [kick])}
+		
+		if (budy.startsWith(`!+`)){
+		if (!mek.key.fromMe && !isOwner) return
+        if (!isGroup) return reply(mess.OnlyGrup)
+		if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+		if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Reply targetnya!')
+		add = mek.message.extendedTextMessage.contextInfo.participant
+		nisa.groupAdd(from, [add])}
+		
+        if (budy.startsWith(`$`)){ 
+        if (!isOwner && !mek.key.fromMe) return
 		const sep = budy.split("\n")
         let exc = budy.replace(sep[0]+"\n", "")
         exec(exc, (err, stdout, stderr) => {
         if (stdout) return reply(`${stdout}`)
         if (stderr) return reply(`${stderr}`)
         if (err) return reply(`${err}`)})}
-		
-		if (listkata.includes(cmd)){reply('عَنْ أَبِي الدَّرْدَاءِ، أَنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: إِنَّ اللَّهَ لَيُبْغِضُ الفَاحِشَ البَذِيءَ\n\nDari Abu Ad-Darda’ radhiallahu ‘anhu bahwasanya Rasulullah ﷺ bersabda, “Sungguh Allah benci dengan orang yang lisannya kotor dan kasar.”')}
-		if (['Ceoo','ceoo','Ceo','ceo','Ceeo','ceeo'].includes(cmd)){m.reply(`Halo kak ${pushname} ada yang bisa ${cmd} bantu? >-<`)}
-		
+	    
 		if (/^=?>/.test(budy) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(budy) ? budy.replace(/^=>/,'return') : budy.replace(/^>/,'')
         try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
         return reply(require('util').format(evaluate))} catch(e){
         return reply(require('util').format(e))}}
 
-	    if (!mode) { if (!isOwner && !mek.key.fromMe) return }
+        if (!mode) { if (!isOwner && !mek.key.fromMe) return }
         switch (command) {
 	
         case 'menu': case 'help':
@@ -311,6 +335,9 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 ❏ ${prefix}alkitab [ _text_ ]
 └ _mencari al kitab_
 
+❏ ${prefix}report [ _reason_ ]
+└ _melaporkan masalah bot_
+
 ☰ \`\`\`Information\`\`\`
 ✆ developer : _@${denis.split('@')[0]} & @${ari.split('@')[0]}_
 ✎ note : _simbol [ ] tidak digunakan dalam perintah. jika perintah bot tidak merespon kemungkinan api's error_`
@@ -319,6 +346,7 @@ sendButMessage(from, menunya, copyright, [{buttonId:`sc`,buttonText:{displayText
         
         case 'jadibot':
 if (!isOwner && !mek.key.fromMe) return reply(`jika ingin menggunakan fitur ini silahkan izin terlebih dahulu ke owner bot wa.me/${ownerNumber}`)
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 numpang.logger.level = 'silent'
 numpang.version = [2, 2142, 12]
 numpang.browserDescription = [`${pushname}`,'Desktop','3.0']
@@ -347,10 +375,6 @@ await numpang.connect().then(async ({user}) => { reply('Berhasil tersambung deng
 } catch { reply('jadibot telah dibatalkan')}
         break
         
-        case 'dstopjadibot':
-numpang.close()
-        break
-        
         case 'stopjadibot':
 if (!isOwner && !mek.key.fromMe) return reply('perintah ini hanya dapat digunakan oleh saya')
 try { reply(mess.wait)
@@ -362,14 +386,14 @@ numpang.close()} catch {reply(mess.error.api)}
 nisa.sendMessage(from, `${script}`, text, { quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{previewType:"PHOTO",thumbnail:ppu,sourceUrl:script}}})
         break
        
-        case 'd': case 'del': case 'delete':
+        case 'del': case 'delete':
 nisa.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
 		break
 		
         case 'report':
 if (!bb) return reply(mess.error.cmd)
 reply("developer bot akan segera merespon laporan anda, terimakasih telah melaporkan")
-nisa.sendMessage(denis, `command: ${bb}\ntime: ${calender} - ${time}\nfrom: ${pushname}`, text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:"command reported",previewType:"PHOTO",thumbnail:ppu,sourceUrl:`https://api.whatsapp.com/send?phone=${senderNumber}`}}})
+nisa.sendMessage(`${ownerNumber}@s.whatsapp.net`, `command: ${bb}\ntime: ${calender} - ${time}\nfrom: ${pushname}`, text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:"command reported",previewType:"PHOTO",thumbnail:ppu,sourceUrl:`https://api.whatsapp.com/send?phone=${senderNumber}`}}})
         break
         
         case 'owner':
@@ -388,13 +412,6 @@ reply(mess.success)
 } else { 
 for (let _ of anu) { sendButMessage(_.jid, `${bb}`, "jika anda merasa terganggu dengan boardcast ini, silahkan klik clear", [{buttonId:`dclearchat`,buttonText:{displayText:"CLEAR"},type:1}], {contextInfo: { forwardingScore: 508, isForwarded: true }})}
 reply(mess.success)}
-        break
-        
-        case 'dclearchat':
-if (isGroup) return reply(mess.OnlyPM)
-sendMess(from, `selamat tinggal, jika ingin menggunakan bot ini kembali silahkan klik wa.me/${nisa.user.jid}`)
-await sleep(3000)
-nisa.modifyChat(from, "delete")
         break
         
         case 'info': case 'infobot':
@@ -510,9 +527,9 @@ if (err) return reply(`${err}`)})
         
         case 'restart':
 if (!isOwner) return reply(mess.OnlyOwner)
-exec(`pm2 restart index`, (err, stdout, stderr) => {
+exec(`pm2 restart index --update-env`, (err, stdout, stderr) => {
 if (stdout) return reply(`${stdout}`)
-if (stderr) return exec(`rs`, (err, stdout, stderr) => {if (stdout) return reply(`${stdout}`);if (stderr) return reply(`${stderr}`);if (err) return reply(`${err}`)})
+if (stderr) return reply(`${stderr}`)
 if (err) return reply(`${err}`)})
         break
         
