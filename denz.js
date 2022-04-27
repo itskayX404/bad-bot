@@ -17,6 +17,7 @@ const { text, extendedText, contact, location, liveLocation, image, video, stick
 const numpang = new WAConnection()
 autorespon = true
 autoread = true
+antibule = true
 mode = true
 clog = true
 multiprefix = true
@@ -101,6 +102,7 @@ module.exports = async (nisa, mek) => {
         return dDisplay + hDisplay + mDisplay + sDisplay;}
         async function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms));}
         if (autoread) {nisa.chatRead(from)}
+        if (antibule && command && !m.sender.includes('62')) return m.reply('Sorry, this bot can only be used by Indonesian users')
         
         function monospace(string) { return '```' + string + '```' }
         function jsonformat(string) { return JSON.stringify(string, null, 2)}
@@ -175,8 +177,9 @@ module.exports = async (nisa, mek) => {
 	    if (budy.includes("://chat.whatsapp.com/")) {
 	    nisa.query({json:["action", "invite", `${budy.replace('https://chat.whatsapp.com/','')}`]})}}
         
+        if (!mek.key.fromMe) {
         if (listkata.includes(cmd)){reply('عَنْ أَبِي الدَّرْدَاءِ، أَنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: إِنَّ اللَّهَ لَيُبْغِضُ الفَاحِشَ البَذِيءَ\n\nDari Abu Ad-Darda’ radhiallahu ‘anhu bahwasanya Rasulullah ﷺ bersabda, “Sungguh Allah benci dengan orang yang lisannya kotor dan kasar.”')}
-		if (['Ceoo','ceoo','Ceo','ceo','Ceeo','ceeo'].includes(cmd)){m.reply(`Halo kak ${pushname} ada yang bisa ${cmd} bantu? >-<`)}
+		if (['Ceoo','ceoo','Ceo','ceo','Ceeo','ceeo'].includes(cmd)){m.reply(`Halo kak ${pushname} ada yang bisa ${cmd} bantu? >-<`)}}
 		
 		if(isButton == 'dclearchat'){ if (isGroup) return reply(mess.OnlyPM)
         sendMess(from, `selamat tinggal, jika ingin menggunakan bot ini kembali silahkan klik wa.me/${nisa.user.jid}`)
@@ -283,6 +286,9 @@ menunya = `☰ \`\`\`${botName}\`\`\`
 
 ❏ ${prefix}autoread [  ]
 └ _mengaktifkan/nonaktifkan fitur auto baca_
+
+❏ ${prefix}antibule [  ]
+└ _mengaktifkan/nonaktifkan fitur anti bule_
 
 ❏ ${prefix}mode [  ]
 └ _mengganti mode public/self_
@@ -456,7 +462,7 @@ fs.unlinkSync(file)
 fs.unlinkSync(`./trash/${ran}`)}).addOutputOptions([`-vcodec`, `libwebp`, `-vf`, `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`]).toFormat('webp').save(`./trash/${ran}`)} else {reply(`Kirim gambar dengan caption ${prefix}sticker atau tag gambar yang sudah dikirim`)}
         break
         
-        case 'listgc':
+        case 'listgc': case 'listgrup': case 'listgroup':
 const txs = nisa.chats.all().filter(d => d.jid.endsWith('g.us')).map(d =>`* ${nisa.getName(d.jid)}\n"${d.jid}"\n[ ${d.read_only ? 'left' : 'joined'} ]`).join`\n\n`
 reply(txs)
         break
@@ -572,31 +578,40 @@ reply(mess.success)
 reply(mess.success)} else { reply(mess.error.cmd)}
         break
         
+        case 'antibule':
+if (!isOwner && !mek.key.fromMe) return reply(mess.OnlyOwner)
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `antibule on`, buttonText: { displayText: "ON" }, type: 1},{ buttonId: `antibule off`, buttonText: { displayText: "OFF" }, type: 1}], {quoted:mek})
+if (bb === 'on'){ antibule = true
+reply(mess.success)
+} else if (bb === 'off'){ antibule = false
+reply(mess.success)} else { reply(mess.error.cmd)}
+        break
+        
         case 'asupan':
-if (args.length < 1) return  sendListMessage(from, 'List Asupan', 'silahkan pilih opsi berikut', [{rows: [{ "title":"asupan cecan"},{"title":"asupan chinese"},{"title":"asupan indonesia"},{"title":"asupan japan"},{"title":"asupan korea"},{"title":"asupan malaysia"},{"title":"asupan thailand"},{"title":"asupan vietnam"}]}],{quoted:mek})
+if (args.length < 1) return sendListMessage(from, 'List Asupan', 'silahkan pilih opsi berikut', [{rows: [{ "title":"asupan cecan"},{"title":"asupan chinese"},{"title":"asupan indonesia"},{"title":"asupan japan"},{"title":"asupan korea"},{"title":"asupan malaysia"},{"title":"asupan thailand"},{"title":"asupan vietnam"}]}],{quoted:mek})
 if (bb === 'cecan'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/cecan?apikey=${apiKey}`)
-sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report asupan ${bb}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
 } else if (bb === 'chinese'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/chinese?apikey=${apiKey}`)
-sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report asupan ${bb}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
 } else if (bb === 'indonesia'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/indonesia?apikey=${apiKey}`)
-sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report asupan ${bb}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
 } else if (bb === 'japan'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/japan?apikey=${apiKey}`)
-sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report asupan ${bb}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
 } else if (bb === 'korea'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/korea?apikey=${apiKey}`)
-sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report asupan ${bb}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
 } else if (bb === 'malaysia'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/malaysia?apikey=${apiKey}`)
-sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report asupan ${bb}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
 } else if (bb === 'thailand'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/thailand?apikey=${apiKey}`)
-sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report asupan ${bb}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
 } else if (bb === 'vietnam'){ buffer = await getBuffer(`https://violetics.pw/api/asupan/vietnam?apikey=${apiKey}`)
-sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report ${cmd}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
+sendButMessage(from, mess.wait, "klik report jika bot tidak merespon", [{buttonId:`report asupan ${bb}`,buttonText:{displayText:"REPORT"},type:1}], {quoted:mek, contextInfo: { forwardingScore: 508, isForwarded: true }})
 nisa.sendMessage(from, buffer, image, {quoted:mek, thumbnail:buffer, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${command}`,previewType:"PHOTO",thumbnail:ppu,sourceUrl:`${grup}`}}})
 } else { reply(mess.error.api) }
         break
