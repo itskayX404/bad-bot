@@ -102,7 +102,7 @@ module.exports = async (nisa, mek) => {
         return dDisplay + hDisplay + mDisplay + sDisplay;}
         async function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms));}
         if (autoread) {nisa.chatRead(from)}
-        if (antibule && command && !m.sender.includes('62')) return m.reply('Sorry, this bot can only be used by Indonesian users')
+        if (antibule && isCmd && !m.sender.includes('62')) return m.reply('Sorry, this bot can only be used by Indonesian users')
         
         function monospace(string) { return '```' + string + '```' }
         function jsonformat(string) { return JSON.stringify(string, null, 2)}
@@ -161,14 +161,14 @@ module.exports = async (nisa, mek) => {
 		
 		if ([`${nisa.user.jid}`].includes((type === 'extendedTextMessage') ? mek.message.extendedTextMessage.contextInfo.participant : '')) {
         if (mek.key.fromMe) return
-        if (command) return
+        if (isCmd) return
         if (!isGroup) return
         if (!autorespon) return
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
         translate(hasil, {from:'en', to:'auto'}).then((res) =>{ nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
         
-        if (!isGroup && !mek.key.fromMe && !command && autorespon) {
+        if (!isGroup && !mek.key.fromMe && !isCmd && autorespon) {
         anu = await fetchJson(`https://simsimi.info/api/?text=${cmd}&lc=id`)
         hasil = anu.success
         translate(hasil, {from:'en', to:'auto'}).then((res) =>{ nisa.sendMessage(from, `${res.text}`, text, {thumbnail: ppu, sendEphemeral: true, quoted:mek})})}
@@ -382,10 +382,10 @@ await numpang.connect().then(async ({user}) => { reply('Berhasil tersambung deng
         break
         
         case 'stopjadibot':
-if (!isOwner && !mek.key.fromMe) return reply('perintah ini hanya dapat digunakan oleh saya')
-try { reply(mess.wait)
+if (!mek.key.fromMe) return reply('perintah ini hanya dapat digunakan oleh saya')
+reply(mess.wait)
 fs.unlinkSync(`./trash/${sender}.json`)
-numpang.close()} catch {reply(mess.error.api)}
+numpang.close()
         break
         
         case 'script': case 'sc':
